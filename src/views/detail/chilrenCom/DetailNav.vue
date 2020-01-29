@@ -1,25 +1,31 @@
 <template>
   <div>
-    <nav-bar>
+    <nav-bar class="detail-nav-bar">
       <div slot="left"
            class="left-image"
            @click="itemBack">
         <img src="~assets/img/common/back.svg" >
       </div>
       <div slot="center" class="titles">
-        <div v-for="(item,index) in titles"
-             class="titles-item"
-             :class="{active:currentIndex === index}"
-             @click="itemClick(index)"
+          <div v-for="(item,index) in titles"
+               class="titles-item"
+               :class="{active:currentIndex === index}"
+               @click="itemClick(index)"
         >
           {{item}}</div>
       </div>
+
+
     </nav-bar>
+
+
+
   </div>
 </template>
 
 <script>
     import NavBar from "../../../components/common/navbar/NavBar";
+
 
   export default {
     name: "DetailNav",
@@ -35,6 +41,7 @@
     methods:{
       itemClick(index){
         this.currentIndex = index;
+        this.$emit('itemClick',index)
       },
       itemBack(){
         this.$router.back()
@@ -47,7 +54,12 @@
 </script>
 
 <style scoped>
+  .detail-nav-bar{
+    position: relative;
+    z-index: 15;
+  }
   .left-image img{
+
     margin-top: 10px;
     margin-left: 10px;
   }
@@ -62,4 +74,7 @@
     color: red;
     border-bottom: solid 2px red;
   }
+
+
+
 </style>
