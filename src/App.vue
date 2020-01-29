@@ -1,7 +1,10 @@
 <template>
   <div id="app">
-    <router-view></router-view>
-   <main-tab-bar></main-tab-bar>
+<!--    保证只创建一次 不销毁-->
+   <keep-alive exclude="Detail">
+     <router-view></router-view>
+   </keep-alive>
+   <main-tab-bar class="maintab"></main-tab-bar>
   </div>
 </template>
 
@@ -19,4 +22,7 @@ export default {
 
 <style>
   @import "./assets/css/base.css";
+  .maintab{
+    z-index: 100000;
+  }
 </style>

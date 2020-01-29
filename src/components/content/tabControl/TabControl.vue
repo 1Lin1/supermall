@@ -19,6 +19,7 @@
     methods:{
       itemClick(index){
         this.currentIndex = index;
+        this.$emit('tabClick',this.currentIndex)
       }
     },
     props:{
@@ -38,7 +39,6 @@
     text-align: center;
     height: 44px;
     line-height: 44px;
-    text-align: center;
     background-color: #eeeeee;
   }
   .tabControl-item {
@@ -50,7 +50,7 @@
 
   .active span{
     border-bottom: 3px solid var(--color-tint);
-    padding: 5px;
+    padding: 8px;
   }
 
 

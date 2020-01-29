@@ -1,7 +1,6 @@
 <template>
-  <div class="goods-item" >
-    <img :src="product" alt="">
-
+  <div class="goods-item" @click="itemClick">
+    <img :src="product" alt="" @load="imageLoad">
   </div>
 </template>
 
@@ -9,12 +8,8 @@
   export default {
     name: "GoodsListItem",
     props: {
-      product: {
-        type: URL,
-        default() {
-          return {}
-        }
-      }
+      product: null
+
     },
     created(){
       //console.log(this.product)
@@ -23,18 +18,30 @@
 
     },
     methods:{
-
-
+      imageLoad(){
+        this.$bus.$emit('imageLoad')
+      },
+      itemClick(){
+        // console.log('itemclick');
+        this.$router.push({
+          path:'/detail',
+          query:{
+            id:111,
+            name:'lh',
+          }
+        })
+      }
     }
   }
 </script>
 
 <style scoped>
   .goods-item {
-    padding-bottom: 40px;
+    padding-bottom: 30px;
     position: relative;
 
     width: 46%;
+    margin-top: 5px
   }
 
   .goods-item img {
