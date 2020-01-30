@@ -61,6 +61,7 @@
         // 进行条件判断
         const  positionY = -position.y;
         for (let i = 0; i < this.detailTopY.length - 1; i++) {
+          // 第一个判断条件是让她只执行一遍
           if(this.currentIndex != i &&(positionY >= this.detailTopY[i] && positionY < this.detailTopY[i+1])){
             this.currentIndex = i;
             // console.log(this.currentIndex);
@@ -79,7 +80,7 @@
         const product ={};
         product.id = 101;
         product.name = '大衣'
-        this.$store.commit('addCart',product)
+        this.$store.dispatch('addCart',product)
       }
     },
 

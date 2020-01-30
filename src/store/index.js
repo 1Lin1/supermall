@@ -1,36 +1,20 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import mutations from "./mutations";
+import actions from "./actions";
 
 // 1.安装
 Vue.use(Vuex)
 
+const state ={
+  shopCart:[]
+}
 //2.创建store
 const store = new Vuex.Store({
-  state:{
-      shopCart:[]
-  },
-  mutations:{
-    addCart(state,payload){
-    // 1.第一种查找方法
-    //   let oldProduct = null;
-    //   for(let item in state.shopCart){
-    //     if (item.id === payload.id){
-    //       oldProduct = item;
-    //     }
-    //   }
-    //   2.find加箭头函数 找到对象 注意箭头函数的写法
-      let oldProduct = state.shopCart.find(item => item.id === payload.id)
-      //判断oldProduct
-
-      if(oldProduct){
-        oldProduct.count += 1
-      }else {
-        payload.count = 1
-        state.shopCart.push(payload)
-      }
-
-    }
-  },
+  // 进行vuex重构
+  state,
+  mutations:mutations,
+  actions:actions
 
 })
 
