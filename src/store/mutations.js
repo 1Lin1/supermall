@@ -6,6 +6,7 @@ export  default {
   },
 
   [ADD_SHOPCART](state,payload){
+    payload.checked = true
     state.shopCart.push(payload)
   }
 

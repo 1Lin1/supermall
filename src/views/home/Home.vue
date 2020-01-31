@@ -191,7 +191,7 @@
       // 网络事件
       getHomeMultidata(){
         getHomeMultidata().then(res =>{
-          console.log(res.data);
+          // console.log(res.data);
           this.banners = res.data.banner.list;
           this.recommends = res.data.recommend.list;
           // this.dKeywords = res.data.dKeyword;
@@ -223,6 +223,7 @@
     /* padding-top: 44px; */
     height: 100vh;
     position: relative;
+    font-size: 20px;
   }
   .home-nav{
     background-color: var(--color-tint);

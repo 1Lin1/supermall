@@ -80,6 +80,7 @@
         const product ={};
         product.id = 101;
         product.name = '大衣'
+        product.price = 1000
         this.$store.dispatch('addCart',product)
       }
     },

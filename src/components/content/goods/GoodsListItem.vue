@@ -1,6 +1,9 @@
 <template>
   <div class="goods-item" @click="itemClick">
     <img :src="product" alt="" @load="imageLoad">
+    <div>
+      <span class="goods-info">可爱</span>
+    </div>
   </div>
 </template>
 
@@ -50,7 +53,8 @@
   }
 
   .goods-info {
-    font-size: 12px;
+    font-weight: bolder;
+    font-size: 20px;
     position: absolute;
     bottom: 5px;
     left: 0;
