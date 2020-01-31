@@ -51,9 +51,12 @@
     },
     methods:{
       checkChange(){
-       this.$refs.checkButton.checked = !this.$refs.checkButton.checked;
-       this.itemInfo.checked = !this.itemInfo.checked;
+        // this.$bus.$emit('on-click',!this.itemInfo.checked )
+        this.$refs.checkButton.checked = !this.$refs.checkButton.checked;
+        this.itemInfo.checked = !this.itemInfo.checked;
       }
+    },
+    created() {
     }
   }
 </script>

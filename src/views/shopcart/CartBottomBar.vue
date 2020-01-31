@@ -1,8 +1,10 @@
 <template>
   <div class="bottom-menu">
     <div class="check-content">
-      <check-button class="check-button" ></check-button>
+      <div>{{message}}</div>
+      <check-button class="check-button" :is-checked="true" ref="allCheckButton" ></check-button>
       <span>全选</span>
+
     </div>
     <div class="price">
       <span class="total-price">合计:{{totalPrice}}</span>
@@ -21,9 +23,17 @@
   export default {
     name: "CartBottomBar",
     components: {CheckButton},
+    data(){
+      return{
+        message:false,
+      }
+    },
+    mounted() {
+
+    },
     computed:{
       // 获取商品信息
-      ...mapGetters(['CartList']),
+      ...mapGetters(['CartList','CartLength']),
 
       // 过滤checked为true的满足的商品
       totalPrice(){
@@ -35,10 +45,46 @@
       },
       checkLength(){
         return this.CartList.filter(item => item.checked).length;
+      },
+      // isSelectAll(){
+      //
+      //
+      //   // if(this.CartList.length === 1) return true
+      //   // if(this.CartList.length === 0) return false;
+      //
+      //
+      //   // 1.filter方法
+      //   // return !this.CartList.find(item => !item.checked).length
+      //   // if(this.CartList.find(item => item.checked).length === 0 )
+      //   // {
+      //   //   return false;
+      //   // }
+      //   // 普通方法
+      //   // console.log('select');
+      //   // for(let item of this.CartList){
+      //   //   console.log(item);
+      //   //   if(!item.checked){
+      //   //     console.log('item的返回值是' + item.checked);
+      //   //     return item.checked;
+      //   //   }
+      //   // }
+      //   // return true;
+      //
+      //   //
+      //   // return true;
+      //
+      //
+      // }
+      isSelectAll(){
+        return this.message;
       }
 
 
-    }
+    },
+
+
+
+
   }
 </script>
 
