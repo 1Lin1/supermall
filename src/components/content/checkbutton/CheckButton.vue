@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="icon-selector"
-         :class="{'selector-active': checked}"
+         :class="{'selector-active':itemChecked}"
          >
       <img src="~/assets/img/cart/tick.svg" alt="">
     </div>
@@ -19,11 +19,13 @@
     },
     data:function(){
       return{
-        checked:this.isChecked
+
       }
     },
-    methods:{
-
+    computed:{
+      itemChecked(){
+        return this.isChecked;
+      }
     }
 
   }

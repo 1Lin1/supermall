@@ -16,7 +16,7 @@
     </div>
     <div class="bar-item bar-right">
       <div class="cart" @click="addToCart">加入购物车</div>
-      <div class="buy">购买</div>
+      <div class="buy"  >购买</div>
     </div>
   </div>
 </template>
@@ -27,7 +27,8 @@
     methods: {
       addToCart() {
         this.$emit('addToCart')
-      }
+      },
+
     }
 	}
 </script>

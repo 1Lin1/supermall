@@ -2,7 +2,7 @@
   <div>
     <check-button
       :is-checked="itemInfo.checked"
-      @click.native= "checkChange"
+      @click.native= "checkClick"
       ref="checkButton"
     ></check-button>
     {{itemInfo.id}}
@@ -50,12 +50,25 @@
       }
     },
     methods:{
-      checkChange(){
-        // this.$bus.$emit('on-click',!this.itemInfo.checked )
-        this.$refs.checkButton.checked = !this.$refs.checkButton.checked;
+      checkClick(){
         this.itemInfo.checked = !this.itemInfo.checked;
       }
+      // checkChange(){
+      //   console.log('checkchange');
+      //   console.log(this.itemInfo.checked);
+      //   this.itemInfo.checked = !this.itemInfo.checked;
+      //   // this.$refs.checkButton.checked =  this.itemInfo.checked
+      //   console.log('点击后' + this.itemInfo.checked);
+      //
+      //   // this.$bus.$emit('on-click',!this.itemInfo.checked )
+      //   // this.$refs.checkButton.checked = !this.$refs.checkButton.checked;
+      //   // this.itemInfo.checked = !this.itemInfo.checked;
+      // }
     },
+    mounted() {
+
+         // this.checkChange();
+      },
     created() {
     }
   }

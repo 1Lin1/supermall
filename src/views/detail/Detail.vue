@@ -1,8 +1,5 @@
 <template>
   <div>
-    <ul v-for="item in $store.state.shopCart">
-      <li>{{item}}</li>
-    </ul>
     <detail-nav
       @itemClick="itemClick"
       ref="detailNav"
@@ -19,7 +16,8 @@
       <feature-view ref="four" class="four"></feature-view>
 
     </scroll>
-    <detail-bottom-bar @addToCart="addToCart"></detail-bottom-bar>
+
+    <detail-bottom-bar @addToCart="addToCart" ></detail-bottom-bar>
     <back-top class="back-top" @click.native="backToTop" v-show="isShow"></back-top>
 
   </div>
@@ -76,13 +74,16 @@
 
       //加入购物车
       addToCart(){
-        console.log('addcart');
-        const product ={};
-        product.id = 101;
-        product.name = '大衣'
-        product.price = 1000
-        this.$store.dispatch('addCart',product)
-      }
+        const product = {id:101,name:'大衣',price:1000};
+
+        this.$store.dispatch('addCart',product).then(res =>{
+          console.log(res);
+          this.$toast.show(res,3000)
+        })
+        //测试添加裤子
+
+      },
+
     },
 
     created() {

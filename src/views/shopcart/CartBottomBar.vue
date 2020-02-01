@@ -1,8 +1,10 @@
 <template>
   <div class="bottom-menu">
     <div class="check-content">
-      <div>{{message}}</div>
-      <check-button class="check-button" :is-checked="true" ref="allCheckButton" ></check-button>
+      <check-button class="check-button"
+                    :is-checked="isSelectAll"
+                    @click.native="allCheckButton"
+                      ></check-button>
       <span>全选</span>
 
     </div>
@@ -25,7 +27,19 @@
     components: {CheckButton},
     data(){
       return{
-        message:false,
+
+      }
+    },
+    methods:{
+      allCheckButton(){
+        // 1.第一种写法
+        if(this.isSelectAll){
+          this.CartList.forEach(item => item.checked = false)
+        }else{
+          this.CartList.forEach(item => item.checked = true)
+
+        }
+
       }
     },
     mounted() {
@@ -46,38 +60,14 @@
       checkLength(){
         return this.CartList.filter(item => item.checked).length;
       },
-      // isSelectAll(){
-      //
-      //
-      //   // if(this.CartList.length === 1) return true
-      //   // if(this.CartList.length === 0) return false;
-      //
-      //
-      //   // 1.filter方法
-      //   // return !this.CartList.find(item => !item.checked).length
-      //   // if(this.CartList.find(item => item.checked).length === 0 )
-      //   // {
-      //   //   return false;
-      //   // }
-      //   // 普通方法
-      //   // console.log('select');
-      //   // for(let item of this.CartList){
-      //   //   console.log(item);
-      //   //   if(!item.checked){
-      //   //     console.log('item的返回值是' + item.checked);
-      //   //     return item.checked;
-      //   //   }
-      //   // }
-      //   // return true;
-      //
-      //   //
-      //   // return true;
-      //
-      //
-      // }
       isSelectAll(){
-        return this.message;
+
+        //效率写法 filter过滤 激活样式不要用data
+        if(this.CartLength === 0) return false;
+        return !(this.CartList.filter(item => !item.checked).length)
       }
+
+
 
 
     },

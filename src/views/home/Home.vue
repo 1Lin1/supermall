@@ -53,7 +53,7 @@
   import GoodsList from "../../components/content/goods/GoodsList";
 
   import image3 from "./tian/3.jpg"
-  import image1 from "./tian/1.jpg"
+  import image2 from "./tian/2.jpg"
   import image5 from "./tian/5.jpg"
   import image8 from "./tian/8.jpg"
 
@@ -83,7 +83,7 @@
         // keywords:[],
         recommends:[],
         goods:{
-          'pop':{page: 0, list: [image5,image8,image5,image8,]},
+          'pop':{page: 0, list: [image5,image8,image8,image5,]},
           'new':{page: 0, list: [image8,]},
           'sell':{page: 0, list: [image8,image8,]},
         },
@@ -163,6 +163,7 @@
       backToTop(){
         // 运用ref取到scroll组件调用里面的方法 内部封装
         this.$refs.ScrollVue.scrollTo(0,0,500)
+        this.$toast.show('恬恬可爱极了~',3000)
       },
       // 点击事务事件
       tabClick(index){

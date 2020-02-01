@@ -8,7 +8,7 @@ import getters from "./getters"
 Vue.use(Vuex)
 
 const state ={
-  shopCart:[]
+  shopCart:[{id:102,name:'裤子',price:2000,checked:true,count:1}]
 }
 //2.创建store
 const store = new Vuex.Store({
