@@ -11,6 +11,16 @@ export function getHomeMultidata() {
     url:'/home/multidata'
   })
 }
+export function getUserData(id) {
+  return request({
+    url:'/users',
+    params:{
+      id
+    }
+  })
+}
+
+
 
 export function getHomeGoods(type,page) {
   return request({

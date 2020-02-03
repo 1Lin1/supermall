@@ -1,10 +1,10 @@
 <template>
-  <div class="tab-bar-item" @click="itemClick()">
+  <div class="tab-bar-item" @click="itemClick">
       <div v-if = "!isActive"><slot name = "item-icon"></slot></div>
       <div v-else><slot name = "item-icon-active"></slot></div>
-      
+
       <div :style="activeStyle"><slot name = "item-text"></slot></div>
-      
+
     <!-- <img src = "../../assets/img/tabbar/home.svg" alt="">
     <div>首页</div> -->
   </div>
@@ -20,7 +20,7 @@ export default {
       default: 'red',
     }
   },
-  data() { 
+  data() {
     return {
         // isActive: false
     }
@@ -54,7 +54,5 @@ export default {
     margin-top: 3px;
     vertical-align: middle;
 }
-.active{
-    color: blueviolet;
-}
+
 </style>

@@ -2,8 +2,8 @@
   <div class="recommend">
     <div v-for="item in recommends" class="recommend-item">
       <a :href=item.link>
-        <img :src=item.image alt="">
-        <div>{{item.title}}</div>
+          <img :src=item.image alt="">
+          <div>{{item.title}}</div>
       </a>
     </div>
   </div>
@@ -30,9 +30,10 @@
     text-align: center;
     font-size: 15px;
     border-bottom: 5px solid #eeeeee;
+    justify-content: space-around;
   }
-  recommend-item {
-    flex: auto;
+  .recommend-item {
+    flex: 1;
     margin-bottom: 3px;
   }
   .recommend-item img {

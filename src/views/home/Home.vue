@@ -1,6 +1,9 @@
 <template>
   <div id="home">
     <nav-bar class="home-nav"><div slot="center">首页</div></nav-bar>
+
+
+<!--    //用于向上拉时显示  附着在标题下-->
     <tab-control
       class="tab-control"
       :titles="['流行','精选','潮流']"
@@ -8,13 +11,14 @@
       ref="tabcontrol2"
       v-show="isTabFixed"
     ></tab-control>
+
     <scroll class="content"
             ref="ScrollVue"
             :pro-be-Type="2"
             @scrollPosition="scrollPosition"
             :pull-up-load="false"
             @pullingUpload="pullingUpload"
-            >
+    >
       <home-swiper :banners="banners" @swipperImageLoad="swipperImageLoad"></home-swiper>
       <home-recommend :recommends="recommends"></home-recommend>
       <feature-view></feature-view>
@@ -115,7 +119,7 @@
     mounted() {
       // 监听加载图片 加载完刷新
       const refresh = debounce(this.$refs.ScrollVue.refresh,1000)
-          this.$bus.$on('imageLoad',() =>{
+      this.$bus.$on('imageLoad',() =>{
         refresh()
       })
 
@@ -145,10 +149,11 @@
 
       swipperImageLoad(){
         this.tabControlOffset = 514;
+        // this.tabControlOffset = this.$refs.tabcontrol1.$el.offsetTop;
         console.log(this.$refs.tabcontrol1.$el.offsetTop);
       },
       // 多个请求在一定时间内 集合成少个请求发送
-        //防抖 分流
+      //防抖 分流
 
 
       pullingUpload(){
@@ -158,7 +163,7 @@
       scrollPosition(position){
         this.isShow = (-position.y) > 270;
         this.isTabFixed = (-position.y) > this.tabControlOffset
-  },
+      },
       // 返回最上方
       backToTop(){
         // 运用ref取到scroll组件调用里面的方法 内部封装
@@ -192,7 +197,7 @@
       // 网络事件
       getHomeMultidata(){
         getHomeMultidata().then(res =>{
-          // console.log(res.data);
+          console.log(res.data);
           this.banners = res.data.banner.list;
           this.recommends = res.data.recommend.list;
           // this.dKeywords = res.data.dKeyword;

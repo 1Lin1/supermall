@@ -10,12 +10,14 @@
 
 <script>
 
+  //导入bscroll
   import BScroll from 'better-scroll'
   export default {
     name: "Scroll",
     data(){
       return{
         scroll:null,
+        //判断滚动类型
         probeType:{
           type:Number,
           default:0,
@@ -29,7 +31,10 @@
 
     mounted() {
           this.scroll = new BScroll(this.$refs.wrapper,{
+            // 是否触发bscroll点击事件
             click:true,
+
+            // 加载
             pullUpLoad:this.pullUpLoad,
             probeType: this.probeType,
 
