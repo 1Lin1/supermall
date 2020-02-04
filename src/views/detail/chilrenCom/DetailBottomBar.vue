@@ -1,7 +1,7 @@
 <template>
   <div class="bottom-bar">
     <div class="bar-item bar-left">
-      <div>
+      <div @click="servicePeople">
         <i class="icon service"></i>
         <span class="text">客服</span>
       </div>
@@ -28,7 +28,9 @@
       addToCart() {
         this.$emit('addToCart')
       },
-
+      servicePeople(){
+        this.$toast.show('客服暂未上线',2000)
+      }
     }
 	}
 </script>

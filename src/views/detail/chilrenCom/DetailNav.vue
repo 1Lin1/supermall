@@ -8,6 +8,7 @@
       </div>
       <div slot="center" class="titles">
           <div v-for="(item,index) in titles"
+               :key="index"
                class="titles-item"
                :class="{active:currentIndex === index}"
                @click="itemClick(index)"
@@ -55,6 +56,7 @@
 
 <style scoped>
   .detail-nav-bar{
+    /*相对于自己z-index提高*/
     position: relative;
     z-index: 15;
   }

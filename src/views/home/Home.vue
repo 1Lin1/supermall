@@ -87,9 +87,9 @@
         // keywords:[],
         recommends:[],
         goods:{
-          'pop':{page: 0, list: [image5,image8,image8,image5,]},
-          'new':{page: 0, list: [image8,]},
-          'sell':{page: 0, list: [image8,image8,]},
+          'pop':{page: 0, list: []},
+          'new':{page: 0, list: []},
+          'sell':{page: 0, list: []},
         },
 
         currentType:'pop',
@@ -108,8 +108,8 @@
 
       // 三个都动态的请求
       this.getHomeGoods('pop');
-      this.getHomeGoods('new');
-      this.getHomeGoods('sell');
+      // this.getHomeGoods('new');
+      // this.getHomeGoods('sell');
 
       // this.getMySqlData();
 
@@ -150,7 +150,7 @@
       swipperImageLoad(){
         this.tabControlOffset = 514;
         // this.tabControlOffset = this.$refs.tabcontrol1.$el.offsetTop;
-        console.log(this.$refs.tabcontrol1.$el.offsetTop);
+        // console.log(this.$refs.tabcontrol1.$el.offsetTop);
       },
       // 多个请求在一定时间内 集合成少个请求发送
       //防抖 分流
@@ -187,29 +187,30 @@
         this.$refs.tabcontrol2.currentIndex = index
       },
 
-      // getMySqlData(){
-      //   getMySqlData().then(res =>{
-      //     // console.log('11111111');
-      //     // console.log(res);
-      //   })
-      // },
+
 
       // 网络事件
       getHomeMultidata(){
         getHomeMultidata().then(res =>{
-          console.log(res.data);
-          this.banners = res.data.banner.list;
-          this.recommends = res.data.recommend.list;
+          console.log(res[0]);
+          this.banners = res[0].data.banner.list;
+          this.recommends =res[0].data.recommend.list;
           // this.dKeywords = res.data.dKeyword;
           // this.keywords = res.data.keywords;
         })
       },
       getHomeGoods(type){
 
+        getHomeGoods(type).then(res =>{
+          console.log(res);
+          for (let i = 0; i < res.length; i++) {
+            this.goods[type].list.push(res[i])
+          }
+        })
         // 测试本地照片
-
-        const images = [image8,image8,image8,image8,];
-        this.goods[type].list.push(...images);
+        //
+        // const images = [image8,image8,image8,image8,];
+        // this.goods[type].list.push(...images);
         // 当前的页数+1
         // const page = this.goods[type].page + 1 ;
         // getHomeGoods(type,page).then(res =>{

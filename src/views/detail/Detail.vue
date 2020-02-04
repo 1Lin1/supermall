@@ -10,7 +10,11 @@
             ref="ScrollVue"
             @scrollPosition="scrollPosition"
             :probeType="3">
-      <feature-view ref="one" class="one"></feature-view>
+      <detail-swipper :topImage="topImage" ref="one" @DetailSwiperLoad="DetailSwiperLoad"></detail-swipper>
+      <detail-base-info :goods="goods"></detail-base-info>
+      <detail-sale-man :sale-man="saleMan"></detail-sale-man>
+      <detail-show-model :modelImage="modelImage"></detail-show-model>
+      <detail-number></detail-number>
       <feature-view ref="two" class="two"></feature-view>
       <feature-view ref="three" class="three"></feature-view>
       <feature-view ref="four" class="four"></feature-view>
@@ -31,10 +35,21 @@
   import FeatureView from "../home/childComps/FeatureView";
   import DetailBottomBar from "./chilrenCom/DetailBottomBar";
   import {backTop} from "../../components/common/util/minxin";
+  import {getDetailData,Goods} from "../../network/details";
+  import DetailSwipper from "./chilrenCom/DetailSwipper";
+  import DetailBaseInfo from "./chilrenCom/DetailBaseInfo";
+  import DetailSaleMan from "./chilrenCom/DetailSaleMan";
+  import DetailShowModel from "./chilrenCom/DetailShowModel";
+  import DetailNumber from "./chilrenCom/DetailNumber";
 
   export default {
     name: "Detail",
     components: {
+      DetailNumber,
+      DetailShowModel,
+      DetailSaleMan,
+      DetailBaseInfo,
+      DetailSwipper,
       DetailBottomBar,
       FeatureView,
       Scroll,
@@ -47,7 +62,11 @@
     data(){
       return{
         detailTopY:[],
-        currentIndex:0
+        currentIndex:0,
+        topImage:[],
+        goods:{},
+        saleMan:{},
+        modelImage:[],
       }
     },
     methods:{
@@ -71,6 +90,11 @@
         this.isShow = positionY> 400;
       },
 
+      //检测顶部图片加载是否完毕
+      DetailSwiperLoad(){
+        console.log('图片加载完毕');
+      },
+
 
       //加入购物车
       addToCart(){
@@ -87,7 +111,17 @@
     },
 
     created() {
-      console.log('gettailtop');
+      let pid = this.$route.query.pid
+      getDetailData(pid).then(res =>{
+        //尝试封装类思想 面向对象开发
+        const data = res[0];
+        this.topImage = data.topImage;
+        this.goods = new Goods(data);
+
+        this.saleMan = this.goods;
+        this.modelImage = data.centerImage;
+
+      })
       //比如这里有一堆请求 请求完渲染才执行下面的添加
 
     },
@@ -96,8 +130,8 @@
       // this.$nextTick() 此函数为mounted中上方请求全部执行完再执行
       // 每次执行先设置为空
       this.detailTopY = []
-
-      this.detailTopY.push(0)
+      //
+      this.detailTopY.push(this.$refs.one.$el.offsetTop)
       this.detailTopY.push(this.$refs.two.$el.offsetTop)
       this.detailTopY.push(this.$refs.three.$el.offsetTop)
       this.detailTopY.push(this.$refs.four.$el.offsetTop)
@@ -121,11 +155,8 @@
     right: 0;
   }
 
-  .one {
-    height: 600px;
-  }
-
   .two {
+    margin-top: 600px;
     height: 600px;
   }
 

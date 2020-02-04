@@ -49,7 +49,7 @@
     color: #fff;
     background-color: rgba(0,0,0,.7);
     border:1px solid;
-    border-radius:25px;
+    border-radius:15px;
     /*position: fixed;*/
     /*top: 50%;*/
     /*left: 50%;*/

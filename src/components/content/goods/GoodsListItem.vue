@@ -1,8 +1,12 @@
 <template>
   <div class="goods-item" @click="itemClick">
-    <img :src ="product" alt="" @load="imageLoad">
-    <div>
-      <span class="goods-info">可爱</span>
+<!--    图片懒加载插件-->
+    <img v-lazy="showImage" alt="" @load="imgLoad">
+
+    <div class="goods-info" >
+      <p>{{product.title}}</p>
+      <span class="price">{{product.price}}</span>
+      <span class="collect">{{product.cfav}}</span>
     </div>
   </div>
 </template>
@@ -11,26 +15,37 @@
   export default {
     name: "GoodsListItem",
     props: {
-      product: null
-
+      product: {
+        type: Object,
+        default() {
+          return {}
+        }
+      }
     },
     created(){
       //console.log(this.product)
     },
     computed:{
-
+      showImage(){
+        return this.product.img || this.product.image || this.product.show.img;
+      }
     },
     methods:{
-      imageLoad(){
-        this.$bus.$emit('imageLoad')
+      imgLoad(){
+        this.$bus.$emit('itemImageLoad');
+
+        // if(this.$route.path.indexOf('/home')){
+        //   this.$bus.$emit('homeItemImageLoad');
+        // } else if(this.$route.path.indexOf('/detail')){
+        //   this.$bus.$emit('detailItemImageLoad');
+        // }
       },
       itemClick(){
-        // console.log('itemclick');
+        //跳转到相对应详情页 带上该商品id
         this.$router.push({
           path:'/detail',
           query:{
-            id:111,
-            name:'lh',
+            pid:this.product.pid
           }
         })
       }
@@ -40,21 +55,20 @@
 
 <style scoped>
   .goods-item {
-    padding-bottom: 30px;
+    padding-bottom: 40px;
     position: relative;
 
     width: 46%;
-    margin-top: 5px
   }
 
   .goods-item img {
     width: 100%;
     border-radius: 5px;
+    margin-top: 3px;
   }
 
   .goods-info {
-    font-weight: bolder;
-    font-size: 20px;
+    font-size: 12px;
     position: absolute;
     bottom: 5px;
     left: 0;

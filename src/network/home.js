@@ -8,7 +8,7 @@ import {request} from "./request";
 // }
 export function getHomeMultidata() {
   return request({
-    url:'/home/multidata'
+    url:'/data'
   })
 }
 export function getUserData(id) {
@@ -22,12 +22,12 @@ export function getUserData(id) {
 
 
 
-export function getHomeGoods(type,page) {
+export function getHomeGoods(type) {
   return request({
-     url:'/home/data',
+     url:'/goodsList',
+     method:'get',
      params:{
-       type,
-       page,
+       type
      }
 
   })
