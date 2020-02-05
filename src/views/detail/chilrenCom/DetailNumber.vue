@@ -14,7 +14,7 @@
 <style scoped>
 .detail-num{
   width: 100%;
-
+  margin-top: 100px;
   border-bottom: 3px solid #eeeeee;
 }
   .detail-num img{

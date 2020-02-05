@@ -9,7 +9,7 @@
 
     </div>
     <div class="price">
-      <span class="total-price">合计:{{totalPrice}}</span>
+      <span class="total-price">合计:{{totalPrice | filterPrice}}</span>
     </div>
     <div class="calculate">
       <span class="buy-product">去计算({{checkLength}})</span>
@@ -54,7 +54,7 @@
         return this.CartList.filter(item => {
           return item.checked;
         }).reduce((proValue,item) => {
-          return proValue + item.price * item.count;
+          return proValue + item.newPrice * item.count;
         },0).toFixed(2);
       },
       checkLength(){
@@ -71,6 +71,11 @@
 
 
     },
+    filters:{
+      filterPrice(price){
+        return '￥' + Number(price).toFixed(2)
+      }
+    }
 
 
 
@@ -106,7 +111,10 @@
     font-size: 16px;
     color: #666;
   }
-
+.calculate{
+  position: absolute;
+  right: 20px;
+}
 
 
 </style>

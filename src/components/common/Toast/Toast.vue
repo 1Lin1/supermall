@@ -48,8 +48,7 @@
 
     color: #fff;
     background-color: rgba(0,0,0,.7);
-    border:1px solid;
-    border-radius:15px;
+    border-radius:5px;
     /*position: fixed;*/
     /*top: 50%;*/
     /*left: 50%;*/

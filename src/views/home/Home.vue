@@ -108,7 +108,7 @@
 
       // 三个都动态的请求
       this.getHomeGoods('pop');
-      // this.getHomeGoods('new');
+      this.getHomeGoods('new');
       // this.getHomeGoods('sell');
 
       // this.getMySqlData();
@@ -119,7 +119,7 @@
     mounted() {
       // 监听加载图片 加载完刷新
       const refresh = debounce(this.$refs.ScrollVue.refresh,1000)
-      this.$bus.$on('imageLoad',() =>{
+      this.$bus.$on('itemImageLoad',() =>{
         refresh()
       })
 

@@ -9,20 +9,27 @@
     <scroll class="content"
             ref="ScrollVue"
             @scrollPosition="scrollPosition"
-            :probeType="3">
-      <detail-swipper :topImage="topImage" ref="one" @DetailSwiperLoad="DetailSwiperLoad"></detail-swipper>
+            :probeType="3"
+            @pullingUpload="pullingUpload">
+      <detail-swipper :topImage="topImage" ref="topSwiper" @DetailSwiperLoad="DetailSwiperLoad"></detail-swipper>
       <detail-base-info :goods="goods"></detail-base-info>
-      <detail-sale-man :sale-man="saleMan"></detail-sale-man>
+      <detail-sale-man :sale-man="saleMan" class="detail-sale-man"></detail-sale-man>
       <detail-show-model :modelImage="modelImage"></detail-show-model>
-      <detail-number></detail-number>
-      <feature-view ref="two" class="two"></feature-view>
-      <feature-view ref="three" class="three"></feature-view>
-      <feature-view ref="four" class="four"></feature-view>
+      <detail-number ref="detailNum"></detail-number>
+      <detail-params ref="detailParams"></detail-params>
+
+      <!--      获取推荐商品-->
+      <div class="recommend-goods">
+        <h1>推荐区</h1>
+      </div>
+      <goods-list ref="goodList"class="good-list" :goods="showGoods"></goods-list>
+
 
     </scroll>
 
     <detail-bottom-bar @addToCart="addToCart" ></detail-bottom-bar>
     <back-top class="back-top" @click.native="backToTop" v-show="isShow"></back-top>
+
 
   </div>
 
@@ -41,10 +48,16 @@
   import DetailSaleMan from "./chilrenCom/DetailSaleMan";
   import DetailShowModel from "./chilrenCom/DetailShowModel";
   import DetailNumber from "./chilrenCom/DetailNumber";
+  import DetailParams from "./chilrenCom/DetailParams";
+  import GoodsList from "../../components/content/goods/GoodsList";
+  import {getHomeGoods} from "../../network/home";
+
+  import {debounce} from "../../common/utils";
 
   export default {
     name: "Detail",
     components: {
+      DetailParams,
       DetailNumber,
       DetailShowModel,
       DetailSaleMan,
@@ -54,6 +67,7 @@
       FeatureView,
       Scroll,
       DetailNav,
+      GoodsList,
 
 
     },
@@ -61,17 +75,20 @@
     mixins:[backTop],
     data(){
       return{
+        // 一个接受函数 一个接受参数
+        getThemeTopY:null,
         detailTopY:[],
         currentIndex:0,
         topImage:[],
         goods:{},
         saleMan:{},
         modelImage:[],
+        showGoods:[],
       }
     },
     methods:{
       itemClick(index){
-            this.$refs.ScrollVue.scrollTo(0,-this.detailTopY[index],200)
+        this.$refs.ScrollVue.scrollTo(0,-this.detailTopY[index],200)
       },
       scrollPosition(position){
         // console.log(position);
@@ -98,16 +115,32 @@
 
       //加入购物车
       addToCart(){
-        const product = {id:101,name:'大衣',price:1000};
-
-        this.$store.dispatch('addCart',product).then(res =>{
-          console.log(res);
-          this.$toast.show(res,3000)
+        console.log('添加购物车');
+        const product = {};
+        product.pid = this.goods.pid;
+        product.newPrice = this.goods.newPrice;
+        product.title = this.goods.title;
+        product.topImage = this.goods.topImage;
+        product.descmessage = this.goods.descmessage;
+        this.$store.dispatch('addCart',product).then(res => {
+          this.$toast.show(res);
         })
-        //测试添加裤子
 
       },
 
+      // 获取推荐商品
+      getGoods(){
+        getHomeGoods('pop').then(res =>{
+          for (let i = 0; i < res.length; i++) {
+            this.showGoods.push(res[i])
+          }
+        })
+      },
+
+      //上拉加载
+      pullingUpload(){
+        this.getGoods();
+      }
     },
 
     created() {
@@ -123,21 +156,39 @@
 
       })
       //比如这里有一堆请求 请求完渲染才执行下面的添加
+      this.getGoods();
 
     },
     mounted() {
 
       // this.$nextTick() 此函数为mounted中上方请求全部执行完再执行
       // 每次执行先设置为空
-      this.detailTopY = []
-      //
-      this.detailTopY.push(this.$refs.one.$el.offsetTop)
-      this.detailTopY.push(this.$refs.two.$el.offsetTop)
-      this.detailTopY.push(this.$refs.three.$el.offsetTop)
-      this.detailTopY.push(this.$refs.four.$el.offsetTop)
-      // 添加一个js最大的值 进行比较 节省判断条件
-      this.detailTopY.push(Number.MAX_VALUE)
-      console.log(this.detailTopY);
+      // 监听加载图片 加载完刷新
+      const refresh = debounce(this.$refs.ScrollVue.refresh,1000)
+      this.$bus.$on('itemImageLoad',() =>{
+
+
+        this.getThemeTopY();
+        refresh()
+      })
+
+      // 只执行一次 获取每部分的offset值 等到图片加载完才正确
+      this.getThemeTopY = debounce(() => {
+        this.detailTopY = [];
+        this.detailTopY.push(0);
+        this.detailTopY.push(this.$refs.detailNum.$el.offsetTop - 80)
+        this.detailTopY.push(this.$refs.detailParams.$el.offsetTop - 80)
+        this.detailTopY.push(this.$refs.goodList.$el.offsetTop - 120)
+        this.detailTopY.push(Number.MAX_SAFE_INTEGER);
+
+        console.log(this.detailTopY);
+      }, 1000)
+
+
+
+
+    },
+    updated() {
 
     }
   }
@@ -154,17 +205,15 @@
     left: 0;
     right: 0;
   }
+  .recommend-goods{
+    text-align: center;
+    margin-top: 100px;
 
-  .two {
-    margin-top: 600px;
-    height: 600px;
+    border-bottom: 2px solid #eeeeee;
   }
 
-  .three {
-    height: 600px;
-  }
-
-  .four {
-    height: 600px;
+  .detail-sale-man{
+    margin-top: 80px;
+    margin-bottom: 80px;
   }
 </style>

@@ -12,6 +12,7 @@ export function getDetailData(pid) {
 // 封装思想 把想要的东西封装成一个对象类 面向对象开发
 export class Goods {
   constructor(itemInfo) {
+    this.pid =  itemInfo.pid;
     this.title = itemInfo.title;
     this.newPrice = itemInfo.newPrice;
     this.oldPrice = itemInfo.oldPrice;
@@ -21,5 +22,7 @@ export class Goods {
     this.company = itemInfo.company;
     this.saleManPhone = itemInfo.saleManPhone;
     this.shopName = itemInfo.shopName;
+
+    this.topImage = itemInfo.topImage[0];
   }
 }

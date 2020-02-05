@@ -11,18 +11,18 @@ export  default {
       //     }
       //   }
       //   2.find加箭头函数 找到对象 注意箭头函数的写法
-      let oldProduct = context.state.shopCart.find(item => item.id === payload.id)
+      let oldProduct = context.state.shopCart.find(item => item.pid === payload.pid)
       //判断oldProduct
 
       if(oldProduct){
         // oldProduct.count += 1
         context.commit(ADD_CONUTER,oldProduct)
-        resolve('可爱加1~~')
+        resolve('商品数量加1~')
       }else {
         payload.count = 1
         // context.state.shopCart.push(payload)c
         context.commit(ADD_SHOPCART,payload)
-        resolve('恬恬超级可爱~')
+        resolve('加入购物车成功~')
 
       }
       }

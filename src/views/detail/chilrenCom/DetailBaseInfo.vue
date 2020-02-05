@@ -2,8 +2,8 @@
   <div v-if="Object.keys(goods).length!==0" class="base-info">
     <div class="info-title">{{goods.title}}</div>
     <div class="info-price">
-      <span class="n-price">{{goods.newPrice}}</span>
-      <span class="o-price">{{goods.oldPrice}}</span>
+      <span class="n-price">{{goods.newPrice|filterPirce}}</span>
+      <span class="o-price">{{goods.oldPrice | filterPirce}}</span>
       <span class="desc">{{goods.descmessage}}</span>
 
       <span class="collect">
@@ -31,6 +31,11 @@
     methods:{
       collectAdd(){
         console.log('collect +1');
+      }
+    },
+    filters:{
+      filterPirce(price){
+        return '$' + Number(price).toFixed(2)
       }
     }
   }
@@ -74,14 +79,14 @@
   text-decoration: line-through;
 }
   .desc{
-    margin-left: 40px;
+    margin-left: 20px;
     color: red;
     font-size: larger;
   }
 
   .collect{
     position: relative;
-    left: 60px;
+    left: 20px;
   }
 
 </style>
