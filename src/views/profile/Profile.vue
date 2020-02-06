@@ -1,135 +1,133 @@
-
-<!--用于测试axios-->
 <template>
-  <div>
-    <ul v-for="item in users">
-      <li>{{item}}</li>
-    </ul>
-
-    <form v-on:submit="addUsers">
-      <div>
-        <label for="id">账户</label>
-        <input type="text" id="id" placeholder="id" v-model="customers.id">
+  <div id="profile">
+    <nav-bar class="profile-nav">
+      <div slot="center">
+        个人主页
       </div>
-      <div>
-        <label for="name">名字</label>
-        <input type="text" id="name" placeholder="name" v-model="customers.name">
-      </div>
-
-      <div>
-        <label for="phone">电话</label>
-        <input type="text" id="phone" placeholder="phone" v-model="customers.phone">
-      </div>
-
-      <div>
-        <label for="email">邮箱</label>
-        <input type="text" id="email" placeholder="email" v-model="customers.email">
-      </div>
-
-      <div>
-        <label for="companyId">公司id</label>
-        <input type="text" id="companyId" placeholder="name" v-model="customers.companyId">
-      </div>
-
-      <button >提交</button>
-
-    </form>
-
+    </nav-bar>
 
     <div>
-      <label for="deleteId">删除id</label>
-      <input  id="deleteId" type="text" placeholder="请输入要删除的id" v-model="deleteUserId">
-      <button @click="insureDelete">确定</button>
+      <user-info></user-info>
     </div>
 
-    <div>
-      <label for="selectSingleId">查询单个id</label>
-      <input  id="selectSingleId" type="text" placeholder="请输入要查询的id" v-model="selectSingleId">
-      <button @click="insureselectSingleId">确定</button>
+    <div class="account">
+      <div class="account-item">
+        <div class="number">
+          <span class="balance">0.00</span>元
+        </div>
+        <div class="account-info">我的余额</div>
+      </div>
+      <div class="account-item">
+        <div class="number">
+          <span class="balance">0</span>个
+        </div>
+        <div class="account-info">我的优惠</div>
+      </div>
+      <div class="account-item">
+        <div class="number">
+          <span class="balance">0</span>分
+        </div>
+        <div class="account-info">我的积分</div>
+      </div>
     </div>
 
-    <div v-show="isSelect">
-      <ul v-for="item in singleUsers ">
-        <li>{{item}}</li>
-      </ul>
-    </div>
+
+      <list-view :list-data="orderList" class="order-list"></list-view>
+      <list-view :list-data="serviceList" class="service-list"></list-view>
+      <list-view :list-data="moreList" class="more-list"></list-view>
   </div>
+
 </template>
 
 <script>
+import NavBar from 'components/common/navbar/NavBar';
+import UserInfo from './childComps/UserInfo';
+import ListView from './childComps/ListView';
 
-  import {getUserData} from "../../network/home";
-  import axios from "axios"
-
-  export default {
-    name: "Profile",
-    data(){
-      return{
-        users:[],
-        singleUsers:[],
-        customers:{},
-        deleteUserId:'',
-        selectSingleId:'',
-        isSelect:false,
-      }
-    },
-    created() {
-      this.getUserData();
-    },
-    methods:{
-      getUserData(){
-        getUserData().then(res =>{
-          console.log(res);
-          this.users =  res;
-        })
-      },
-      insureselectSingleId(){
-        getUserData(this.selectSingleId).then(res => {
-          console.log(res);
-          if(res.length === 0){
-            alert('该用户不存在')
-            this.isSelect = false;
-          }else{
-            this.isSelect = true;
-
-            this.singleUsers = res;
-            console.log('成功查询单个用户');
-
-          }
-
-        })
-      },
-      addUsers(){
-        let newCustomer ={
-          id:this.customers.id,
-          name:this.customers.name,
-          phone:this.customers.phone,
-          email:this.customers.email,
-          companyId:this.customers.companyId,
-
-        }
-        // 增加数据
-        axios.post("http://localhost:3000/users",newCustomer)
-              .then(res =>{
-                console.log(res);
-                console.log('addUsers');
-                console.log(this.customers);
-              })
-
-      },
-      insureDelete(){
-        console.log('insuredeleteid' + this.deleteUserId);
-        let url = 'http://localhost:3000/users/' + this.deleteUserId;
-        axios.delete(url).then(res =>{
-          console.log('成功删除' + res);
-          this.getUserData()
-        })
-
-      }
+export default {
+  name: 'Profile',
+  data() {
+    return {
+        orderList: [
+          {icon: '#order', iconColor: '#ff8198', info: '我的消息'},
+          {icon: '#point', iconColor: '#fc7b53', info: '积分商城'},
+          {icon: '#vip', iconColor: '#ffc636', info: '会员卡'},
+        ],
+        serviceList: [
+          {icon: '#service', iconColor: '#ff8198', info: '我的购物车'},
+          {icon: '#download', iconColor: '#ff8198', info: '下载购物APP'},
+        ],
+        moreList:[
+          {icon: '#expired', iconColor: '#ff8198', info: '设置'},
+          {icon: '#vip', iconColor: '#ff8198', info: '更多'},
+        ]
     }
+  },
+  methods:{
+
+  },
+  components:{
+    NavBar,
+    UserInfo,
+    ListView
   }
+ }
 </script>
 
 <style scoped>
+#profile{
+  /* padding-top: 44px; */
+  height: 100vh;
+  position: relative;
+  background-color: #f2f2f2;
+}
+.profile-nav{
+  background-color: var(--color-tint);
+  color: #fff;
+/*
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 9; */
+}
+  .account {
+    display: flex;
+  }
+
+  .account-item {
+    width: 100%;
+    background-color: #fff;
+    margin-right: 1px;
+    text-align: center;
+  }
+
+  .account-item:last-of-type {
+    margin-right: 0;
+  }
+
+  .account-item {
+    color: #666;
+    font-size: 13px;
+    padding: 18px;
+  }
+
+  .account-item .balance {
+    font-size: 24px;
+    font-weight: 700;
+    color: #ff5f3e;
+  }
+
+  .account-info {
+    margin-top: 6px;
+  }
+
+  .order-list, .service-list {
+    margin-top: 12px ;
+
+  }
+  .order-list, .more-list {
+    margin-top: 12px;
+  }
 
 </style>

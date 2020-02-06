@@ -27,7 +27,10 @@
         @tabClick="tabClick"
         ref="tabcontrol1"
       ></tab-control>
-      <goods-list class="good-list" :goods="showGoods"></goods-list>
+      <goods-list
+        class="good-list"
+        :goods="showGoods"
+      ></goods-list>
 
     </scroll>
 
@@ -102,7 +105,7 @@
     },
     created() {
       let date = new Date(1535694719*1000)
-      console.log(formatDate(date, 'yyyy/MM/dd'));
+      // console.log(formatDate(date, 'yyyy/MM/dd'));
 
       this.getHomeMultidata();
 
@@ -161,7 +164,9 @@
         this.getHomeGoods(this.currentType)
       },
       scrollPosition(position){
+        // 当滚动到一定位置 向上图标进行展示
         this.isShow = (-position.y) > 270;
+
         this.isTabFixed = (-position.y) > this.tabControlOffset
       },
       // 返回最上方
@@ -192,7 +197,7 @@
       // 网络事件
       getHomeMultidata(){
         getHomeMultidata().then(res =>{
-          console.log(res[0]);
+          // console.log(res[0]);
           this.banners = res[0].data.banner.list;
           this.recommends =res[0].data.recommend.list;
           // this.dKeywords = res.data.dKeyword;
@@ -202,7 +207,7 @@
       getHomeGoods(type){
 
         getHomeGoods(type).then(res =>{
-          console.log(res);
+          // console.log(res);
           for (let i = 0; i < res.length; i++) {
             this.goods[type].list.push(res[i])
           }

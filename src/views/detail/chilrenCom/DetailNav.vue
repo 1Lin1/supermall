@@ -11,7 +11,7 @@
                :key="index"
                class="titles-item"
                :class="{active:currentIndex === index}"
-               @click="itemClick(index)"
+               @click="detailItemClick(index)"
         >
           {{item}}</div>
       </div>
@@ -40,12 +40,12 @@
       }
     },
     methods:{
-      itemClick(index){
+      detailItemClick(index){
         this.currentIndex = index;
-        this.$emit('itemClick',index)
+        this.$emit('detailItemClick',index)
       },
       itemBack(){
-        this.$router.back()
+        this.$router.push('/');
       },
 
 

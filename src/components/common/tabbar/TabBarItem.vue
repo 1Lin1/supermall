@@ -14,6 +14,7 @@
 export default {
   name: 'TabBarItem',
   props: {
+    // props可以给自己绑定一个静态属性
     path: String,
     activeColor:{
       type: String,

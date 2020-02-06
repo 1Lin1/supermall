@@ -1,7 +1,7 @@
 <template>
-  <div class="goods-item" @click="itemClick">
+  <div class="goods-item" @click="itemClick" >
 <!--    图片懒加载插件-->
-    <img v-lazy="showImage" alt="" @load="imgLoad">
+    <img v-lazy="showImage"  @load="imgLoad" >
 
     <div class="goods-info" >
       <p>{{product.title}}</p>
@@ -14,6 +14,8 @@
 <script>
   export default {
     name: "GoodsListItem",
+    // 注入刷新属性
+    inject:['reload'],
     props: {
       product: {
         type: Object,
@@ -40,15 +42,25 @@
         //   this.$bus.$emit('detailItemImageLoad');
         // }
       },
+
+
       itemClick(){
-        //跳转到相对应详情页 带上该商品id
+        console.log(this.product.pid);
+        // 跳转到相对应详情页 带上该商品id
         this.$router.push({
           path:'/detail',
           query:{
             pid:this.product.pid
           }
+        }).then(() => {
+          location.reload();
+
         })
+
+
       }
+    },
+    mounted() {
     }
   }
 </script>

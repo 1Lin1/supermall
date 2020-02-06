@@ -1,7 +1,7 @@
 <template>
   <div>
     <detail-nav
-      @itemClick="itemClick"
+      @detailItemClick="detailItemClick"
       ref="detailNav"
 
     ></detail-nav>
@@ -22,7 +22,11 @@
       <div class="recommend-goods">
         <h1>推荐区</h1>
       </div>
-      <goods-list ref="goodList"class="good-list" :goods="showGoods"></goods-list>
+      <goods-list ref="goodList"
+                  class="good-list"
+                  :goods="showGoods"
+                  @detailListItemClick="detailListItemClick"
+      ></goods-list>
 
 
     </scroll>
@@ -56,6 +60,7 @@
 
   export default {
     name: "Detail",
+
     components: {
       DetailParams,
       DetailNumber,
@@ -87,7 +92,11 @@
       }
     },
     methods:{
-      itemClick(index){
+      // 跳转到详情页
+      detailListItemClick(){
+        console.log('detailListItemClick');
+      },
+      detailItemClick(index){
         this.$refs.ScrollVue.scrollTo(0,-this.detailTopY[index],200)
       },
       scrollPosition(position){
@@ -99,6 +108,7 @@
           if(this.currentIndex != i &&(positionY >= this.detailTopY[i] && positionY < this.detailTopY[i+1])){
             this.currentIndex = i;
             // console.log(this.currentIndex);
+            // 取到子组件的index
             this.$refs.detailNav.currentIndex = this.currentIndex;
           }
         }
@@ -109,7 +119,7 @@
 
       //检测顶部图片加载是否完毕
       DetailSwiperLoad(){
-        console.log('图片加载完毕');
+        this.$refs.ScrollVue.refresh();
       },
 
 
@@ -122,6 +132,7 @@
         product.title = this.goods.title;
         product.topImage = this.goods.topImage;
         product.descmessage = this.goods.descmessage;
+        product.cfav = this.goods.cfav;
         this.$store.dispatch('addCart',product).then(res => {
           this.$toast.show(res);
         })
@@ -135,6 +146,7 @@
             this.showGoods.push(res[i])
           }
         })
+
       },
 
       //上拉加载
@@ -148,6 +160,7 @@
       getDetailData(pid).then(res =>{
         //尝试封装类思想 面向对象开发
         const data = res[0];
+        console.log(data);
         this.topImage = data.topImage;
         this.goods = new Goods(data);
 
@@ -160,13 +173,11 @@
 
     },
     mounted() {
-
       // this.$nextTick() 此函数为mounted中上方请求全部执行完再执行
       // 每次执行先设置为空
       // 监听加载图片 加载完刷新
       const refresh = debounce(this.$refs.ScrollVue.refresh,1000)
       this.$bus.$on('itemImageLoad',() =>{
-
 
         this.getThemeTopY();
         refresh()
@@ -181,7 +192,7 @@
         this.detailTopY.push(this.$refs.goodList.$el.offsetTop - 120)
         this.detailTopY.push(Number.MAX_SAFE_INTEGER);
 
-        console.log(this.detailTopY);
+        // console.log(this.detailTopY);
       }, 1000)
 
 

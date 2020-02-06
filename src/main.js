@@ -16,7 +16,7 @@ FastClick.attach(document.body);
 
 // 使用图片懒加载
 Vue.use(VueLazyload,{
-  // loading:require('./assets/img/common/collect.svg')
+  loading:require('./assets/img/common/collect.svg')
 })
 
 Vue.prototype.$bus = new Vue()

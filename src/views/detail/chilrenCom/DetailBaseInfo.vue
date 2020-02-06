@@ -10,7 +10,7 @@
         <img src="~assets/img/common/collect.svg"
              @click="collectAdd"
              :class="{activeCollect:true}" >
-        收藏{{goods.cfav}}
+        收藏{{newCfav}}
       </span>
     </div>
 
@@ -18,6 +18,7 @@
 </template>
 
 <script>
+  import {mapGetters} from "vuex";
   export default {
     name: "DetailBaseInfo",
     props:{
@@ -28,16 +29,32 @@
         }
       }
     },
+    data(){
+      return{
+        newCfav:''
+      }
+    },
+    created() {
+      console.log(this.$store.state.shopCart);
+    },
     methods:{
       collectAdd(){
-        console.log('collect +1');
+        this.$store.dispatch('addCfav',this.goods).then(res =>{
+          this.$toast.show(res.message,2000);
+          this.newCfav = res.oldProduct.cfav;
+          console.log(res.oldProduct);
+        })
       }
     },
     filters:{
       filterPirce(price){
         return '$' + Number(price).toFixed(2)
       }
-    }
+    },
+    computed:{
+
+    },
+
   }
 </script>
 

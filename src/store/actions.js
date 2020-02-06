@@ -28,6 +28,19 @@ export  default {
       }
     )
 
+  },
+
+  addCfav(context,payload){
+    return new Promise(resolve =>{
+      let oldProduct = context.state.shopCart.find(item => item.pid === payload.pid);
+
+      context.commit('ADD_CFav',oldProduct);
+      console.log(oldProduct);
+      resolve({
+        message:'收藏数量+1~',
+        oldProduct:oldProduct,
+      })
+    })
   }
 
 }
