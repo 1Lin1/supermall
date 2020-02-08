@@ -16,7 +16,7 @@
             ref="ScrollVue"
             :pro-be-Type="2"
             @scrollPosition="scrollPosition"
-            :pull-up-load="false"
+            :pull-up-load="true"
             @pullingUpload="pullingUpload"
     >
       <home-swiper :banners="banners" @swipperImageLoad="swipperImageLoad"></home-swiper>
@@ -197,7 +197,6 @@
       // 网络事件
       getHomeMultidata(){
         getHomeMultidata().then(res =>{
-          // console.log(res[0]);
           this.banners = res[0].data.banner.list;
           this.recommends =res[0].data.recommend.list;
           // this.dKeywords = res.data.dKeyword;

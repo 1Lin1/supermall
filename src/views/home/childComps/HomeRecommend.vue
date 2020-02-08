@@ -30,7 +30,7 @@
     text-align: center;
     font-size: 15px;
     border-bottom: 5px solid #eeeeee;
-    justify-content: space-around;
+    justify-content: space-evenly;
   }
   .recommend-item {
     flex: 1;

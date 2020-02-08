@@ -11,7 +11,10 @@
             @scrollPosition="scrollPosition"
             :probeType="3"
             @pullingUpload="pullingUpload">
-      <detail-swipper :topImage="topImage" ref="topSwiper" @DetailSwiperLoad="DetailSwiperLoad"></detail-swipper>
+      <detail-swipper
+        :topImage="topImage"
+        ref="topSwiper"
+        @DetailSwiperLoad="DetailSwiperLoad"></detail-swipper>
       <detail-base-info :goods="goods"></detail-base-info>
       <detail-sale-man :sale-man="saleMan" class="detail-sale-man"></detail-sale-man>
       <detail-show-model :modelImage="modelImage"></detail-show-model>
@@ -25,7 +28,6 @@
       <goods-list ref="goodList"
                   class="good-list"
                   :goods="showGoods"
-                  @detailListItemClick="detailListItemClick"
       ></goods-list>
 
 
@@ -93,9 +95,7 @@
     },
     methods:{
       // 跳转到详情页
-      detailListItemClick(){
-        console.log('detailListItemClick');
-      },
+
       detailItemClick(index){
         this.$refs.ScrollVue.scrollTo(0,-this.detailTopY[index],200)
       },
@@ -117,11 +117,10 @@
         this.isShow = positionY> 400;
       },
 
-      //检测顶部图片加载是否完毕
+      // //检测顶部图片加载是否完毕
       DetailSwiperLoad(){
-        this.$refs.ScrollVue.refresh();
+        console.log('顶部图片加载完毕');
       },
-
 
       //加入购物车
       addToCart(){
@@ -174,15 +173,11 @@
     },
     mounted() {
       // this.$nextTick() 此函数为mounted中上方请求全部执行完再执行
-      // 每次执行先设置为空
+
+
+
       // 监听加载图片 加载完刷新
-      const refresh = debounce(this.$refs.ScrollVue.refresh,1000)
-      this.$bus.$on('itemImageLoad',() =>{
-
-        this.getThemeTopY();
-        refresh()
-      })
-
+      const refresh = debounce(this.$refs.ScrollVue.refresh,1000);
       // 只执行一次 获取每部分的offset值 等到图片加载完才正确
       this.getThemeTopY = debounce(() => {
         this.detailTopY = [];
@@ -194,6 +189,16 @@
 
         // console.log(this.detailTopY);
       }, 1000)
+
+      // 图片加载完之后执行
+      this.$bus.$on('itemImageLoad',() =>{
+        this.getThemeTopY();
+        refresh()
+      })
+
+
+
+
 
 
 

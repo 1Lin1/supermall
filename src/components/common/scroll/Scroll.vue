@@ -17,7 +17,7 @@
     data(){
       return{
         scroll:null,
-        //判断滚动类型
+        //判断滚动类型 1 2 3 三种类型
         probeType:{
           type:Number,
           default:0,
@@ -30,6 +30,8 @@
     },
 
     mounted() {
+          // ref绑定的vue组件上 取到的是一个vue子组件
+          //ref绑定在普通元素上 取到的是一个元素
           this.scroll = new BScroll(this.$refs.wrapper,{
             // 是否触发bscroll点击事件
             click:true,
@@ -42,9 +44,9 @@
 
 
        this.scroll.on('scroll',(position =>{
-         // console.log(position);
-         this.$emit('scrollPosition',position)
-       }))
+        // console.log(position);
+        this.$emit('scrollPosition',position)
+      }))
 
 
     if(this.pullUpLoad){
@@ -64,7 +66,7 @@
         this.scroll && this.scroll.scrollTo(x,y,time)
       },
       refresh(){
-        console.log('---');
+        console.log('刷新---');
         this.scroll && this.scroll.refresh();
       },
       finishPullUp(){

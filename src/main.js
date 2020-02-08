@@ -5,9 +5,12 @@ import store from "./store";
 import toast from 'components/common/Toast'
 import FastClick from 'fastclick'
 import VueLazyload from "vue-lazyload";
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
 
 
 Vue.config.productionTip = false
+Vue.use(ElementUI);
 
 //安装toast插件
 Vue.use(toast)
