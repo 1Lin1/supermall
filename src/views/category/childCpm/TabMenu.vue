@@ -5,6 +5,7 @@
            v-for="(item,index) in categories"
            :class="{active:currentIndex === index}"
            @click="menuItemClick(index,item.path)"
+           :path="item.path"
           >
         {{item.name}}
       </div>
@@ -30,12 +31,27 @@
         path:'',
       }
     },
+
+
+
+
+
+
+
     methods:{
+
       menuItemClick(index,path){
         this.currentIndex = index;
-        this.$router.push(path)
-      }
-    }
+        // 把路由发给父组件
+        this.$emit('menuItemClick',path)
+
+        if(this.$route.path != path)
+        { this.$router.push(path)}
+
+      },
+
+    },
+
   }
 </script>
 
@@ -44,7 +60,6 @@
   #tab-menu {
     background-color: #f6f6f6;
     overflow: hidden;
-
 
     position: absolute;
     bottom: 56px;
@@ -60,11 +75,12 @@
     font-size: 13px;
 
     border-bottom: 2px solid #eeeeee;
+    border-right: 1px solid #eeeeee;
   }
 
   .active{
     text-align: center;
-    color:#272822;
+    color:var(--color-tint);
     font-size:16px ;
     font-weight: bolder;
     background-color: #ffffff;

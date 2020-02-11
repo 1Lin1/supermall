@@ -14,6 +14,7 @@
 
 <style scoped>
   .cate-good-list-item img {
+    margin-top: 5px;
     width: 80px;
     height: 80px;
   }
@@ -21,14 +22,12 @@
     margin:10px 10px;
   }
   .item-text{
-    font-size: 15px;
     text-align: center;
     font-weight: bolder;
-    font-family: 微软雅黑;
+    margin-top: 1px;
   }
 
   .item-header{
-    font-family: 微软雅黑;
     font-size: 15px;
     font-weight: bolder;
     position: relative;

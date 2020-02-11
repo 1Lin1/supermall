@@ -142,6 +142,12 @@
       this.$refs.ScrollVue.scrollTo(0,this.saveY,0)
       this.$refs.ScrollVue.refresh()
     },
+
+    // beforeRouteLeave(){
+    //   this.path = this.$route.path;
+    // }
+
+
     deactivated() {
       this.saveY = this.$refs.ScrollVue.scroll.y
     },

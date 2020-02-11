@@ -5,10 +5,14 @@
 
     <div class="category">
       <tab-menu :categories="categories"
+                @menuItemClick="menuItemClick"
+                ref="tabmenu"
       ></tab-menu>
 
       <scroll class="content-right">
-        <router-view></router-view>
+        <keep-alive>
+          <router-view/>
+        </keep-alive>
       </scroll>
     </div>
 
@@ -32,32 +36,48 @@
     data(){
       return{
         categories:[
-          {name:'唯品会',path:'/weipinhui'},
-          {name:'男装',path:'/nanzhuang'},
-          {name:'女装',path:'/nvzhuang'},
-          {name:'男鞋',path:'/nanxie'},
+          {name:'唯品会',path:'/category/weipinhui'},
+          {name:'男装',path:'/category/nanzhuang'},
+          {name:'女装',path:'/category/nvzhuang'},
+          {name:'男鞋',path:'/category/nanxie'},
 
-          {name:'女鞋',path:'/nvxie'},
-          {name:'手机数码',path:'/phone'},
-          {name:'电脑办公',path:'/computer'},
-          {name:'家用电器',path:'/homepower'},
+          {name:'女鞋',path:'/category/nvxie'},
+          {name:'手机数码',path:'/category/phone'},
+          {name:'电脑办公',path:'/category/computer'},
+          {name:'家用电器',path:'/category/homepower'},
 
-          {name:'食品生鲜',path:'/food'},
-          {name:'酒水饮料',path:'/drink'},
-          {name:'母婴童装',path:'/baby'},
-          {name:'医药保障',path:'/medicine'},
+          {name:'食品生鲜',path:'/category/food'},
+          {name:'酒水饮料',path:'/category/drink'},
+          {name:'母婴童装',path:'/category/baby'},
+          {name:'医药保障',path:'/category/medicine'},
 
-          {name:'运动户外',path:'/sport'},
-          {name:'家居厨具',path:'/restaurant'},
-          {name:'礼品鲜花',path:'/flower'},
-          {name:'宠物生活',path:'/pet'},
+          {name:'运动户外',path:'/category/sport'},
+          {name:'家居厨具',path:'/category/restaurant'},
+          {name:'礼品鲜花',path:'/category/flower'},
+          {name:'宠物生活',path:'/category/pet'},
 
 
-        ]
+        ],
+        path:''
       }
     },
-    mounted() {
-    }
+    methods:{
+      menuItemClick(path){
+        this.path = path
+      }
+    },
+    activated() {
+      console.log('activated');
+      // 一激活把保存的路由加进去
+      this.$router.push(this.path)
+
+    },
+    beforeRouteLeave (to, from, next) {
+      // 离开时把离开前的路由记录下来
+      console.log(this.$route.path);
+      this.path = this.$route.path;
+      next();
+    },
   }
 </script>
 
@@ -73,6 +93,11 @@
   }
   .content-right{
     overflow: hidden;
+
+    color: black;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 14px;
 
     position: absolute;
     bottom: 60px;

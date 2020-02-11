@@ -396,7 +396,38 @@
           "image": "https://img.alicdn.com/tfs/TB1qSevu.z1gK0jSZLeXXb9kVXa-520-280.jpg_q90_.webp",
           "link": "https://pages.tmall.com/wow/a/act/tmall/dailygroup/49/wupr?spm=a21bo.2017.201862-5.d1.5af911d9MHeKJk&pos=1&wh_pid=daily-182316&acm=20140506002.1003.2.7312175&scm=1003.2.20140506002.OTHER_1583012901529_7312175"
         }
+      ],
+      "phone": [
+        {"id": "001","name": "小米","image": "https://img.alicdn.com/imgextra/i2/1714128138/O1CN01xqryME29zFkAONP8v_!!1714128138.jpg_250x250Q90.jpg",
+          "link": "https://xiaomi.tmall.com/?spm=a220o.1000855.w15914064-15567552165.13.224734cbKamjqJ&scene=taobao_shop"},
+        {"id": "002","name": "华为","image": "https://img.alicdn.com/bao/uploaded/i4/TB1IFWxl5_1gK0jSZFq59.paXXa_112746.jpg",
+          "link": "https://huaweistore.tmall.com/view_shop.htm?spm=a220m.1000858.0.0.6a13766aLdPuda&shop_id=150920153&rn=f1c61d6ea021733ed16f6121c7b9b123"},
+        {"id": "003","name": "苹果","image": "https://img.alicdn.com/bao/uploaded/i2/1669409267/O1CN010MCBz22IKKtsVOSjV_!!1669409267.jpg",
+          "link": "https://detail.tmall.com/item.htm?spm=a220m.1000858.1000725.1.47f466eam55RcY&id=602669134298&skuId=4416441795068&areaId=440100&user_id=268451883&cat_id=2&is_b=1&rn=14a2792f13f17d2ebcb4a1e3194eef2b"},
+        {"id": "004","name": "魅族","image": "https://g-search1.alicdn.com/img/bao/uploaded/i4/imgextra/i1/432010034/O1CN019vgg5w1C7c2yzuXGl_!!0-saturn_solar.jpg_580x580Q90.jpg_.webp",
+          "link": "https://detail.tmall.com/item.htm?id=606905979874&ali_refid=a3_430583_1006:1225650193:N:d4Iog89hb1ccpoxlWtsung==:b046aab705650c23cf7044706179dde9&ali_trackid=1_b046aab705650c23cf7044706179dde9&spm=a230r.1.14.1&sku_properties=10004:900640275;5919063:6536025"}
+      ],
+      "computer": [
+        {"id": "1001","name": "华为","image": "https://img.alicdn.com/bao/uploaded/i2/2838892713/O1CN01KOVMMf1Vub5HSlOLD_!!2838892713.png","link": "https://detail.tmall.com/item.htm?spm=a220m.1000858.1000725.1.7111489eKp9WLP&id=605978622550&skuId=4244582260221&areaId=440100&user_id=2838892713&cat_id=50024399&is_b=1&rn=337b48a57a2e5c062f78a501226977ef"},
+        {"id": "1002","name": "外星人","image": "https://img.alicdn.com/bao/uploaded/i3/2510050218/O1CN01WM7nAl1DTsslsVMHm_!!2510050218.jpg","link": "https://detail.tmall.com/item.htm?spm=a220m.1000858.1000725.8.7111489eKp9WLP&id=597854179083&skuId=4384731331482&areaId=440100&user_id=2510050218&cat_id=50024399&is_b=1&rn=337b48a57a2e5c062f78a501226977ef"},
+        {"id": "1003","name": "苹果","image": "https://img.alicdn.com/bao/uploaded/i3/1917047079/O1CN01vT4zQu22AEJpwRfni_!!2-item_pic.png","link": "https://detail.tmall.com/item.htm?spm=a220m.1000858.1000725.24.7111489eKp9WLP&id=607878810970&skuId=4435988402432&areaId=440100&standard=1&user_id=1669409267&cat_id=50024399&is_b=1&rn=337b48a57a2e5c062f78a501226977ef"},
+        {"id": "1004","name": "惠普","image": "https://img.alicdn.com/bao/uploaded/i3/3626455794/O1CN01lLB1R21sfhKqDlCar_!!3626455794.jpg","link": "https://detail.tmall.com/item.htm?spm=a220m.1000858.1000725.74.7111489eKp9WLP&id=594772936295&skuId=4294157082495&areaId=440100&user_id=3626455794&cat_id=50024399&is_b=1&rn=337b48a57a2e5c062f78a501226977ef"}
       ]
+    },
+    {
+      "type": "nvzhuang",
+      "topImage": "https://img.alicdn.com/tfs/TB1vx0egrY1gK0jSZTEXXXDQVXa-700-400.jpg",
+      "centerCloses": [
+        {"id": "2001","name": "当季新品","image": "https://img.alicdn.com/tps/TB1XCMJLVXXXXcEXpXXXXXXXXXX-80-80.jpg","link": "https://list.tmall.com/search_product.htm?spm=a221t.1476805.3968478819.1.18cf6769zxoJAV&new=1&oq=%C5%AE%D7%B0&cat=50025135&active=1&style=g&from=sn_1_prop&acm=lb-zebra-7419-257176.1003.4.408767&search_condition=52&sort=s&shopType=any&scm=1003.4.lb-zebra-7419-257176.OTHER_1_408767"},
+        {"id": "2002","name": "上衣","image": "https://img.alicdn.com/tps/i4/TB1Hmh.JXXXXXcyXVXXorbaIVXX-80-80.jpg","link": "https://list.tmall.com/search_product.htm?spm=a221t.1476805.3968478819.10.18cf6769zxoJAV&abbucket=&active=1&acm=lb-zebra-7419-257176.1003.4.408767&q=%CD%E2%CC%D7&abtest=&pos=1&cat=50025135&from=sn_1_rightnav&style=g&search_condition=23&scm=1003.4.lb-zebra-7419-257176.OTHER_2_408767&aldid=383492#J_crumbs"},
+        {"id": "2003","name": "裤装","image": "https://img.alicdn.com/tps/i2/TB109ukJXXXXXbYXpXXorbaIVXX-80-80.jpg","link": "https://list.tmall.com/search_product.htm?spm=a221t.1476805.3968478819.19.18cf6769zxoJAV&abtest=&abbucket=&pos=1&cat=50100707&acm=lb-zebra-7419-257176.1003.4.408767&style=g&from=sn_1_cat&scm=1003.4.lb-zebra-7419-257176.OTHER_3_408767&aldid=383524#J_crumbs"},
+        {"id": "2004","name": "裙装","image": "https://img.alicdn.com/tps/i1/TB123yqJXXXXXctXXXXorbaIVXX-80-80.jpg","link": "https://list.tmall.com/search_product.htm?spm=a221t.1476805.3968478819.28.18cf6769zxoJAV&abbucket=&active=1&acm=lb-zebra-7419-257176.1003.4.408767&sort=s&tmhkmain=0&industryCatId=50025135&q=%C8%B9%D7%B0&abtest=&pos=1&cat=52836001&from=sn_1_cat-qp&style=g&search_condition=23&scm=1003.4.lb-zebra-7419-257176.OTHER_4_408767&aldid=383540#J_crumbs"},
+        {"id": "2005","name": "内搭上装","image": "https://img.alicdn.com/tps/i4/TB1t5erJXXXXXbCXFXXorbaIVXX-80-80.jpg","link": "https://list.tmall.com/search_product.htm?spm=a221t.1476805.3968478819.37.18cf6769zxoJAV&abtest=&abbucket=&pos=1&cat=50025135&active=1&style=g&acm=lb-zebra-7419-257176.1003.4.408767&from=sn_1_rightnav&search_condition=71&scm=1003.4.lb-zebra-7419-257176.OTHER_5_408767&aldid=384317#J_crumbs"},
+        {"id": "2006","name": "外套","image": "https://img.alicdn.com/tps/i3/TB1ao46JXXXXXbJaXXXorbaIVXX-80-80.jpg","link": "https://list.tmall.com/search_product.htm?spm=a221t.1476805.3968478819.46.18cf6769zxoJAV&new=1&abbucket=&active=1&acm=lb-zebra-7419-257176.1003.4.408767&sort=s&q=%CD%E2%CC%D7&abtest=&pos=1&cat=50025135&from=sn_1_cat-qp&style=g&search_condition=48&scm=1003.4.lb-zebra-7419-257176.OTHER_6_408767&aldid=383553#J_crumbs"},
+        {"id": "2007","name": "轻薄打底","image": "https://img.alicdn.com/tps/i2/TB19OauJXXXXXXZXXXXorbaIVXX-80-80.jpg","link": "https://list.tmall.com/search_product.htm?spm=a221t.1476805.3968478819.55.18cf6769zxoJAV&abbucket=&active=1&acm=lb-zebra-7419-257176.1003.4.408767&sort=s&q=%B4%F2%B5%D7&abtest=&pos=1&cat=50025135&from=sn_1_rightnav&style=g&search_condition=7&scm=1003.4.lb-zebra-7419-257176.OTHER_7_408767&aldid=383557#J_crumbs"},
+        {"id": "2008","name": "特色女装","image": "https://img.alicdn.com/tps/i3/TB13yqrJXXXXXbUXXXXorbaIVXX-80-80.jpg","link": "https://list.tmall.com/search_product.htm?spm=a221t.1476805.3968478819.64.18cf6769QkDmJi&abbucket=&active=1&acm=lb-zebra-7419-257176.1003.4.408767&sort=s&tmhkmain=0&industryCatId=50025135&abtest=&pos=1&cat=53330001&from=sn_1_cat&style=g&search_condition=23&scm=1003.4.lb-zebra-7419-257176.OTHER_8_408767&aldid=383563#J_crumbs"}
+      ]
+
     }
   ]
 }

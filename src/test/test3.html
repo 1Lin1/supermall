@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+
+<style>
+  .span-test h1::before{
+    content: '1';
+    color: red;
+    margin-right: 10px;
+  }
+
+  ul{
+    list-style: none;
+    margin: 0;
+    padding:0;
+  }
+  ul li{
+    margin-top: 5px;
+  }
+  ul li:nth-child(-n+3) span {
+     padding:0 5px;
+     background-color: red;
+     color: #eeeeee;
+   }
+
+  ul li:not(:nth-child(-n+3)) span {
+    padding:0 5px;
+    background-color: grey;
+    color: #eeeeee;
+  }
+
+
+  table{
+    width: 400px;
+    border-collapse: collapse;
+    margin:0 auto;
+  }
+
+  table td,th{
+    border: 1px solid #666666;
+    padding:5px;
+  }
+
+  caption{
+    font-size: 20px;
+    margin-bottom: 5px;
+  }
+
+</style>
+<body>
+<div class="span-test">
+  <h1>我是h1</h1>
+  <span>我是span</span>
+</div>
+
+<div>
+  <ul >
+    <li><span>1</span>语文</li>
+    <li><span>2</span>数学</li>
+    <li><span>3</span>英语</li>
+    <li><span>4</span>体育</li>
+    <li><span>5</span>生物</li>
+  </ul>
+</div>
+
+<div style="margin-top: 10px">
+  <table>
+    <caption>影院放映列表</caption>
+    <thead>
+      <tr>
+        <th>1</th>
+        <th>2</th>
+        <th>3</th>
+      </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td>单元格1</td>
+      <td>单元格2</td>
+      <td>单元格3</td>
+    </tr>
+    <tr>
+      <td>单元格1</td>
+      <td>单元格2</td>
+      <td>单元格3</td>
+    </tr>
+    <tr>
+      <td>单元格1</td>
+      <td>单元格2</td>
+      <td>单元格3</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>

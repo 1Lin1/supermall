@@ -4,39 +4,32 @@
       <zou-ma-d slot="top"></zou-ma-d>
 
       <cate-good-list slot="center" >
-        <cate-good-list-item style="margin-top: 15px" >
-          <span slot="header">手机推荐</span>
-          <img src="https://gd4.alicdn.com/imgextra/i1/3876145546/O1CN01I9jegN1qq78BrZazy_!!3876145546.jpg"
-               slot="img">
-          <span slot="text">猪恬</span>
+        <span  class="phone-recommend">手机推荐</span>
 
+        <cate-good-list-item v-for="item in phoneData">
+          <a :href="item.link"slot="img">
+            <img :src="item.image" alt="" >
+          </a>
+          <span slot="text">{{item.name}}</span>
         </cate-good-list-item>
-        <cate-good-list-item style="margin-top: 30px">
 
-          <img src="https://gd4.alicdn.com/imgextra/i1/3876145546/O1CN01I9jegN1qq78BrZazy_!!3876145546.jpg"
-               slot="img">
-          <span slot="text">猪恬</span>
-
-        </cate-good-list-item>
-        <cate-good-list-item >
-
-          <img src="https://gd4.alicdn.com/imgextra/i1/3876145546/O1CN01I9jegN1qq78BrZazy_!!3876145546.jpg"
-               slot="img">
-          <span slot="text">猪恬</span>
-
-        </cate-good-list-item>
-        <cate-good-list-item >
-
-          <img src="https://gd4.alicdn.com/imgextra/i1/3876145546/O1CN01I9jegN1qq78BrZazy_!!3876145546.jpg"
-               slot="img">
-          <span slot="text">猪恬</span>
-
-        </cate-good-list-item>
 
       </cate-good-list>
 
 
-      <h1 slot="bottom">我是下面</h1>
+      <cate-good-list slot="bottom" >
+        <span class="computer-recommend">电脑推荐</span>
+
+        <cate-good-list-item v-for="item in computerData">
+          <a :href="item.link"slot="img">
+            <img :src="item.image" alt="" >
+          </a>
+          <span slot="text">{{item.name}}</span>
+        </cate-good-list-item>
+
+
+      </cate-good-list>
+
     </category-right>
   </div>
 </template>
@@ -46,14 +39,51 @@
   import ZouMaD from "../../../components/common/categoryRight/ZouMaD";
   import CateGoodList from "./categoryList/CateGoodList";
   import CateGoodListItem from "./categoryList/CateGoodListItem";
+  import {getTopImage} from "../../../network/weipinhui";
 
   export default {
     name: "WeiPinHui",
-    components: {CateGoodListItem, CateGoodList, ZouMaD, CategoryRight}
+    components: {CateGoodListItem, CateGoodList, ZouMaD, CategoryRight},
+    data(){
+      return{
+        phoneData:[],
+        computerData:[]
+      }
+    },
+    methods:{
+      getTopImage(){
+        getTopImage('weipinhui').then(res =>{
+          // console.log(res[0].phone);
+          this.phoneData = res[0].phone;
+        })
+      },
+      getComputerData(){
+        getTopImage('weipinhui').then(res =>{
+          console.log(res[0].computer);
+          this.computerData = res[0].computer;
+        })
+      }
+    },
+    created() {
+      this.getTopImage();
+      this.getComputerData();
+    }
   }
 </script>
 
 <style scoped>
+.phone-recommend{
+  position: absolute;
+  top: -6px;
+  left: -10px;
 
+
+}
+
+  .computer-recommend{
+    position: absolute;
+    top: -6px;
+    left: -10px;
+  }
 
 </style>

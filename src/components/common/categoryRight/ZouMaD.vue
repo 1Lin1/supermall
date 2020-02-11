@@ -30,7 +30,7 @@
       getTopImage(){
         getTopImage('weipinhui').then(res => {
           this.topImageData = res[0].topImage;
-          console.log(this.topImageData);
+          // console.log(this.topImageData);
         })
       }
     },

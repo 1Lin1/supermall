@@ -24,8 +24,9 @@
 
 <style scoped>
 .top{
-  margin: 5px 5px;
-}
+   margin: 0;
+ }
+
 
   .category-right{
 

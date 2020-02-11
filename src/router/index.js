@@ -44,73 +44,71 @@ const routes=[
   {
     path:'/category',
     component: Category,
+    redirect:'/category/weipinhui',
     children:[
+
       {
-        path:'',
+        path:'weipinhui',
         component:WeiPinHui,
       },
       {
-        path:'/weipinhui',
-        component:WeiPinHui,
-      },
-      {
-        path:'/nanzhuang',
+        path:'nanzhuang',
         component:NanZhuang,
       },
       {
-        path:'/nvzhuang',
+        path:'nvzhuang',
         component:NvZhuang,
       },
       {
-        path:'/nanxie',
+        path:'nanxie',
         component:NanXie,
       },
       {
-        path:'/nvxie',
+        path:'nvxie',
         component:NvXie,
       },
       {
-        path:'/phone',
+        path:'phone',
         component:Phone,
       },
       {
-        path:'/computer',
+        path:'computer',
         component:Computer,
       },
       {
-        path:'/homepower',
+        path:'homepower',
         component:HomePower,
       },
       {
-        path:'/food',
+        path:'food',
         component:Food,
       },
       {
-        path:'/drink',
+        path:'drink',
         component:Drink,
       },
       {
-        path:'/baby',
+        path:'baby',
         component:Baby,
       },
       {
-        path:'/medicine',
+        path:'medicine',
         component:Medicine,
       },
       {
-        path:'/sport',
+        path:'sport',
         component:Sport,
       },
       {
-        path:'/restaurant',
+        path:'restaurant',
         component:Restaurant,
       },
       {
-        path:'/flower',
+        path:'flower',
         component:Flower,
       },
       {
-        path:'/pet',
+        path:'pet',
         component:Pet,
       },
     ]
