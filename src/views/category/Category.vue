@@ -54,7 +54,7 @@
           {name:'运动户外',path:'/category/sport'},
           {name:'家居厨具',path:'/category/restaurant'},
           {name:'礼品鲜花',path:'/category/flower'},
-          {name:'宠物生活',path:'/category/pet'},
+          {name:'家居建材',path:'/category/jiaju'},
 
 
         ],
@@ -67,14 +67,12 @@
       }
     },
     activated() {
-      console.log('activated');
       // 一激活把保存的路由加进去
       this.$router.push(this.path)
 
     },
     beforeRouteLeave (to, from, next) {
       // 离开时把离开前的路由记录下来
-      console.log(this.$route.path);
       this.path = this.$route.path;
       next();
     },
@@ -89,7 +87,6 @@
   .nav-bar{
     background-color: var(--color-tint);
     color: #eeeeee;
-    font-size: 25px;
   }
   .content-right{
     overflow: hidden;

@@ -45,7 +45,6 @@
   .nav-bar{
     background-color: var(--color-tint);
     color:#eeeeee;
-    font-size: 20px;
   }
 
   .shop-cart{

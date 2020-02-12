@@ -12,6 +12,8 @@ export  default {
 
   ADD_CFav(state, payload) {
     payload.cfav ++ ;
-  }
+  },
+
+
 
 }

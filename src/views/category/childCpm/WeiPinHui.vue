@@ -1,7 +1,11 @@
 <template>
   <div class="weipinhui">
     <category-right>
-      <zou-ma-d slot="top"></zou-ma-d>
+      <zou-ma-d
+        class="zou-ma-d"
+        slot="top"
+        :top-image-data="topImageData"
+      ></zou-ma-d>
 
       <cate-good-list slot="center" >
         <span  class="phone-recommend">手机推荐</span>
@@ -47,19 +51,19 @@
     data(){
       return{
         phoneData:[],
-        computerData:[]
+        computerData:[],
+        topImageData:[]
       }
     },
     methods:{
       getTopImage(){
         getTopImage('weipinhui').then(res =>{
-          // console.log(res[0].phone);
           this.phoneData = res[0].phone;
+          this.topImageData = res[0].topImage;
         })
       },
       getComputerData(){
         getTopImage('weipinhui').then(res =>{
-          console.log(res[0].computer);
           this.computerData = res[0].computer;
         })
       }
@@ -84,6 +88,9 @@
     position: absolute;
     top: -6px;
     left: -10px;
+  }
+  .zou-ma-d {
+
   }
 
 </style>

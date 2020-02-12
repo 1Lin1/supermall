@@ -6,21 +6,51 @@
           <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#avatar-default"></use>
         </svg>
       </slot>
-      <div class="login-info left">
+      <div class="login-info left"  >
         <slot name="user-nickname">
-          <div>登录/注册</div>
+          <div v-if="!isActive">
+            <span @click="loadClick">登录/</span>
+            <span>注册</span>
+          </div>
+
+          <div v-else>
+            <span >已登录</span>
+            <span class="load-out" @click="loadOut">退出</span>
+          </div>
         </slot>
         <div class="phone" >
           <slot name="user-phone" >暂无绑定手机号</slot>
         </div>
       </div>
+
+
     </a>
   </div>
 </template>
 
 <script>
 	export default {
-		name: "UserInfo"
+		name: "UserInfo",
+    data(){
+		  return{
+		    isActive:false
+      }
+    },
+
+    mounted() {
+		  this.$bus.$on('userLoadSuccess',() =>{
+		    this.isActive = true;
+      })
+    },
+    methods:{
+      loadClick(){
+        this.$router.push('/userload')
+      },
+      loadOut(){
+        this.$toast.show('退出成功~')
+        this.isActive = false;
+      }
+    }
 	}
 </script>
 
@@ -67,5 +97,10 @@
     height: 18px;
     left: -15px;
     top: 0px;
+  }
+
+  .load-out{
+    position: fixed;
+    right: 20px;
   }
 </style>

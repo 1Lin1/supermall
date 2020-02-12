@@ -1,19 +1,27 @@
 <template>
   <div class="nan-zhuang">
     <category-right>
-      <div slot="top" class="topImage">
-        <span>裤装</span>
-        <img src="./nanzhuang/1.png" alt="">
+      <div slot="top">
+        <img :src="topImage" alt="" style="width: 100%;height: 100%">
       </div>
 
-      <div slot="center" class="centerImage">
-        <span>外套</span>
-        <img src="./nanzhuang/2.png" alt="">
-      </div>
-      <div slot="bottom" class="bottomImage">
-        <span>衬衫</span>
-        <img src="./nanzhuang/3.png" alt="">
-      </div>
+      <cate-good-list slot="center">
+        <cate-good-list-item v-for="item in centerCloses">
+          <a :href="item.link" slot="img">
+            <img :src="item.image" alt="" >
+          </a>
+          <span slot="text">{{item.name}}</span>
+        </cate-good-list-item>
+      </cate-good-list>
+
+      <cate-good-list slot="bottom">
+        <cate-good-list-item v-for="item in centerCloses">
+          <a :href="item.link" slot="img">
+            <img :src="item.image" alt="" >
+          </a>
+          <span slot="text">{{item.name}}</span>
+        </cate-good-list-item>
+      </cate-good-list>
 
     </category-right>
   </div>
@@ -21,22 +29,37 @@
 
 <script>
   import CategoryRight from "../../../components/common/categoryRight/CategoryRight";
+  import {getTopImage} from "../../../network/weipinhui";
+  import CateGoodList from "./categoryList/CateGoodList";
+  import CateGoodListItem from "./categoryList/CateGoodListItem";
+
   export default {
     name: "NanZhuang",
-    components: {CategoryRight}
+    components: {CateGoodListItem, CateGoodList, CategoryRight},
+    data(){
+      return{
+        topImage:'',
+        centerCloses:[]
+      }
+    },
+    methods:{
+      getTopImage(){
+        getTopImage('nanzhuang').then(res =>{
+          console.log(res);
+          this.topImage = res[0].topImage;
+          this.centerCloses = res[0].centerCloses;
+        })
+      }
+    },
+    created() {
+      this.getTopImage();
+    }
   }
 </script>
 
 <style scoped>
-.nan-zhuang img{
-   width: 100%;
-   height: 100%;
- }
 
-  .nan-zhuang span {
-   position: relative;
-   bottom: 5px;
-  }
+
 
 
 </style>

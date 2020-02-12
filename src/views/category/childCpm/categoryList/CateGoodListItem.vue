@@ -24,7 +24,7 @@
   .item-text{
     text-align: center;
     font-weight: bolder;
-    margin-top: 1px;
+    margin-top: 5px;
   }
 
   .item-header{

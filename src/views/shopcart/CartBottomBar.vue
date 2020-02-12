@@ -12,7 +12,7 @@
       <span class="total-price">合计:{{totalPrice | filterPrice}}</span>
     </div>
     <div class="calculate">
-      <span class="buy-product">去计算({{checkLength}})</span>
+      <span class="buy-product">去结算({{checkLength}})</span>
     </div>
 
   </div>
@@ -87,7 +87,7 @@
 .bottom-menu{
     width: 100%;
     position: fixed;
-    bottom: 50px;
+    bottom: 60px;
     background-color: #eee;
     display: flex;
 
@@ -117,7 +117,7 @@
   color: #eeeeee;
   right: 20px;
 
-  border-bottom:2px solid #eeeeee;
+  /*border-bottom:2px solid #eeeeee;*/
 }
 
 

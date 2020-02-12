@@ -15,7 +15,8 @@ import Medicine from "../views/category/childCpm/Medicine";
 import Sport from "../views/category/childCpm/Sport";
 import Restaurant from "../views/category/childCpm/Restaurant";
 import Flower from "../views/category/childCpm/Flower";
-import Pet from "../views/category/childCpm/Pet";
+import JiaJu from "../views/category/childCpm/JiaJu";
+import UserLoad from "../views/userload/UserLoad";
 
 Vue.use(VueRouter)
 
@@ -108,8 +109,8 @@ const routes=[
         component:Flower,
       },
       {
-        path:'pet',
-        component:Pet,
+        path:'jiaju',
+        component:JiaJu,
       },
     ]
   },
@@ -124,6 +125,10 @@ const routes=[
   {
     path:'/detail',
     component: Detail
+  },
+  {
+    path:'/userload',
+    component: UserLoad
   },
 
 ]

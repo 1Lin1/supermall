@@ -19,7 +19,8 @@
             :pull-up-load="true"
             @pullingUpload="pullingUpload"
     >
-      <home-swiper :banners="banners" @swipperImageLoad="swipperImageLoad"></home-swiper>
+<!--      <home-swiper :banners="banners" @swipperImageLoad="swipperImageLoad"></home-swiper>-->
+      <home-lun-bo :banners="banners"  @swipperImageLoad="swipperImageLoad"></home-lun-bo>
       <home-recommend :recommends="recommends"></home-recommend>
       <feature-view></feature-view>
       <tab-control
@@ -66,6 +67,7 @@
 
   import Scroll from "../../components/common/scroll/Scroll";
   import BackTop from "../../components/content/backtop/BackTop";
+  import HomeLunBo from "./childComps/HomeLunBo";
   // 导入轮播图组件 默认导入index.js  里面写了导出两个组件 一次性引入
 
   // 返回的是一个promise对象 所以直接用then就行
@@ -73,6 +75,7 @@
   export default {
     name: "Home",
     components: {
+      HomeLunBo,
       BackTop,
       Scroll,
       GoodsList,
@@ -112,7 +115,7 @@
       // 三个都动态的请求
       this.getHomeGoods('pop');
       this.getHomeGoods('new');
-      // this.getHomeGoods('sell');
+      this.getHomeGoods('sell');
 
       // this.getMySqlData();
 
@@ -240,7 +243,6 @@
     /* padding-top: 44px; */
     height: 100vh;
     position: relative;
-    font-size: 20px;
   }
   .home-nav{
     background-color: var(--color-tint);

@@ -18,6 +18,8 @@
     height: 44px;
     line-height: 44px;
     box-shadow: 0 1px 1px rgba(100,100,100,.5);
+    font-weight: bold;
+    font-size: 25px;
   }
 
   .left,.right{

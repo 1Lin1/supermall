@@ -66,6 +66,8 @@ export default {
   methods:{
 
   },
+
+
   components:{
     NavBar,
     UserInfo,
