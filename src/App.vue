@@ -1,7 +1,7 @@
 <template>
   <div id="app">
 <!--    保证只创建一次 不销毁-->
-   <keep-alive exclude="Detail Profile">
+   <keep-alive exclude="Detail">
      <router-view></router-view>
    </keep-alive>
 

@@ -49,7 +49,8 @@
       userLoadButton(){
         if(this.input ==='admin' && this.inputPassword === '123'){
           this.$toast.show('登录成功');
-          this.$bus.$emit('userLoadSuccess')
+          // this.$bus.$emit('userLoadSuccess',true)
+          this.$store.state.isUserLoad = true;
           this.$router.push('/home');
         }else{
           this.$toast.show('密码错误')

@@ -10,6 +10,7 @@ Vue.use(Vuex)
 
 const state ={
   shopCart:[],
+  isUserLoad: false,
 }
 //2.创建store
 const store = new Vuex.Store({

@@ -22,17 +22,37 @@
 </template>
 
 <script>
-	export default {
-		name: "DetailBottomBar",
+  export default {
+    name: "DetailBottomBar",
+    data(){
+      return{
+      }
+    },
     methods: {
       addToCart() {
-        this.$emit('addToCart')
+
+        if(this.$store.state.isUserLoad){
+          this.$emit('addToCart')
+        }else{
+          this.$router.push('/userload');
+          this.$toast.show('亲 请先登录');
+        }
+
+
+
       },
       servicePeople(){
         this.$toast.show('客服暂未上线',2000)
       }
+    },
+    created() {
+      console.log('created');
+    },
+    mounted() {
+      //检测是否已登录 未登录则跳转登录界面
+
     }
-	}
+  }
 </script>
 
 <style scoped>

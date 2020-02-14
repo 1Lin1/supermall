@@ -110,6 +110,7 @@
       let date = new Date(1535694719*1000)
       // console.log(formatDate(date, 'yyyy/MM/dd'));
 
+
       this.getHomeMultidata();
 
       // 三个都动态的请求
@@ -139,7 +140,7 @@
 
     activated() {
 
-
+      console.log('用户登录状态' + this.$store.state.isUserLoad);
 
       // 回到上次停留地方 同时刷新
       this.$refs.ScrollVue.scrollTo(0,this.saveY,0)

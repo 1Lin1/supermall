@@ -36,11 +36,13 @@
 		    isActive:false
       }
     },
-
-    mounted() {
-		  this.$bus.$on('userLoadSuccess',() =>{
-		    this.isActive = true;
-      })
+    activated() {
+      this.isActive =  this.$store.state.isUserLoad;
+    },
+    created() {
+		  // this.$bus.$on('userLoadSuccess',isLoad =>{
+		  //   this.isActive = true;
+      // })
     },
     methods:{
       loadClick(){
@@ -48,6 +50,7 @@
       },
       loadOut(){
         this.$toast.show('退出成功~')
+        this.$store.state.isUserLoad = false;
         this.isActive = false;
       }
     }
