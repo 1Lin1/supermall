@@ -6,9 +6,9 @@
       <span class="o-price">{{goods.oldPrice | filterPirce}}</span>
       <span class="desc">{{goods.descmessage}}</span>
 
-      <span class="collect">
+      <span class="collect"  @click="collectAdd">
         <img src="~assets/img/common/collect.svg"
-             @click="collectAdd"
+
              :class="{activeCollect:true}" >
         收藏{{newCfav}}
       </span>
@@ -35,15 +35,22 @@
       }
     },
     created() {
-      console.log(this.$store.state.shopCart);
     },
     methods:{
       collectAdd(){
-        this.$store.dispatch('addCfav',this.goods).then(res =>{
-          this.$toast.show(res.message,2000);
-          this.newCfav = res.oldProduct.cfav;
-          console.log(res.oldProduct);
-        })
+        if(this.$store.state.isUserLoad && this.$store.getters.CartLength) {
+          console.log('可以加收藏了');
+          this.$store.dispatch('addCfav', this.goods).then(res => {
+            this.$toast.show(res.message, 2000);
+            this.newCfav = res.oldProduct.cfav;
+            console.log(res.oldProduct);
+          })
+        }else if(!this.$store.getters.CartLength){
+          this.$toast.show("请先加入购物车~~~")
+        } else{
+          this.$router.push('/userload');
+          this.$toast.show('亲 请先登录');
+        }
       }
     },
     filters:{

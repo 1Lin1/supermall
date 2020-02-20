@@ -113,7 +113,7 @@
   }
 .calculate{
   position: absolute;
-  background-color: var(--color-tint);
+  background-color: #ff1e32;
   color: #eeeeee;
   right: 20px;
 

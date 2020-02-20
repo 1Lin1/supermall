@@ -3,7 +3,7 @@
     <nav-bar class="home-nav"><div slot="center">首页</div></nav-bar>
 
 
-<!--    //用于向上拉时显示  附着在标题下-->
+    <!--    //用于向上拉时显示  附着在标题下-->
     <tab-control
       class="tab-control"
       :titles="['流行','精选','潮流']"
@@ -19,7 +19,7 @@
             :pull-up-load="true"
             @pullingUpload="pullingUpload"
     >
-<!--      <home-swiper :banners="banners" @swipperImageLoad="swipperImageLoad"></home-swiper>-->
+      <!--      <home-swiper :banners="banners" @swipperImageLoad="swipperImageLoad"></home-swiper>-->
       <home-lun-bo :banners="banners"  @swipperImageLoad="swipperImageLoad"></home-lun-bo>
       <home-recommend :recommends="recommends"></home-recommend>
       <feature-view></feature-view>
@@ -35,6 +35,7 @@
 
     </scroll>
 
+    <!--    给vue组件绑定监听事件时 要加native-->
     <back-top class="back-top" @click.native="backToTop" v-show="isShow"></back-top>
   </div>
 </template>
@@ -42,9 +43,10 @@
 <script>
 
   // 导入防抖函数
-  import {debounce,formatDate} from "../../components/common/util/util";
+  import {debounce} from "../../components/common/util/util";
 
-  import NavBar from "../../components/common/navbar/NavBar";
+  // 取了别名 直接导入
+  import NavBar from "components/common/navbar/NavBar";
   import HomeSwiper from "./childComps/HomeSwiper";
   import HomeRecommend from "./childComps/HomeRecommend";
 
@@ -54,16 +56,12 @@
   import {
     getHomeMultidata,
     getHomeGoods,
-    getMySqlData,
   } from "../../network/home";
 
 
   import GoodsList from "../../components/content/goods/GoodsList";
 
-  import image3 from "./tian/3.jpg"
-  import image2 from "./tian/2.jpg"
-  import image5 from "./tian/5.jpg"
-  import image8 from "./tian/8.jpg"
+
 
   import Scroll from "../../components/common/scroll/Scroll";
   import BackTop from "../../components/content/backtop/BackTop";
@@ -74,6 +72,7 @@
 
   export default {
     name: "Home",
+    inject:['reload'],
     components: {
       HomeLunBo,
       BackTop,
@@ -107,7 +106,7 @@
       }
     },
     created() {
-      let date = new Date(1535694719*1000)
+      // let date = new Date(1535694719*1000)
       // console.log(formatDate(date, 'yyyy/MM/dd'));
 
 
@@ -124,8 +123,8 @@
     },
 
     mounted() {
-      // 监听加载图片 加载完刷新
-      const refresh = debounce(this.$refs.ScrollVue.refresh,1000)
+      // 监听加载图片 每加载一次 等全部加载完 滚动条再刷新
+      const refresh = debounce(this.$refs.ScrollVue.refresh,500);
       this.$bus.$on('itemImageLoad',() =>{
         refresh()
       })
@@ -140,11 +139,12 @@
 
     activated() {
 
+
       console.log('用户登录状态' + this.$store.state.isUserLoad);
 
       // 回到上次停留地方 同时刷新
-      this.$refs.ScrollVue.scrollTo(0,this.saveY,0)
-      this.$refs.ScrollVue.refresh()
+      this.$refs.ScrollVue.scrollTo(0,this.saveY);
+      this.$refs.ScrollVue.refresh();
     },
 
     // beforeRouteLeave(){
@@ -161,10 +161,13 @@
        */
 
       swipperImageLoad(){
-        this.tabControlOffset = 514;
+        console.log('swipperImageLoad');
+        this.tabControlOffset = 520;
         // this.tabControlOffset = this.$refs.tabcontrol1.$el.offsetTop;
         // console.log(this.$refs.tabcontrol1.$el.offsetTop);
       },
+
+
       // 多个请求在一定时间内 集合成少个请求发送
       //防抖 分流
 
@@ -198,8 +201,8 @@
             this.currentType = 'sell';
             break;
         }
-        this.$refs.tabcontrol1.currentIndex = index
-        this.$refs.tabcontrol2.currentIndex = index
+        this.$refs.tabcontrol1.currentIndex = index;
+        this.$refs.tabcontrol2.currentIndex = index;
       },
 
 
@@ -216,10 +219,13 @@
       getHomeGoods(type){
 
         getHomeGoods(type).then(res =>{
+          // Es6语法
+          this.goods[type].list.push(...res);
+          this.$refs.ScrollVue.finishPullUp();
           // console.log(res);
-          for (let i = 0; i < res.length; i++) {
-            this.goods[type].list.push(res[i])
-          }
+          // for (let i = 0; i < res.length; i++) {
+          //   this.goods[type].list.push(res[i])
+          // }
         })
         // 测试本地照片
         //
@@ -266,6 +272,7 @@
     overflow: hidden;
     /*溢出元素框 隐藏*/
 
+    /*z子绝父相*/
     position: absolute;
     top: 44px;
     bottom: 49px;

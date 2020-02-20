@@ -4,5 +4,9 @@ export  default {
   },
   CartList(state){
     return state.shopCart;
+  },
+  isUserLoad(state){
+    return state.isUserLoad;
   }
+
 }

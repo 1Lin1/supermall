@@ -73,8 +73,8 @@
     font-size: 16px;
   }
   .active{
-    color: red;
-    border-bottom: solid 2px red;
+    color: var(--color-high-text);
+    border-bottom: solid 2px var(--color-high-text);
   }
 
 

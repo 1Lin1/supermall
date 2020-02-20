@@ -2,7 +2,7 @@
   <div id="app">
 <!--    保证只创建一次 不销毁-->
    <keep-alive exclude="Detail">
-     <router-view></router-view>
+     <router-view  v-if="isRouterAlive"></router-view>
    </keep-alive>
 
 
@@ -20,6 +20,16 @@ export default {
   components: {
     MainTabBar,
   },
+  data(){
+    return{
+      isRouterAlive:true,
+    }
+  },
+  provide(){
+    return{
+      reload:this.reload
+    }
+  },
   created () {
     // 在页面加载时读取sessionStorage
     if (sessionStorage.getItem('store')) {
@@ -30,15 +40,20 @@ export default {
       sessionStorage.setItem('store', JSON.stringify(this.$store.state))
     })
   },
-  provide(){
-    return{
-      reload:this.reload
+  methods:{
+    reload(){
+      this.isRouterAlive = false;
+      this.$nextTick(function () {
+        this.isRouterAlive = true;
+      })
     }
   }
+
 }
 </script>
 
 <style>
+  /*导入默认样式*/
   @import "./assets/css/base.css";
   .maintab{
     z-index: 100000;

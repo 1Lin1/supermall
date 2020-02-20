@@ -21,9 +21,15 @@
         }
       }
     },
+    data(){
+      return{
+        isLoad:false,
+      }
+    },
     methods:{
       imageLoad(){
         if(!this.isLoad){
+          // 加载完发送事件
           this.$emit('swipperImageLoad')
           this.isLoad = true
         }

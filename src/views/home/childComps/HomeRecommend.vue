@@ -26,18 +26,18 @@
 <style scoped>
   .recommend{
     display: flex;
+    justify-content: space-evenly;
+
     width: 100%;
     text-align: center;
     font-size: 15px;
     border-bottom: 5px solid #eeeeee;
-    justify-content: space-evenly;
   }
   .recommend-item {
-    flex: 1;
     margin-bottom: 3px;
   }
   .recommend-item img {
-    max-width: 90%;
+    width: 90%;
     margin-top: 5px;
     margin-bottom: 5px;
   }

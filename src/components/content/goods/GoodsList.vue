@@ -34,9 +34,10 @@
     display: flex;
     /*布局包裹*/
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: space-evenly;
 
     padding: 2px;
+    margin-top: 5px;
   }
 
 

@@ -44,14 +44,12 @@
 
 
        this.scroll.on('scroll',(position =>{
-        // console.log(position);
         this.$emit('scrollPosition',position)
       }))
 
 
     if(this.pullUpLoad){
       this.scroll.on('pullingUp',() => {
-
         this.$emit('pullingUpload')
         this.scroll.finishPullUp()
 
@@ -66,11 +64,15 @@
         this.scroll && this.scroll.scrollTo(x,y,time)
       },
       refresh(){
-        console.log('刷新---');
+        this.scroll.finishPullUp();
+        console.log('finishPullUp');
         this.scroll && this.scroll.refresh();
+        console.log('刷新---!!!');
+
       },
       finishPullUp(){
         // 告诉他说做完了 进行下一次上拉加载
+        console.log('finishPullUp');
         this.scroll.finishPullUp();
         // this.scroll.refresh();
       }

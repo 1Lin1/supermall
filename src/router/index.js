@@ -45,9 +45,12 @@ const routes=[
   {
     path:'/category',
     component: Category,
-    redirect:'/category/weipinhui',
     children:[
-
+      {
+        // 默认重定向
+        path:'',
+        redirect:'weipinhui'
+      },
       {
         path:'weipinhui',
         component:WeiPinHui,

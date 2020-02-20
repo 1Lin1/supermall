@@ -4,8 +4,8 @@
       <div slot="center">购物车({{CartLength}})</div>
     </nav-bar>
 
-    <cart-list></cart-list>
-    <cart-bottom-bar></cart-bottom-bar>
+    <cart-list v-show="isUserLoad"></cart-list>
+    <cart-bottom-bar v-show="isUserLoad"></cart-bottom-bar>
   </div>
 
 </template>
@@ -25,7 +25,7 @@
     },
     data(){
       return{
-
+        isUserLoad:false,
       }
     },
     methods:{
@@ -36,6 +36,8 @@
 
     },
     activated() {
+      this.isUserLoad = this.$store.state.isUserLoad;
+      console.log('购物车' + this.isUserLoad);
     }
 
   }

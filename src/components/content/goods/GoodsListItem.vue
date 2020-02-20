@@ -5,7 +5,7 @@
 
     <div class="goods-info" >
       <p>{{product.title}}</p>
-      <span class="price">{{product.price}}</span>
+      <span class="price">{{product.price | filterPrice}}</span>
       <span class="collect">{{product.cfav}}</span>
     </div>
   </div>
@@ -32,6 +32,12 @@
         return this.product.img || this.product.image || this.product.show.img;
       }
     },
+
+    filters:{
+      filterPrice(price){
+        return '￥' + Number(price).toFixed(2)
+      }
+    },
     methods:{
       imgLoad(){
         this.$bus.$emit('itemImageLoad');
@@ -53,15 +59,19 @@
             pid:this.product.pid
           }
         }).then(() => {
-          location.reload();
+          // 这种刷新 不好 会闪屏
+          // location.reload();
+
+
+          // 刷新一下加载详情轮播图 同时保证home停留的地方不变 不会闪屏
+          this.reload();
 
         })
 
 
       }
     },
-    mounted() {
-    }
+
   }
 </script>
 
@@ -98,7 +108,7 @@
 
   .goods-info .price {
     color: var(--color-high-text);
-    margin-right: 20px;
+    margin-right: 40px;
   }
 
   .goods-info .collect {
@@ -109,7 +119,7 @@
     content: '';
     position: absolute;
     left: -15px;
-    top: -1px;
+    top: 0;
     width: 14px;
     height: 14px;
     background: url("~assets/img/common/collect.svg") 0 0/14px 14px;

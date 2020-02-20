@@ -15,6 +15,7 @@
         :topImage="topImage"
         ref="topSwiper"
         @DetailSwiperLoad="DetailSwiperLoad"></detail-swipper>
+
       <detail-base-info :goods="goods"></detail-base-info>
       <detail-sale-man :sale-man="saleMan" class="detail-sale-man"></detail-sale-man>
       <detail-show-model :modelImage="modelImage"></detail-show-model>
@@ -62,7 +63,7 @@
 
   export default {
     name: "Detail",
-
+    inject:['reload'],
     components: {
       DetailParams,
       DetailNumber,
@@ -141,9 +142,14 @@
       // 获取推荐商品
       getGoods(){
         getHomeGoods('pop').then(res =>{
-          for (let i = 0; i < res.length; i++) {
-            this.showGoods.push(res[i])
-          }
+          this.showGoods.push(...res);
+
+          // this.$refs.ScrollVue.finishPullUp();
+          //
+          // this.$refs.ScrollVue.refresh();
+          // for (let i = 0; i < res.length; i++) {
+          //   this.showGoods.push(res[i])
+          // }
         })
 
       },
@@ -157,9 +163,8 @@
     created() {
       let pid = this.$route.query.pid
       getDetailData(pid).then(res =>{
-        //尝试封装类思想 面向对象开发
+          //尝试封装类思想 面向对象开发
         const data = res[0];
-        console.log(data);
         this.topImage = data.topImage;
         this.goods = new Goods(data);
 
@@ -175,9 +180,8 @@
       // this.$nextTick() 此函数为mounted中上方请求全部执行完再执行
 
 
-
       // 监听加载图片 加载完刷新
-      const refresh = debounce(this.$refs.ScrollVue.refresh,1000);
+      const refresh = debounce(this.$refs.ScrollVue.refresh,500);
       // 只执行一次 获取每部分的offset值 等到图片加载完才正确
       this.getThemeTopY = debounce(() => {
         this.detailTopY = [];
@@ -191,14 +195,17 @@
       }, 1000)
 
       // 图片加载完之后执行
-      this.$bus.$on('itemImageLoad',() =>{
+      this.$bus.$on('DetailSwiperLoad',() =>{
+
         this.getThemeTopY();
-        refresh()
+        refresh();
       })
 
 
 
-
+      this.$bus.$on('itemImageLoad',() =>{
+        refresh()
+      })
 
 
 
