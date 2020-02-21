@@ -10,7 +10,7 @@
         <img src="~assets/img/common/collect.svg"
 
              :class="{activeCollect:true}" >
-        收藏{{newCfav}}
+            收藏&nbsp{{newCfav}}
       </span>
     </div>
 
@@ -41,13 +41,18 @@
         if(this.$store.state.isUserLoad && this.$store.getters.CartLength) {
           console.log('可以加收藏了');
           this.$store.dispatch('addCfav', this.goods).then(res => {
-            this.$toast.show(res.message, 2000);
-            this.newCfav = res.oldProduct.cfav;
+            if(res.oldProduct === null){
+              this.$toast.show(res.message, 2000);
+
+            }else{
+              this.$toast.show(res.message, 2000);
+              this.newCfav = res.oldProduct.cfav;
+            }
             console.log(res.oldProduct);
           })
         }else if(!this.$store.getters.CartLength){
           this.$toast.show("请先加入购物车~~~")
-        } else{
+        }else{
           this.$router.push('/userload');
           this.$toast.show('亲 请先登录');
         }
@@ -66,42 +71,42 @@
 </script>
 
 <style scoped>
-.base-info{
-  margin-top: 25px;
-  margin-bottom: 20px;
-  padding: 0 8px;
-  color: #999;
+  .base-info{
+    margin-top: 25px;
+    margin-bottom: 20px;
+    padding: 0 8px;
+    color: #999;
 
-  border-bottom: 2px solid #eeeeee;
-}
+    border-bottom: 2px solid #eeeeee;
+  }
 
   .info-title{
     color:black;
   }
 
-.info-price {
-  margin-top: 10px;
-  width: 100%;
-}
-.info-price img{
-  padding-top: 3px;
-  max-width: 5%;
-}
+  .info-price {
+    margin-top: 10px;
+    width: 100%;
+  }
+  .info-price img{
+    padding-top: 3px;
+    max-width: 5%;
+  }
 
-.activeCollect{
-  /*background-color: red;*/
-}
+  .activeCollect{
+    /*background-color: red;*/
+  }
 
-.n-price {
-  font-size: 24px;
-  color: var(--color-high-text);
-}
+  .n-price {
+    font-size: 24px;
+    color: var(--color-high-text);
+  }
 
-.o-price {
-  font-size: 15px;
-  margin-left: 5px;
-  text-decoration: line-through;
-}
+  .o-price {
+    font-size: 15px;
+    margin-left: 5px;
+    text-decoration: line-through;
+  }
   .desc{
     margin-left: 20px;
     color: red;

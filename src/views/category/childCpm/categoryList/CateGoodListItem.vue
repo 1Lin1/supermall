@@ -1,6 +1,5 @@
 <template>
   <div class="cate-good-list-item">
-    <div class="item-header"><slot name="header"></slot></div>
     <div class="item-img"><slot name="img"></slot></div>
     <div class="item-text" ><slot name="text"></slot></div>
   </div>
@@ -27,13 +26,6 @@
     margin-top: 5px;
   }
 
-  .item-header{
-    font-size: 15px;
-    font-weight: bolder;
-    position: relative;
-    z-index: 99;
-    right: 30px;
-    bottom: 25px;
-  }
+
 
 </style>

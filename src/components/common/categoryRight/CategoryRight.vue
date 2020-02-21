@@ -30,7 +30,7 @@
 
   .category-right{
 
-    margin: 10px 10px;
+   margin:10px 10px;
   }
 
 </style>

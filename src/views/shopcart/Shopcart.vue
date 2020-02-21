@@ -1,11 +1,13 @@
 <template>
   <div  class="shop-cart">
     <nav-bar class="nav-bar">
-      <div slot="center">购物车({{CartLength}})</div>
+      <div slot="center">购物车</div>
     </nav-bar>
 
     <cart-list v-show="isUserLoad"></cart-list>
     <cart-bottom-bar v-show="isUserLoad"></cart-bottom-bar>
+
+
   </div>
 
 </template>
@@ -44,6 +46,9 @@
 </script>
 
 <style scoped>
+
+
+
   .nav-bar{
     background-color: var(--color-tint);
     color:#eeeeee;
@@ -53,9 +58,9 @@
     height: 100vh;
   }
 
-  .content{
-    height: calc(100% - 100px);
-    /*height: 100%;*/
-    overflow: hidden;
-  }
+  /*.content{*/
+  /*  height: calc(100% - 100px);*/
+  /*  !*height: 100%;*!*/
+  /*  overflow: hidden;*/
+  /*}*/
 </style>

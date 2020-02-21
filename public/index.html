@@ -3,16 +3,27 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
 <!--    手机移动端视口适配-->
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <!--    动态获取路径-->
-    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
-    <title>supermall</title>
+<!--    <link rel="icon" href="<%= BASE_URL %>favicon.ico">-->
+
+    <!--    引入字体图标 js引入必须放在static中 不然vue有冲突-->
+    <script type="text/javascript" src="./static/util/font_1634196_lxq7rjh8iw/iconfont.js"></script>
+
+    <title>SuperMall</title>
   </head>
   <body>
 
     <div id="app"></div>
     <!-- built files will be auto injected -->
   </body>
+  <style type="text/css">
+    .icon {
+      width: 1em; height: 1em;
+      vertical-align: -0.15em;
+      fill: currentColor;
+      overflow: hidden;
+    }
+  </style>
 </html>

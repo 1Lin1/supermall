@@ -1,7 +1,8 @@
 <template>
   <div class="cate-good-list" >
 
-    <slot>
+
+    <slot >
 
     </slot>
   </div>
@@ -19,11 +20,15 @@
     position: relative;
     width: 100%;
     height: 100%;
+
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
     align-content: space-between;
+
   }
+
+
 
 
 </style>

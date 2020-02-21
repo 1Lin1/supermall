@@ -7,7 +7,6 @@ import NanXie from "../views/category/childCpm/NanXie";
 import NvXie from "../views/category/childCpm/NvXie";
 import Phone from "../views/category/childCpm/Phone";
 import Computer from "../views/category/childCpm/Computer";
-import HomePower from "../views/category/childCpm/HomePower";
 import Food from "../views/category/childCpm/Food";
 import Drink from "../views/category/childCpm/Drink";
 import Baby from "../views/category/childCpm/Baby";
@@ -17,6 +16,7 @@ import Restaurant from "../views/category/childCpm/Restaurant";
 import Flower from "../views/category/childCpm/Flower";
 import JiaJu from "../views/category/childCpm/JiaJu";
 import UserLoad from "../views/userload/UserLoad";
+import PowerHome from "../views/category/childCpm/PowerHome";
 
 Vue.use(VueRouter)
 
@@ -80,8 +80,8 @@ const routes=[
         component:Computer,
       },
       {
-        path:'homepower',
-        component:HomePower,
+        path:'powerhome',
+        component:PowerHome,
       },
       {
         path:'food',

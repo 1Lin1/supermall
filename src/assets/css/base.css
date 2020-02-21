@@ -1,5 +1,35 @@
 @import "./normalize.css";
 
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea, th, td{
+  margin: 0;
+  padding: 0;
+  color: #999999;
+}
+/*字体图标部分*/
+.recommend-left{
+  position: absolute;
+  top: -10px;
+  left: -10px;
+
+}
+
+.recommend-right{
+  position: absolute;
+  right: -10px;
+  top:-11px;
+
+
+}
+
+
+.icon-paihang{
+  position: relative;
+  left: 5px;
+  font-size: 18px;
+
+}
+
+
 /*:root -> 获取根元素html*/
 :root {
   --color-text: #666;

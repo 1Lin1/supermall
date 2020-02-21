@@ -127,6 +127,7 @@
       addToCart(){
         console.log('添加购物车');
         const product = {};
+        console.log(this.goods);
         product.pid = this.goods.pid;
         product.newPrice = this.goods.newPrice;
         product.title = this.goods.title;

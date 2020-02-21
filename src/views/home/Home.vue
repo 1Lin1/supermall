@@ -221,6 +221,7 @@
         getHomeGoods(type).then(res =>{
           // Es6语法
           this.goods[type].list.push(...res);
+          // console.log(res);
           this.$refs.ScrollVue.finishPullUp();
           // console.log(res);
           // for (let i = 0; i < res.length; i++) {

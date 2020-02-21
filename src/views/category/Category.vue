@@ -7,7 +7,7 @@
       <tab-menu :categories="categories"
                 @menuItemClick="menuItemClick"
                 ref="tabmenu"
-      ></tab-menu>
+      />
 
       <scroll class="content-right">
         <keep-alive>
@@ -44,7 +44,7 @@
           {name:'女鞋',path:'/category/nvxie'},
           {name:'手机数码',path:'/category/phone'},
           {name:'电脑办公',path:'/category/computer'},
-          {name:'家用电器',path:'/category/homepower'},
+          {name:'家用电器',path:'/category/powerhome'},
 
           {name:'食品生鲜',path:'/category/food'},
           {name:'酒水饮料',path:'/category/drink'},
@@ -92,13 +92,14 @@
     overflow: hidden;
 
     color: black;
+    font-family:"NSimSun";
     font-size: 14px;
     font-weight: bold;
     line-height: 14px;
 
     position: absolute;
     bottom: 60px;
-    top:54px;
+    top:49px;
     left: 74px;
     right: 0;
   }

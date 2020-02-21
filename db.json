@@ -180,7 +180,7 @@
       "price": "799",
       "oldPrice": "899",
       "count": "3",
-      "cfav": "20"
+      "cfav": "2"
     },
     {
       "type": "pop",
@@ -191,7 +191,7 @@
       "price": "799",
       "oldPrice": "899",
       "count": "3",
-      "cfav": "20"
+      "cfav": "2"
     },
     {
       "type": "pop",
@@ -202,7 +202,7 @@
       "price": "799",
       "oldPrice": "899",
       "count": "3",
-      "cfav": "20"
+      "cfav": "2"
     },
     {
       "type": "new",
@@ -213,7 +213,7 @@
       "price": "799",
       "oldPrice": "899",
       "count": "3",
-      "cfav": "20"
+      "cfav": "2"
     },
     {
       "type": "new",
@@ -224,7 +224,7 @@
       "price": "799",
       "oldPrice": "899",
       "count": "3",
-      "cfav": "20"
+      "cfav": "2"
     },
     {
       "type": "sell",
@@ -246,7 +246,7 @@
       "price": "799",
       "oldPrice": "899",
       "count": "3",
-      "cfav": "20"
+      "cfav": "2"
     }
   ],
   "details": [
@@ -516,7 +516,7 @@
         {"id": "7008","name": "ThinkPad","image": "https://img.alicdn.com/bao/uploaded/i1/2955374408/O1CN01LhK4DS1iQuQ1Z9Ai2_!!2955374408.png","link": "https://detail.tmall.com/item.htm?spm=a220m.1000858.1000725.115.53ac489eyrkK4s&id=604191794910&skuId=4402986151573&areaId=440100&standard=1&user_id=2955374408&cat_id=50024399&is_b=1&rn=910c65ab79fa5005fefda55c112f8f09"}
       ]
     },
-    {"type": "homepower",
+    {"type": "powerhome",
     "topImage": "https://gw.alicdn.com/imgextra/i4/1165263/O1CN01y2QTxL1okV4ieHace_!!1165263-0-lubanu.jpg?activityId=310789&appid=3621&report_date=2020-01-18",
     "centerImage": [
       {"id": "8001","name": "冰箱","image": "https://img.alicdn.com/bao/uploaded/i1/TB1D6N5FVXXXXbbXFXX5ax9_VXX_063832.jpg","link": "https://list.tmall.com/search_product.htm?spm=a222t.7794920.fsnav.1.42f439edGhey1D&cat=50918004&acm=lb-zebra-24139-328537.1003.4.455785&scm=1003.4.lb-zebra-24139-328537.OTHER_14458832193540_455785"},

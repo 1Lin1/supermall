@@ -1,10 +1,17 @@
 <template>
-  <div class="home-power">
+  <div class="power-home">
     <category-right>
       <div slot="top">
         <img :src="topImage" alt="" style="width: 100%;height: 100%">
       </div>
       <cate-good-list slot="center">
+        <span  class="recommend-left">家用电器推荐</span>
+        <span class="recommend-right">
+        <svg class="icon icon-paihang" aria-hidden="true">
+             <use xlink:href="#icon-paihang"></use>
+        </svg>
+            排行榜
+        </span>
         <cate-good-list-item v-for="item in centerImage">
           <a :href="item.link"slot="img">
             <img :src="item.image" alt="" >
@@ -13,6 +20,13 @@
         </cate-good-list-item>
       </cate-good-list>
       <cate-good-list slot="bottom">
+        <span  class="recommend-left">家用电器推荐</span>
+        <span class="recommend-right">
+        <svg class="icon icon-paihang" aria-hidden="true">
+             <use xlink:href="#icon-paihang"></use>
+        </svg>
+            排行榜
+        </span>
         <cate-good-list-item v-for="item in centerImage">
           <a :href="item.link"slot="img">
             <img :src="item.image" alt="" >
@@ -31,7 +45,7 @@
   import CateGoodListItem from "./categoryList/CateGoodListItem";
 
   export default {
-    name: "HomePower",
+    name: "PowerHome",
     components: {CateGoodListItem, CateGoodList, CategoryRight},
     data(){
       return{
@@ -41,7 +55,7 @@
     },
     methods:{
       getTopImage(){
-        getTopImage('homepower').then(res => {
+        getTopImage('powerhome').then(res => {
           console.log(res);
           this.topImage = res[0].topImage;
           this.centerImage = res[0].centerImage;

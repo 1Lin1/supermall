@@ -46,7 +46,10 @@
         this.$emit('menuItemClick',path)
 
         if(this.$route.path != path)
-        { this.$router.push(path)}
+         {
+           this.$router.push(path)
+         }
+
 
       },
 
@@ -60,12 +63,12 @@
   #tab-menu {
     background-color: #f6f6f6;
     overflow: hidden;
+    width: 20%;
 
     position: absolute;
     bottom: 56px;
     top:45px;
     left: 0;
-    right: 300px;
   }
 
   .menu-list-item {

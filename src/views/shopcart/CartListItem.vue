@@ -13,10 +13,17 @@
 
     <div class="item-info">
       <span class="title">{{itemInfo.title}}</span>
+      <el-button
+        class="remove-shop-cart"
+        @click="btnRemoveShop(itemInfo.pid)"
+        type="danger" round
+      ><span class="remove-span">移除</span></el-button>
+
       <div class="item-base">
         <span class="newPrice"> {{itemInfo.newPrice |filterPrice}}</span>
         <span class="count">x{{itemInfo.count}}</span>
       </div>
+
     </div>
 
   </div>
@@ -26,7 +33,7 @@
   import CheckButton from "../../components/content/checkbutton/CheckButton";
   export default {
     name: "CartListItem",
-    components: {CheckButton},
+    components: { CheckButton},
     props:{
       itemInfo:Object,
       default(){
@@ -41,6 +48,15 @@
     methods:{
       checkClick(){
         this.itemInfo.checked = !this.itemInfo.checked;
+      },
+
+      // 移除购物车
+      btnRemoveShop(pid){
+
+        console.log('btnRemove' + pid);
+        this.$store.dispatch('removeShop',pid).then(res =>{
+          console.log(res);
+        })
       }
       // checkChange(){
       //   console.log('checkchange');
@@ -68,6 +84,23 @@
 </script>
 
 <style scoped>
+  .remove-span{
+    font-size: 15px;
+    position: relative;
+    bottom: 5px;
+  }
+  .remove-shop-cart{
+    width: 80px;
+    height: 30px;
+    display: block;
+
+    position: absolute;
+    left: 0;
+    right: 10px;
+    margin:0 auto;
+    bottom:50px;
+
+  }
   .cart-list-item{
     display: flex;
     width: 100%;
@@ -75,10 +108,12 @@
     border-bottom: 2px solid #eeeeee;
   }
   .item-info{
+    position: relative;
     margin-top: 10px;
   }
 
   .check-button{
+    margin-left: 10px;
     margin-top: 10px;
   }
   .item-img img{

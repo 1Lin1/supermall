@@ -8,7 +8,7 @@
           <label for="username" style="margin-left: 10px">账户</label>
           <el-input
             id="username"
-            class="el-input"
+            class="inputName"
             placeholder="请输入账户"
             v-model="input"
             clearable>
@@ -19,7 +19,8 @@
           <el-input id="password"
                     placeholder="请输入密码"
                     v-model="inputPassword"
-                    show-password>
+                    show-password
+                    class="el-input">
 
           </el-input>
         </div>
@@ -60,10 +61,8 @@
           this.$toast.show('输入不能为空')
         }
 
-        if(this.input !== '' && this.inputPassword === ''){
-          this.$toast.show('密码不能为空')
 
-        }
+
       }
     },
     mounted() {
@@ -73,6 +72,7 @@
 </script>
 
 <style scoped>
+
   .user-load-nav{
     background-color: var(--color-tint);
     font-size: 18px;

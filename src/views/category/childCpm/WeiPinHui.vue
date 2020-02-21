@@ -8,7 +8,13 @@
       ></zou-ma-d>
 
       <cate-good-list slot="center" >
-        <span  class="phone-recommend">手机推荐</span>
+        <span  class="recommend-left">手机推荐</span>
+        <span class="recommend-right">
+        <svg class="icon icon-paihang" aria-hidden="true">
+             <use xlink:href="#icon-paihang"></use>
+        </svg>
+            排行榜
+        </span>
 
         <cate-good-list-item v-for="item in phoneData">
           <a :href="item.link"slot="img">
@@ -22,7 +28,13 @@
 
 
       <cate-good-list slot="bottom" >
-        <span class="computer-recommend">电脑推荐</span>
+        <span class="recommend-left">电脑推荐</span>
+        <span class="recommend-right">
+        <svg class="icon icon-paihang" aria-hidden="true">
+             <use xlink:href="#icon-paihang"></use>
+        </svg>
+            排行榜
+        </span>
 
         <cate-good-list-item v-for="item in computerData">
           <a :href="item.link"slot="img">
@@ -34,7 +46,10 @@
 
       </cate-good-list>
 
+
+
     </category-right>
+
   </div>
 </template>
 
@@ -76,21 +91,8 @@
 </script>
 
 <style scoped>
-.phone-recommend{
-  position: absolute;
-  top: -6px;
-  left: -10px;
 
 
-}
 
-  .computer-recommend{
-    position: absolute;
-    top: -6px;
-    left: -10px;
-  }
-  .zou-ma-d {
-
-  }
 
 </style>
