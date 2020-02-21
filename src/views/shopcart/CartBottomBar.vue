@@ -87,7 +87,7 @@
 .bottom-menu{
     width: 100%;
     position: fixed;
-    bottom: 50px;
+    bottom: 52px;
     background-color: #eee;
     display: flex;
 

@@ -4,6 +4,7 @@
       <div slot="center">购物车</div>
     </nav-bar>
 
+
     <cart-list v-show="isUserLoad"></cart-list>
     <cart-bottom-bar v-show="isUserLoad"></cart-bottom-bar>
 

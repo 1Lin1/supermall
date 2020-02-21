@@ -48,6 +48,9 @@
     color: var(--color-tint);
   }
 
+  span{
+    font-size: 20px;
+  }
   .active span{
     border-bottom: 3px solid var(--color-tint);
     padding: 8px;

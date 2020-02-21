@@ -79,7 +79,7 @@
   .goods-item {
     padding-bottom: 40px;
     position: relative;
-
+    margin-top: 5px;
     width: 46%;
   }
 
@@ -92,7 +92,7 @@
   .goods-info {
     font-size: 12px;
     position: absolute;
-    bottom: 5px;
+    bottom: -5px;
     left: 0;
     right: 0;
     overflow: hidden;

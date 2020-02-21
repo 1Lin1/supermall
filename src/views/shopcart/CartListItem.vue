@@ -13,11 +13,31 @@
 
     <div class="item-info">
       <span class="title">{{itemInfo.title}}</span>
-      <el-button
-        class="remove-shop-cart"
-        @click="btnRemoveShop(itemInfo.pid)"
-        type="danger" round
-      ><span class="remove-span">移除</span></el-button>
+
+      <!-- 小对话框 -->
+      <button type="button"
+              class="btn btn-danger remove-shop-cart"
+              data-toggle="modal"
+              data-target="#mySmModal">
+        <span class="remove-span">移除</span>
+      </button>
+
+      <div class="modal fade" id="mySmModal" >
+        <div class="modal-dialog modal-sm">
+          <div class="modal-content">
+            <div class="modal-body" style="text-align: center">
+              <h3>确认将该商品移出购物车吗？</h3>
+            </div>
+            <div class="modal-footer ">
+              <div class="model-btn">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-danger"  @click="btnRemoveShop(itemInfo.pid)" data-dismiss="modal">确定</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
 
       <div class="item-base">
         <span class="newPrice"> {{itemInfo.newPrice |filterPrice}}</span>
@@ -30,10 +50,13 @@
 </template>
 
 <script>
+
+
   import CheckButton from "../../components/content/checkbutton/CheckButton";
   export default {
     name: "CartListItem",
     components: { CheckButton},
+    inject:['reload'],
     props:{
       itemInfo:Object,
       default(){
@@ -52,10 +75,9 @@
 
       // 移除购物车
       btnRemoveShop(pid){
-
         console.log('btnRemove' + pid);
         this.$store.dispatch('removeShop',pid).then(res =>{
-          console.log(res);
+          this.$toast.show(res,2000);
         })
       }
       // checkChange(){
@@ -84,6 +106,10 @@
 </script>
 
 <style scoped>
+
+  .model-btn{
+    text-align: center;
+  }
   .remove-span{
     font-size: 15px;
     position: relative;
