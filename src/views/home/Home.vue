@@ -162,9 +162,9 @@
 
       swipperImageLoad(){
         console.log('swipperImageLoad');
-        this.tabControlOffset = 520;
-        // this.tabControlOffset = this.$refs.tabcontrol1.$el.offsetTop;
-        // console.log(this.$refs.tabcontrol1.$el.offsetTop);
+        // this.tabControlOffset = 520;
+        this.tabControlOffset = this.$refs.tabcontrol1.$el.offsetTop;
+        console.log(this.$refs.tabcontrol1.$el.offsetTop);
       },
 
 

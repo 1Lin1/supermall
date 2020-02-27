@@ -62,7 +62,6 @@
   }
   .left-image img{
 
-    margin-top: 10px;
     margin-left: 10px;
   }
   .titles{

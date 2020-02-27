@@ -89,8 +89,8 @@
     width: 100%;
   }
   .info-price img{
-    padding-top: 3px;
     max-width: 5%;
+    padding-bottom: 3px;
   }
 
   .activeCollect{

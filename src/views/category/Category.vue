@@ -82,6 +82,7 @@
 <style scoped>
   .wrapper{
     height: 100vh;
+    width: 100vw;
     /*background-color: red;*/
   }
   .nav-bar{

@@ -66,7 +66,7 @@
     width: 20%;
 
     position: absolute;
-    bottom: 56px;
+    bottom: 52px;
     top:45px;
     left: 0;
   }
