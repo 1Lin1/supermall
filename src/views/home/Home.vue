@@ -24,7 +24,7 @@
       <home-recommend :recommends="recommends"></home-recommend>
       <feature-view></feature-view>
       <tab-control
-        :titles="['流行','精选','潮流']"
+        :titles="['流行','新款','潮流']"
         @tabClick="tabClick"
         ref="tabcontrol1"
       ></tab-control>
