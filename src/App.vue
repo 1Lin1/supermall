@@ -58,4 +58,6 @@ export default {
   .maintab{
     z-index: 100000;
   }
+
+
 </style>

@@ -5,9 +5,14 @@
     </nav-bar>
 
 
-    <cart-list v-show="isUserLoad"></cart-list>
-    <cart-bottom-bar v-show="isUserLoad"></cart-bottom-bar>
+    <div v-if="isUserLoad">
+      <cart-list v-show="isUserLoad"></cart-list>
+      <cart-bottom-bar v-show="isUserLoad"></cart-bottom-bar>
+    </div>
 
+    <div v-else>
+      <h1 class="warn-load">请先登录 亲~</h1>
+    </div>
 
   </div>
 
@@ -58,7 +63,11 @@
   .shop-cart{
     height: 100vh;
   }
-
+.warn-load{
+  text-align: center;
+  position: relative;
+  top: 20rem;
+}
   /*.content{*/
   /*  height: calc(100% - 100px);*/
   /*  !*height: 100%;*!*/

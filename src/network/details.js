@@ -22,7 +22,6 @@ export class Goods {
     this.company = itemInfo.company;
     this.saleManPhone = itemInfo.saleManPhone;
     this.shopName = itemInfo.shopName;
-
     this.topImage = itemInfo.topImage[0];
   }
 }

@@ -44,9 +44,7 @@
   .tabControl-item {
     flex: 1;
   }
-  .active{
-    color: var(--color-tint);
-  }
+
 
   span{
     font-size: 20px;

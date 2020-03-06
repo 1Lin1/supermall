@@ -25,36 +25,49 @@
         pullUpLoad: {
           type:Boolean,
           default:false,
-        }
+        },
+
+
       }
     },
 
     mounted() {
-          // ref绑定的vue组件上 取到的是一个vue子组件
-          //ref绑定在普通元素上 取到的是一个元素
-          this.scroll = new BScroll(this.$refs.wrapper,{
-            // 是否触发bscroll点击事件
-            click:true,
+      // ref绑定的vue组件上 取到的是一个vue子组件
+      //ref绑定在普通元素上 取到的是一个元素
+      this.scroll = new BScroll(this.$refs.wrapper,{
+        // 是否触发bscroll点击事件
+        click:true,
 
-            // 加载
-            pullUpLoad:this.pullUpLoad,
-            probeType: this.probeType,
+        // 加载
+        pullUpLoad: {
+          threshold: -30
+        },
+        probeType: this.probeType,
+
+        // 下拉加载
+        // pullDownRefresh:true
+
 
       })
 
 
-       this.scroll.on('scroll',(position =>{
+      this.scroll.on('scroll',(position =>{
         this.$emit('scrollPosition',position)
       }))
 
 
-    if(this.pullUpLoad){
-      this.scroll.on('pullingUp',() => {
-        this.$emit('pullingUpload')
-        this.scroll.finishPullUp()
 
-      })
-    }
+
+      if(this.pullUpLoad){
+        this.scroll.on('pullingUp',() => {
+          this.$emit('pullingUpload')
+          this.scroll.finishPullUp();
+
+        })
+
+
+      }
+
 
 
     },

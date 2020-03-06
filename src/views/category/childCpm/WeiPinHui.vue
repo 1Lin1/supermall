@@ -67,7 +67,8 @@
       return{
         phoneData:[],
         computerData:[],
-        topImageData:[]
+        topImageData:[],
+
       }
     },
     methods:{
@@ -81,7 +82,9 @@
         getTopImage('weipinhui').then(res =>{
           this.computerData = res[0].computer;
         })
-      }
+      },
+
+
     },
     created() {
       this.getTopImage();

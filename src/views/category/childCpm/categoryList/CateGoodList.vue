@@ -1,7 +1,6 @@
 <template>
   <div class="cate-good-list" >
 
-
     <slot >
 
     </slot>

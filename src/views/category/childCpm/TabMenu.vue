@@ -7,7 +7,9 @@
            @click="menuItemClick(index,item.path)"
            :path="item.path"
           >
-        {{item.name}}
+        <span>
+          {{item.name}}
+        </span>
       </div>
     </div>
   </scroll>
@@ -43,7 +45,7 @@
       menuItemClick(index,path){
         this.currentIndex = index;
         // 把路由发给父组件
-        this.$emit('menuItemClick',path)
+        this.$emit('menuItemClick',path, this.currentIndex)
 
         if(this.$route.path != path)
          {
@@ -79,14 +81,27 @@
 
     border-bottom: 2px solid #eeeeee;
     border-right: 1px solid #eeeeee;
+
+    position: relative;
   }
 
-  .active{
-    text-align: center;
-    color:var(--color-tint);
-    font-size:16px ;
-    font-weight: bolder;
-    background-color: #ffffff;
-    border-left: 2px solid var(--color-tint);
+  .active>span:before{
+    content: '';
+    position: absolute;
+    left: 0;
+
+
+    top:25%;
+    width: 5%;
+    height: 50%;
+    background:linear-gradient(180deg,red, #FFFFFF);
   }
+  /*.active{*/
+  /*  text-align: center;*/
+  /*  color:var(--color-tint);*/
+  /*  font-size:16px ;*/
+  /*  font-weight: bolder;*/
+  /*  background-color: #ffffff;*/
+  /*  border-left: 2px solid var(--color-tint);*/
+  /*}*/
 </style>

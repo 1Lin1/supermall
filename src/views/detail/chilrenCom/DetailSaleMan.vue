@@ -32,19 +32,21 @@
   .detail-sale-man{
     display: flex;
     justify-content: space-around;
+    align-content: center;
 
+    margin: 5px 0;
+    padding:30px 0;
     color: black;
-
-    margin-top: 20px;
-    margin-bottom: 10px;
-    border-bottom: 2px solid #eeeeee;
+    height: 100%;
+    border: 1px solid #eee;
+    box-shadow: 3px 3px 10px #eee;
   }
 
   .shopInfo{
     margin-top: 13px;
   }
   .shopInfo img{
-    margin-left: 40px;
+    margin-left: 30px;
     max-width: 25%;
   }
 

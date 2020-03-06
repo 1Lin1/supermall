@@ -9,7 +9,7 @@
       :titles="['流行','精选','潮流']"
       @tabClick="tabClick"
       ref="tabcontrol2"
-      v-show="isTabFixed"
+      v-if="isTabFixed"
     ></tab-control>
 
     <scroll class="content"
@@ -24,7 +24,7 @@
       <home-recommend :recommends="recommends"></home-recommend>
       <feature-view></feature-view>
       <tab-control
-        :titles="['流行','新款','潮流']"
+        :titles="['流行','精选','潮流']"
         @tabClick="tabClick"
         ref="tabcontrol1"
       ></tab-control>
@@ -162,8 +162,8 @@
 
       swipperImageLoad(){
         console.log('swipperImageLoad');
-        // this.tabControlOffset = 520;
-        this.tabControlOffset = this.$refs.tabcontrol1.$el.offsetTop;
+        this.tabControlOffset = 520;
+        // this.tabControlOffset = this.$refs.tabcontrol1.$el.offsetTop;
         console.log(this.$refs.tabcontrol1.$el.offsetTop);
       },
 
