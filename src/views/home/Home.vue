@@ -3,13 +3,12 @@
     <nav-bar class="home-nav"><div slot="center">首页</div></nav-bar>
 
 
-    <!--    //用于向上拉时显示  附着在标题下-->
     <tab-control
       class="tab-control"
       :titles="['流行','精选','潮流']"
       @tabClick="tabClick"
       ref="tabcontrol2"
-      v-if="isTabFixed"
+      v-show="isTabFixed"
     ></tab-control>
 
     <scroll class="content"
@@ -19,15 +18,20 @@
             :pull-up-load="true"
             @pullingUpload="pullingUpload"
     >
+
+
       <!--      <home-swiper :banners="banners" @swipperImageLoad="swipperImageLoad"></home-swiper>-->
       <home-lun-bo :banners="banners"  @swipperImageLoad="swipperImageLoad"></home-lun-bo>
       <home-recommend :recommends="recommends"></home-recommend>
       <feature-view></feature-view>
+
       <tab-control
         :titles="['流行','精选','潮流']"
         @tabClick="tabClick"
         ref="tabcontrol1"
       ></tab-control>
+
+
       <goods-list
         class="good-list"
         :goods="showGoods"
@@ -201,6 +205,7 @@
             this.currentType = 'sell';
             break;
         }
+
         this.$refs.tabcontrol1.currentIndex = index;
         this.$refs.tabcontrol2.currentIndex = index;
       },

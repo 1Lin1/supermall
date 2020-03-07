@@ -40,7 +40,7 @@
 
         // 加载
         pullUpLoad: {
-          threshold: -30
+          threshold: -20
         },
         probeType: this.probeType,
 

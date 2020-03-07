@@ -23,8 +23,8 @@
       <detail-params ref="detailParams"></detail-params>
 
       <!--      获取推荐商品-->
-      <div class="recommend-goods">
-        <h1>推荐区</h1>
+      <div class="recommend-title">
+        <h1 class="recommend-goods">推荐区</h1>
       </div>
       <goods-list ref="goodList"
                   class="good-list"
@@ -229,15 +229,37 @@
     left: 0;
     right: 0;
   }
+
+  .recommend-title{
+    position: relative;
+  }
+
   .recommend-goods{
     text-align: center;
-    margin-top: 100px;
+    margin: 5rem 0;
+  }
 
-    border-bottom: 2px solid #eeeeee;
+  .recommend-goods:before{
+    content: '';
+    height: 1px;
+    width: 120px;
+    background-color: #EEEEEE;
+    position: absolute;
+    left: 0;
+    top: 1.5rem;
+  }
+
+  .recommend-goods:after{
+    content: '';
+    height: 1px;
+    width: 120px;
+    background-color: #EEEEEE;
+    position: absolute;
+    right: 0;
+    top: 1.5rem;
   }
 
   .detail-sale-man{
-    margin-top: 80px;
     margin-bottom: 80px;
   }
 </style>

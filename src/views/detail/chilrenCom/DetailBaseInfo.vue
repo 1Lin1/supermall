@@ -72,8 +72,7 @@
 
 <style scoped>
   .base-info{
-    margin-top: 25px;
-    margin-bottom: 20px;
+    margin-top: 3rem;
     padding: 0 8px;
     color: #999;
 
@@ -93,9 +92,6 @@
     padding-bottom: 3px;
   }
 
-  .activeCollect{
-    /*background-color: red;*/
-  }
 
   .n-price {
     font-size: 24px;

@@ -1,7 +1,8 @@
 <template>
     <div id="list">
       <div v-for="(item, index) in listData" :key="index" class="item">
-        <span class="icon">
+        <span class="icon  ">
+          <svg :fill="item.iconColor"><use :xlink:href="item.icon"></use></svg>
         </span>
         <div class="info">{{item.info}}</div>
       </div>

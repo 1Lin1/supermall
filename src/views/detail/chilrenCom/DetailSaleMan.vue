@@ -34,7 +34,6 @@
     justify-content: space-around;
     align-content: center;
 
-    margin: 5px 0;
     padding:30px 0;
     color: black;
     height: 100%;
@@ -51,7 +50,7 @@
   }
 
   .company{
-    margin-top: 3px;
+    margin-top: 2px;
   }
 
 </style>

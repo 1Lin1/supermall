@@ -14,12 +14,32 @@
 <style scoped>
   .params{
     text-align: center  ;
-    border-bottom: 2px solid #eeeeee;
 
-    margin-bottom: 100px;
+    margin: 5rem 0;
+
+  }
+
+  .params:before{
+    content: '';
+    height: 1px;
+    width: 120px;
+    background-color: #EEEEEE;
+    position: absolute;
+    left: 0;
+    top: 1rem;
+  }
+
+  .params:after{
+    content: '';
+    height: 1px;
+    width: 120px;
+    background-color: #EEEEEE;
+    position: absolute;
+    right: 0;
+    top: 1rem;
   }
   .detail-params{
-    margin-top: 100px;
+    position: relative;
     width: 100%;
   }
   .detail-params img{

@@ -1,22 +1,6 @@
 import Vue from 'vue'
 import VueRouter from "vue-router";
-import WeiPinHui from "../views/category/childCpm/WeiPinHui";
-import NanZhuang from "../views/category/childCpm/NanZhuang";
-import NvZhuang from "../views/category/childCpm/NvZhuang";
-import NanXie from "../views/category/childCpm/NanXie";
-import NvXie from "../views/category/childCpm/NvXie";
-import Phone from "../views/category/childCpm/Phone";
-import Computer from "../views/category/childCpm/Computer";
-import Food from "../views/category/childCpm/Food";
-import Drink from "../views/category/childCpm/Drink";
-import Baby from "../views/category/childCpm/Baby";
-import Medicine from "../views/category/childCpm/Medicine";
-import Sport from "../views/category/childCpm/Sport";
-import Restaurant from "../views/category/childCpm/Restaurant";
-import Flower from "../views/category/childCpm/Flower";
-import JiaJu from "../views/category/childCpm/JiaJu";
-import UserLoad from "../views/userload/UserLoad";
-import PowerHome from "../views/category/childCpm/PowerHome";
+
 
 Vue.use(VueRouter)
 
@@ -32,6 +16,27 @@ const Category = () => import('../views/category/Category')
 const Shopcart = () => import('../views/shopcart/Shopcart')
 const Profile = () => import('../views/profile/Profile')
 const Detail = () => import('../views/detail/Detail')
+
+const WeiPinHui = () => import('../views/category/childCpm/WeiPinHui')
+const NanZhuang = () => import('../views/category/childCpm/NanZhuang')
+const NvZhuang = () => import('../views/category/childCpm/NvZhuang')
+const NanXie = () => import('../views/category/childCpm/NanXie')
+const NvXie = () => import('../views/category/childCpm/NvXie')
+const Phone = () => import('../views/category/childCpm/Phone')
+const Computer = () => import('../views/category/childCpm/Computer')
+const Food = () => import('../views/category/childCpm/Food')
+const Drink = () => import('../views/category/childCpm/Drink')
+const Baby = () => import('../views/category/childCpm/Baby')
+const Medicine = () => import('../views/category/childCpm/Medicine')
+const Sport = () => import('../views/category/childCpm/Sport')
+const Restaurant = () => import('../views/category/childCpm/Restaurant')
+const Flower = () => import('../views/category/childCpm/Flower')
+const JiaJu = () => import('../views/category/childCpm/JiaJu')
+const UserLoad = () => import('../views/userload/UserLoad')
+const PowerHome = () => import('../views/category/childCpm/PowerHome')
+
+
+
 
 const routes=[
   {
