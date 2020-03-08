@@ -34,7 +34,7 @@
         if(this.$store.state.isUserLoad){
           this.$emit('addToCart')
         }else{
-          this.$router.push('/userload');
+          this.$router.push('/login');
           this.$toast.show('亲 请先登录');
         }
 

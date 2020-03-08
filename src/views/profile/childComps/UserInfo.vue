@@ -10,7 +10,7 @@
         <slot name="user-nickname">
           <div v-if="!isActive">
             <span @click="loadClick">登录/</span>
-            <span>注册</span>
+            <span @click="registerClick">注册</span>
           </div>
 
           <div v-else>
@@ -46,12 +46,16 @@
     },
     methods:{
       loadClick(){
-        this.$router.push('/userload')
+        this.$router.push('/login')
       },
       loadOut(){
         this.$toast.show('退出成功~')
         this.$store.state.isUserLoad = false;
         this.isActive = false;
+      },
+      registerClick(){
+        this.$router.push('/register')
+
       }
     }
 	}

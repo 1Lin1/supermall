@@ -227,6 +227,50 @@
       "cfav": "2"
     },
     {
+      "type": "new",
+      "title": "miuco复古高领露肩打底针织衫女+不规则鱼尾裙半身裙套装2020春装",
+      "descmessage": "新款上市",
+      "pid": "201",
+      "image": "https://img.alicdn.com/imgextra/https://img.alicdn.com/imgextra/i4/2932942277/O1CN01xY8XCw1SguPw0m55V_!!2932942277.jpg_430x430q90.jpg",
+      "price": "799",
+      "oldPrice": "899",
+      "count": "3",
+      "cfav": "2"
+    },
+    {
+      "type": "new",
+      "title": "萝卜家撞色字母长袖T恤女内搭打底衫女秋冬2019洋气短款上衣冬季",
+      "descmessage": "新款上市",
+      "pid": "202",
+      "image": "https://img.alicdn.com/imgextra/i1/690679191/O1CN01QuxmH22HlWoMFoUaS_!!690679191.jpg",
+      "price": "799",
+      "oldPrice": "899",
+      "count": "3",
+      "cfav": "2"
+    },
+    {
+      "type": "sell",
+      "title": "miuco褶皱木耳边喇叭袖口钉珠卫衣+毛呢半裙套装女装2020春新款",
+      "descmessage": "新款上市",
+      "pid": "301",
+      "image": "https://img.alicdn.com/imgextra/https://img.alicdn.com/imgextra/i2/2932942277/O1CN01kJsCSG1SguQ8WOoWO_!!2932942277.jpg_430x430q90.jpg",
+      "price": "299",
+      "oldPrice": "399",
+      "count": "1",
+      "cfav": "2"
+    },
+    {
+      "type": "sell",
+      "title": "MIUCO喇叭袖波点网纱衬衫+钉珠V领收腰背心裙连衣裙女2020春新款k",
+      "descmessage": "新款上市",
+      "pid": "302",
+      "image": "https://img.alicdn.com/imgextra/https://img.alicdn.com/imgextra/i3/2932942277/O1CN01DIRibi1SguQ4PG2hN_!!2932942277.jpg_430x430q90.jpg",
+      "price": "799",
+      "oldPrice": "899",
+      "count": "3",
+      "cfav": "2"
+    },
+    {
       "type": "sell",
       "title": "miuco褶皱木耳边喇叭袖口钉珠卫衣+毛呢半裙套装女装2020春新款",
       "descmessage": "新款上市",
@@ -1280,12 +1324,14 @@
   ],
   "userInfo": [
     {
-      "id": 10001,
-      "name": "林洹"
+      "username": "123@qq.com",
+      "passWord": "1321122a",
+      "id": 1
     },
     {
-      "id": 20001,
-      "name": "雨恬"
+      "username": "494719062@qq.com",
+      "passWord": "1321122a",
+      "id": 2
     }
   ],
   "shopCart": [

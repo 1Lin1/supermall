@@ -22,6 +22,7 @@ Vue.use(VueLazyload,{
   loading:require('./assets/img/common/collect.svg')
 })
 
+// 全局组件
 Vue.prototype.$bus = new Vue()
 
 new Vue({

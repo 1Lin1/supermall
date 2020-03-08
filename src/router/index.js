@@ -32,8 +32,14 @@ const Sport = () => import('../views/category/childCpm/Sport')
 const Restaurant = () => import('../views/category/childCpm/Restaurant')
 const Flower = () => import('../views/category/childCpm/Flower')
 const JiaJu = () => import('../views/category/childCpm/JiaJu')
-const UserLoad = () => import('../views/userload/UserLoad')
 const PowerHome = () => import('../views/category/childCpm/PowerHome')
+const UserLoad = () => import('../views/userload/UserLoad')
+
+
+const Login = () => import('../views/userload/Login')
+const Register = () => import('../views/userload/Register')
+
+
 
 
 
@@ -137,6 +143,14 @@ const routes=[
   {
     path:'/userload',
     component: UserLoad
+  },
+  {
+    path:'/login',
+    component: Login
+  },
+  {
+    path:'/register',
+    component: Register
   },
 
 ]

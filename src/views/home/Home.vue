@@ -17,6 +17,7 @@
             @scrollPosition="scrollPosition"
             :pull-up-load="true"
             @pullingUpload="pullingUpload"
+            ::threshold="10"
     >
 
 
@@ -190,7 +191,7 @@
       backToTop(){
         // 运用ref取到scroll组件调用里面的方法 内部封装
         this.$refs.ScrollVue.scrollTo(0,0,500)
-        this.$toast.show('恬恬可爱极了~',3000)
+        this.$toast.show('回到顶部~',800)
       },
       // 点击事务事件
       tabClick(index){

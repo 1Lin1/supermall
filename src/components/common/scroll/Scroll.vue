@@ -14,6 +14,20 @@
   import BScroll from 'better-scroll'
   export default {
     name: "Scroll",
+    props:{
+      threshold:{
+        type:Number,
+        default() {
+          return 0
+        }
+      },
+      pullUpLoad: {
+        type:Boolean,
+        default() {
+          return false;
+        }
+      },
+    },
     data(){
       return{
         scroll:null,
@@ -22,10 +36,7 @@
           type:Number,
           default:0,
         },
-        pullUpLoad: {
-          type:Boolean,
-          default:false,
-        },
+
 
 
       }
@@ -40,7 +51,7 @@
 
         // 加载
         pullUpLoad: {
-          threshold: -20
+          threshold: this.threshold,
         },
         probeType: this.probeType,
 

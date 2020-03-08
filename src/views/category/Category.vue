@@ -14,6 +14,7 @@
               @pullingUpload="pullingUpload"
               ref="ScrollVue"
               :pull-up-load="true"
+              :threshold="-43"
       >
         <keep-alive>
           <router-view/>
