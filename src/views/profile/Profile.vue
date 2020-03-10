@@ -13,7 +13,8 @@
     <div class="account">
       <div class="account-item">
         <div class="number">
-          <span class="balance">0.00</span>元
+          <span v-if="isUserLoad"><span  class="balance">{{getCurrentMoney|filterPrice}}</span>元</span>
+          <span v-else><span  class="balance">0.00</span>元</span>
         </div>
         <div class="account-info">我的余额</div>
       </div>
@@ -44,8 +45,16 @@ import NavBar from 'components/common/navbar/NavBar';
 import UserInfo from './childComps/UserInfo';
 import ListView from './childComps/ListView';
 
+import { mapGetters } from 'vuex';
+
+
 export default {
   name: 'Profile',
+  components:{
+    NavBar,
+    UserInfo,
+    ListView
+  },
   data() {
     return {
         orderList: [
@@ -66,12 +75,14 @@ export default {
   methods:{
 
   },
+  computed:{
+    ...mapGetters(['getCurrentMoney','isUserLoad']),
 
-
-  components:{
-    NavBar,
-    UserInfo,
-    ListView
+  },
+  filters:{
+    filterPrice(price){
+      return  Number(price).toFixed(2);
+    }
   }
  }
 </script>

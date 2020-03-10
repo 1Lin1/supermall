@@ -72,8 +72,13 @@
   import NavBar from "components/common/navbar/NavBar";
   import {loadUser} from "../../network/login";
 
-  export default {
+  import sha1 from 'js-sha1';
+  import cookie from 'js-cookie';
+  import {setUserName_Token,setPwd_Token} from "../../app/index";
 
+
+
+  export default {
     components:{
       NavBar
     },
@@ -81,12 +86,17 @@
       var validateUserName = (rule, value, callback) => {
         if (value === '') {
           callback(new Error('账号不能为空'));
-        } else if(validateEmail(value)){
-          callback(new Error('邮箱格式有误'));
+          this.isDisableButton  = true;
 
+        } else if(validateEmail(value)){
+          this.isDisableButton  = true;
+
+          callback(new Error('邮箱格式有误'));
         }
         else {
           callback();
+          this.isDisableButton  = false;
+
         }
       };
       var validatePass2 = (rule, value, callback) => {
@@ -94,9 +104,7 @@
           callback(new Error('请输入密码'));
         } else if(validatePass(value)){
           callback(new Error('请输入6-20位 字母加数字 密码'));
-          this.isDisableButton  = true;
         } else {
-          this.isDisableButton  = false;
           callback();
         }
       };
@@ -135,7 +143,6 @@
           // ]
         },
         isDisableButton:true,
-        isDisableGetCode:true,
 
       };
     },
@@ -144,13 +151,22 @@
         this.$refs[formName].validate((valid) => {
           if (valid) {
             console.log('登录用户' + this.ruleForm.username + this.ruleForm.checkPass);
-            loadUser(this.ruleForm.username,this.ruleForm.checkPass).then((res) => {
+            loadUser(this.ruleForm.username,sha1(this.ruleForm.checkPass)).then((res) => {
               console.log(res.length);
               if(res.length !==0){
                 this.$toast.show('登录成功');
 
                 // 同时设置登录状态并跳转
                 this.$store.state.isUserLoad = true;
+                //vuex管理token
+                this.$store.dispatch('addUserName_Token',res[0].username);
+                this.$store.dispatch('addPwd_Token',res[0].passWord);
+
+                // cookie管理token
+                setUserName_Token(res[0].username);
+                setPwd_Token(res[0].passWord);
+
+
                 this.$router.push('/home');
               }else{
                 this.$toast.show('密码错误')
@@ -159,7 +175,7 @@
               }
             })
           } else {
-            alert('登录失败 密码错误 请重新登录')
+            this.$toast.show('登录失败 密码错误 请重新登录',1500);
             console.log('error submit!!');
             return false;
           }
@@ -169,37 +185,26 @@
 
       // 跳转注册页面
       toRegister(){
-        this.$router.push('/register')
+        this.$router.push('/register');
       },
       // resetForm(formName) {
       //   this.$refs[formName].resetFields();
       // },
 
-      // getSureCode(){
-      //   console.log('获取验证码');
-      //   if(!this.ruleForm.username){
-      //     this.$message({
-      //       showClose: true,
-      //       message: '邮箱不能为空',
-      //       type: 'error',
-      //       center: true
-      //     });
-      //
-      //   }else if(!this.ruleForm.checkPass){
-      //     this.$message({
-      //       showClose: true,
-      //       message: '密码不能为空',
-      //       type: 'error',
-      //       center: true
-      //     });
-      //
-      //   }
-      // }
 
+      // 重置表单
+      resetForm() {
+        this.$refs['ruleForm'].resetFields();
+      }
 
     },
-    mounted() {
+    activated() {
+      if(!this.$store.state.isUserLoad){
+        this.$toast.show('请先进行登录',1500);
+      }
 
+      // 重置表单
+      this.resetForm();
     },
     watch: {
       // 'ruleForm.mobilePass': function (newValue, oldVal) {

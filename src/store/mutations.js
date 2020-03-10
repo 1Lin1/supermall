@@ -23,6 +23,25 @@ export  default {
       }
     })
     console.log('delete' + id);
+  },
+
+  setPwd_Token(state,payload){
+    state.pass_token = payload;
+  },
+  setUserName_Token(state,payload){
+    state.userName_token = payload;
+  },
+
+
+  // 处理登录状态
+  setUserLoadStatus(state,value){
+    state.isUserLoad = value;
+  },
+
+
+  //改变余额
+  setCurrentMoney(state,value){
+    state.currentMoney = value;
   }
 
 

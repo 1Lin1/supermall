@@ -9,7 +9,10 @@ Vue.use(Vuex)
 
 const state ={
   shopCart:[],
+  currentMoney:10000,
   isUserLoad: false,
+  pass_token:'',
+  userName_token:'',
 }
 //2.创建store
 const store = new Vuex.Store({

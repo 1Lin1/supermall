@@ -8,6 +8,8 @@ import VueLazyload from "vue-lazyload";
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 
+// 导入全局导航守卫
+import './router/guard.js'
 
 Vue.config.productionTip = false
 Vue.use(ElementUI);

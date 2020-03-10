@@ -41,9 +41,6 @@ const Register = () => import('../views/userload/Register')
 
 
 
-
-
-
 const routes=[
   {
     path:'',

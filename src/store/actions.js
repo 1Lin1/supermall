@@ -1,4 +1,5 @@
 import {ADD_CONUTER,ADD_SHOPCART} from "./mutations-type";
+import store from "./index";
 
 export  default {
   addCart(context,payload){
@@ -62,6 +63,34 @@ export  default {
       console.log(err);
     })
 
-  }
+  },
 
+  // 处理cookie相关
+  addPwd_Token(context,payload){
+    return new Promise((resolve,reject) => {
+      if(payload === ''){
+        context.commit('setPwd_Token',payload);
+        resolve('成功退出')
+      }else{
+        context.commit('setPwd_Token',payload);
+      }
+    })
+  },
+  addUserName_Token(context,payload){
+    context.commit('setUserName_Token',payload)
+  },
+
+  // 处理登录状态
+  changeUserLoadStatus(context,payload){
+    context.commit('setUserLoadStatus',payload)
+  },
+
+  //修改当前余额
+  setCurrentMoney(context,payload){
+    return new Promise((resolve,reject) => {
+      context.commit('setCurrentMoney',payload)
+      resolve('结算成功')
+    })
+
+  }
 }

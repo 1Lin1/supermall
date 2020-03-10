@@ -7,7 +7,7 @@
 
     <div v-if="isUserLoad">
       <cart-list v-show="isUserLoad"></cart-list>
-      <cart-bottom-bar v-show="isUserLoad"></cart-bottom-bar>
+      <cart-bottom-bar v-show="CartLength"></cart-bottom-bar>
     </div>
 
     <div v-else>

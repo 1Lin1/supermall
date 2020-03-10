@@ -29,6 +29,10 @@
 </template>
 
 <script>
+
+  import {removeUserName_Token,removePwd_Token} from "../../../app/index";
+  import { mapGetters } from 'vuex';
+
 	export default {
 		name: "UserInfo",
     data(){
@@ -49,7 +53,15 @@
         this.$router.push('/login')
       },
       loadOut(){
-        this.$toast.show('退出成功~')
+
+        removeUserName_Token();
+        removePwd_Token();
+
+        this.$store.dispatch('addUserName_Token','');
+        this.$store.dispatch('addPwd_Token','').then(res => {
+          this.$toast.show('退出成功~')
+        });
+
         this.$store.state.isUserLoad = false;
         this.isActive = false;
       },

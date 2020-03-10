@@ -51,7 +51,7 @@
                            @click="getRegisterSureCode"
                            :disabled="isDisableGetCode"
 
-                >获取验证码</el-button>
+                >{{ruleForm.GetCodeText}}</el-button>
               </el-col>
 
             </el-row>
@@ -78,8 +78,9 @@
   import NavBar from "../../components/common/navbar/NavBar";
   import {registerUser} from '../../../src/network/register'
 
-  export default {
+  import  sha1 from 'js-sha1'
 
+  export default {
     components:{
       NavBar
 
@@ -134,6 +135,8 @@
           checkPass: '',
           checkPassAgain:'',
           mobilePass: '',
+          GetCodeText:'获取验证码',
+
         },
         rules: {
           username: [
@@ -161,13 +164,14 @@
           if (valid) {
             console.log(this.ruleForm.username);
 
-            registerUser(this.ruleForm.username,this.ruleForm.checkPass).then(res => {
+            registerUser(this.ruleForm.username,sha1(this.ruleForm.checkPass)).then(res => {
               this.$toast.show('注册成功 去登录吧~');
               this.$router.push('/login');
 
             })
           } else {
             console.log('error submit!!');
+            this.$toast.show('格式有误 请重新输入');
             return false;
           }
 
@@ -180,49 +184,54 @@
       // 获取注册验证码
       getRegisterSureCode(){
         if(!this.ruleForm.username){
-          this.$message({
-            showClose: true,
-            message: '邮箱不能为空',
-            type: 'error',
-            center: true
-          });
-
+         this.$toast.show('邮箱不能为空',1500);
         }else if(validateEmail(this.ruleForm.username)){
-          this.$message({
-            showClose: true,
-            message: '邮箱格式错误  请重新填入',
-            type: 'error',
-            center: true
-          });
+          this.$toast.show('格式有误 请重新填入',1500);
+
         }
         else if(!this.ruleForm.checkPass){
-          this.$message({
-            showClose: true,
-            message: '密码不能为空',
-            type: 'error',
-            center: true
-          });
-
+          this.$toast.show('密码不能为空',1500);
         }else if(!this.ruleForm.checkPassAgain){
-          this.$message({
-            showClose: true,
-            message: '确认密码不能为空',
-            type: 'error',
-            center: true
-          });
+          this.$toast.show('确认密码不能为空',1500);
+
+
 
         }else{
+          this.$toast.show('成功发送验证码',1500);
+
           this.isDisableGetCode = true;
+          this.timeInterval(60);
         }
+      },
+
+
+      // 验证码计时器
+      //点击获取倒计时
+      timeInterval(number){
+        let timer = number;
+        let myInterval = setInterval(() => {
+          this.ruleForm.GetCodeText = `发送中${timer}`;
+          timer --;
+          if(timer === -1){
+            this.ruleForm.GetCodeText = '重新发送';
+            this.isDisableGetCode = false;
+            clearInterval(myInterval);
+          }
+        },1000)
+      },
+      // 重置表单
+      resetForm() {
+        this.$refs['ruleForm'].resetFields();
       }
     },
-    mounted() {
-
+    activated() {
+      console.log('activated');
+      this.resetForm();
     },
     watch: {
       'ruleForm.mobilePass': function (newValue, oldVal) {
         let statusLength = newValue.toString().length;
-        if(this.ruleForm.username && this.ruleForm.checkPass && statusLength === 6){
+        if(this.ruleForm.username && this.ruleForm.checkPass && statusLength === 6 ){
           this.isDisableButton = false;
         }else {
           this.isDisableButton = true;

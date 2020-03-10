@@ -12,7 +12,7 @@
       <span class="total-price">合计:{{totalPrice | filterPrice}}</span>
     </div>
     <div class="calculate">
-      <span class="buy-product">去结算({{checkLength}})</span>
+      <span class="buy-product" @click="toCheckOutMoney">去结算({{checkLength}})</span>
     </div>
 
   </div>
@@ -40,6 +40,32 @@
 
         }
 
+      },
+
+      //结账
+      toCheckOutMoney(){
+       if(this.checkLength === 0){
+         this.$toast.show('请至少勾选一项商品',1500);
+       }else{
+
+         // console.log(this.$store.state.currentMoney);
+         let currentMoney = this.$store.state.currentMoney - this.totalPrice;
+
+         // 差值
+         this.$store.dispatch('setCurrentMoney',currentMoney).then(res => {
+
+           // 清掉购物车
+           console.log(this.checkGoods);
+           this.checkGoods.forEach(item => {
+             this.$store.dispatch('removeShop',item.pid);
+           })
+           this.$toast.show(res,1500);
+         });
+
+         console.log('余额还剩' + this.$store.state.currentMoney);
+       }
+
+
       }
     },
     mounted() {
@@ -59,6 +85,11 @@
       },
       checkLength(){
         return this.CartList.filter(item => item.checked).length;
+      },
+
+      //已勾选的商品
+      checkGoods(){
+        return this.CartList.filter(item => item.checked)
       },
       isSelectAll(){
 
