@@ -3,7 +3,7 @@ import {getPwd_Token,getUserName_Token,removePwd_Token,removeUserName_Token} fro
 import store from '../store/index'
 
 // 路由白名单
-const whiteRouter = ['/home'];
+const whiteRouter = [];
 
 router.beforeEach((to,from,next )=> {
 

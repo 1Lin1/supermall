@@ -4,7 +4,7 @@
       <check-button class="check-button"
                     :is-checked="isSelectAll"
                     @click.native="allCheckButton"
-                      ></check-button>
+      ></check-button>
       <span>全选</span>
 
     </div>
@@ -21,6 +21,8 @@
 <script>
   import CheckButton from "../../components/content/checkbutton/CheckButton";
   import { mapGetters } from 'vuex';
+
+  import {removeSingleShopCartCookie} from "../../app/index";
 
   export default {
     name: "CartBottomBar",
@@ -44,26 +46,31 @@
 
       //结账
       toCheckOutMoney(){
-       if(this.checkLength === 0){
-         this.$toast.show('请至少勾选一项商品',1500);
-       }else{
+        if(this.checkLength === 0){
+          this.$toast.show('请至少勾选一项商品',1500);
+        }else{
+          if(this.$store.state.isUserLoad){
+            // console.log(this.$store.state.currentMoney);
+            let currentMoney = this.$store.state.currentMoney - this.totalPrice;
 
-         // console.log(this.$store.state.currentMoney);
-         let currentMoney = this.$store.state.currentMoney - this.totalPrice;
+            // 差值
+            this.$store.dispatch('setCurrentMoney',currentMoney).then(res => {
 
-         // 差值
-         this.$store.dispatch('setCurrentMoney',currentMoney).then(res => {
+              // 清掉购物车
+              console.log(this.checkGoods);
+              this.checkGoods.forEach(item => {
+                this.$store.dispatch('removeShop',item.pid);
+                removeSingleShopCartCookie(item.pid);
+              })
+              this.$toast.show(res,1500);
+            });
 
-           // 清掉购物车
-           console.log(this.checkGoods);
-           this.checkGoods.forEach(item => {
-             this.$store.dispatch('removeShop',item.pid);
-           })
-           this.$toast.show(res,1500);
-         });
-
-         console.log('余额还剩' + this.$store.state.currentMoney);
-       }
+            console.log('余额还剩' + this.$store.state.currentMoney);
+          }else{
+            this.$toast.show('请先进行登录~',1500);
+            this.$router.push('/login');
+          }
+        }
 
 
       }
@@ -115,7 +122,7 @@
 </script>
 
 <style scoped>
-.bottom-menu{
+  .bottom-menu{
     width: 100%;
     position: fixed;
     bottom: 52px;
@@ -127,29 +134,29 @@
   }
 
   .check-content{
-      display: flex;
-      align-items: center;
-      margin-left: 10px;
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
   }
   .check-button {
-      width: 20px;
-      height: 20px;
-      line-height: 20px;
-      margin-right: 5px;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    margin-right: 5px;
   }
   .price {
     margin-left: 15px;
     font-size: 16px;
     color: #666;
   }
-.calculate{
-  position: absolute;
-  background-color: #ff1e32;
-  color: #eeeeee;
-  right: 20px;
+  .calculate{
+    position: absolute;
+    background-color: #ff1e32;
+    color: #eeeeee;
+    right: 20px;
 
-  /*border-bottom:2px solid #eeeeee;*/
-}
+    /*border-bottom:2px solid #eeeeee;*/
+  }
 
 
 </style>

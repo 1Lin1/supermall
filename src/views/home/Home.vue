@@ -75,6 +75,9 @@
 
   // 返回的是一个promise对象 所以直接用then就行
 
+  //若用户已登录 则重新打开网页 时 直接获取购物车cookie
+  import {getShopCartList, setShopCartList} from "../../app/index";
+
   export default {
     name: "Home",
     inject:['reload'],
@@ -114,6 +117,8 @@
       // let date = new Date(1535694719*1000)
       // console.log(formatDate(date, 'yyyy/MM/dd'));
 
+      //将关闭网页的购物车cookie直接返回复制给vuex
+      this.$store.state.shopCart = getShopCartList();
 
       this.getHomeMultidata();
 
@@ -122,7 +127,8 @@
       this.getHomeGoods('new');
       this.getHomeGoods('sell');
 
-      // this.getMySqlData();
+
+      this.isHaveShopCartCookie();
 
 
     },
@@ -144,7 +150,6 @@
 
     activated() {
 
-
       console.log('用户登录状态' + this.$store.state.isUserLoad);
 
       // 回到上次停留地方 同时刷新
@@ -161,17 +166,26 @@
       this.saveY = this.$refs.ScrollVue.scroll.y
     },
     methods:{
+
+      //判断是否含有cookie
+      isHaveShopCartCookie(){
+        if(getShopCartList()){
+          console.log('已经有购物车cookie');
+          this.$store.state.shopCart = getShopCartList();
+
+        }else{
+          //一创建就设置购物车cookie为空
+          setShopCartList([]);
+        }
+      },
       /***
        * 事件监听的办法
        */
 
       swipperImageLoad(){
-        console.log('swipperImageLoad');
         this.tabControlOffset = 520;
         // this.tabControlOffset = this.$refs.tabcontrol1.$el.offsetTop;
-        console.log(this.$refs.tabcontrol1.$el.offsetTop);
       },
-
 
       // 多个请求在一定时间内 集合成少个请求发送
       //防抖 分流

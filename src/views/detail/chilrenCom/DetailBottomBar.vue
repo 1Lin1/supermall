@@ -31,12 +31,16 @@
     methods: {
       addToCart() {
 
-        if(this.$store.state.isUserLoad){
-          this.$emit('addToCart')
-        }else{
-          this.$router.push('/login');
-          this.$toast.show('亲 请先登录');
-        }
+        // 不用登录就可以加购物车模式
+        this.$emit('addToCart')
+
+        // 需要登录才可以加购物车模式
+        // if(this.$store.state.isUserLoad){
+        //   this.$emit('addToCart')
+        // }else{
+        //   this.$router.push('/login');
+        //   this.$toast.show('亲 请先登录');
+        // }
 
 
 
@@ -48,12 +52,9 @@
         this.$router.push('/shopcart');
       }
     },
-    created() {
-      console.log('created');
-    },
+
     mounted() {
       //检测是否已登录 未登录则跳转登录界面
-
     }
   }
 </script>

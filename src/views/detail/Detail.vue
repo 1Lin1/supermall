@@ -10,7 +10,8 @@
             ref="ScrollVue"
             @scrollPosition="scrollPosition"
             :probeType="3"
-            @pullingUpload="pullingUpload">
+            @pullingUpload="pullingUpload"
+            :pull-up-load="true">
       <detail-swipper
         :topImage="topImage"
         ref="topSwiper"
@@ -60,6 +61,7 @@
   import {getHomeGoods} from "../../network/home";
 
   import {debounce} from "../../common/utils";
+  import {setShopCartList,getShopCartList} from "../../app/index";
 
   export default {
     name: "Detail",
@@ -101,14 +103,12 @@
         this.$refs.ScrollVue.scrollTo(0,-this.detailTopY[index],200)
       },
       scrollPosition(position){
-        // console.log(position);
         // 进行条件判断
         const  positionY = -position.y;
         for (let i = 0; i < this.detailTopY.length - 1; i++) {
           // 第一个判断条件是让她只执行一遍
           if(this.currentIndex != i &&(positionY >= this.detailTopY[i] && positionY < this.detailTopY[i+1])){
             this.currentIndex = i;
-            // console.log(this.currentIndex);
             // 取到子组件的index
             this.$refs.detailNav.currentIndex = this.currentIndex;
           }
@@ -119,15 +119,12 @@
       },
 
       // //检测顶部图片加载是否完毕
-      DetailSwiperLoad(){
-        console.log('顶部图片加载完毕');
-      },
+
 
       //加入购物车
       addToCart(){
         console.log('添加购物车');
         const product = {};
-        console.log(this.goods);
         product.pid = this.goods.pid;
         product.newPrice = this.goods.newPrice;
         product.title = this.goods.title;
@@ -136,7 +133,13 @@
         product.cfav = this.goods.cfav;
         this.$store.dispatch('addCart',product).then(res => {
           this.$toast.show(res);
+
+          //添加购物车cookie
+          let newShopCartList = getShopCartList();
+          newShopCartList.push(product);
+          setShopCartList(newShopCartList);
         })
+
 
       },
 
@@ -158,6 +161,11 @@
       //上拉加载
       pullingUpload(){
         this.getGoods();
+      },
+
+      DetailSwiperLoad(){
+        console.log('我监听到轮播图刷完了');
+        this.getThemeTopY();
       }
     },
 
@@ -165,7 +173,7 @@
       let pid = this.$route.query.pid
       getDetailData(pid).then(res =>{
           //尝试封装类思想 面向对象开发
-        const data = res[0];
+        let data = res[0];
         this.topImage = data.topImage;
         this.goods = new Goods(data);
 
@@ -192,15 +200,13 @@
         this.detailTopY.push(this.$refs.goodList.$el.offsetTop - 120)
         this.detailTopY.push(Number.MAX_SAFE_INTEGER);
 
-        // console.log(this.detailTopY);
-      }, 1000)
+      }, 1000);
 
       // 图片加载完之后执行
-      this.$bus.$on('DetailSwiperLoad',() =>{
-
-        this.getThemeTopY();
-        refresh();
-      })
+      // this.$bus.$on('DetailSwiperLoad',() =>{
+      //
+      //
+      // })
 
 
 

@@ -74,7 +74,7 @@
 
   import sha1 from 'js-sha1';
   import cookie from 'js-cookie';
-  import {setUserName_Token,setPwd_Token} from "../../app/index";
+  import {setUserName_Token,setPwd_Token,setShopCartList,getShopCartList} from "../../app/index";
 
 
 
@@ -205,6 +205,18 @@
 
       // 重置表单
       this.resetForm();
+    },
+    created() {
+      if(getShopCartList()){
+        console.log('已经有购物车cookie');
+        this.$store.state.shopCart = getShopCartList();
+
+      }else{
+        //一创建就设置购物车cookie为空
+        setShopCartList([]);
+      }
+
+
     },
     watch: {
       // 'ruleForm.mobilePass': function (newValue, oldVal) {

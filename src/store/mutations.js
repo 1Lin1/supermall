@@ -15,14 +15,14 @@ export  default {
     payload.cfav ++ ;
   },
 
-  REMOVE_SHOP(state,id){
+  REMOVE_SHOP(state,pid){
     // Vue.delete(state.shopCart,payload);
     state.shopCart.forEach((item,index) =>{
-      if(item.pid === id){
+      if(item.pid === pid){
         state.shopCart.splice(index,1);
       }
     })
-    console.log('delete' + id);
+    console.log('delete' + pid);
   },
 
   setPwd_Token(state,payload){

@@ -35,7 +35,7 @@
     methods:{
       ImageLoad(){
         if(!this.isLoad){
-          this.$bus.$emit('DetailSwiperLoad')
+          this.$emit('DetailSwiperLoad')
           console.log('DetailSwiperLoad');
           this.isLoad = true;
         }

@@ -5,13 +5,15 @@
     </nav-bar>
 
 
-    <div v-if="isUserLoad">
-      <cart-list v-show="isUserLoad"></cart-list>
-      <cart-bottom-bar v-show="CartLength"></cart-bottom-bar>
+    <div v-if="isShowCart">
+      <cart-list ></cart-list>
+      <cart-bottom-bar ></cart-bottom-bar>
+<!--      <cart-list v-show="isUserLoad"></cart-list>-->
+<!--      <cart-bottom-bar v-show="CartLength"></cart-bottom-bar>-->
     </div>
 
     <div v-else>
-      <h1 class="warn-load">请先登录 亲~</h1>
+      <h1 class="warn-load">购物车空空如也 快去添加吧~</h1>
     </div>
 
   </div>
@@ -33,7 +35,7 @@
     },
     data(){
       return{
-        isUserLoad:false,
+       isShowCart:false,
       }
     },
     methods:{
@@ -44,8 +46,13 @@
 
     },
     activated() {
-      this.isUserLoad = this.$store.state.isUserLoad;
-      console.log('购物车' + this.isUserLoad);
+
+      if(this.$store.state.shopCart){
+        this.isShowCart = true;
+      }else{
+        this.isShowCart = false;
+      }
+      // console.log('购物车' + this.CartLength);
     }
 
   }

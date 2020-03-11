@@ -5,10 +5,11 @@
       @click.native= "checkClick"
       ref="checkButton"
       class="check-button"
+
     ></check-button>
 
-    <div class="item-img">
-      <img :src="showImage" alt="商品图片">
+    <div class="item-img" >
+      <img :src="showImage" alt="商品图片" >
     </div>
 
     <div class="item-info">
@@ -18,11 +19,11 @@
       <button type="button"
               class="btn btn-danger remove-shop-cart"
               data-toggle="modal"
-              data-target="#mySmModal">
+              :data-target="'#' + showModelId">
         <span class="remove-span">移除</span>
       </button>
 
-      <div class="modal fade" id="mySmModal" >
+      <div class="modal fade" :id="showModelId" >
         <div class="modal-dialog modal-sm">
           <div class="modal-content">
             <div class="modal-body" style="text-align: center">
@@ -46,6 +47,8 @@
 
     </div>
 
+<!--    <el-button type="text" @click="open">点击打开 Message Box</el-button>-->
+
   </div>
 </template>
 
@@ -53,15 +56,23 @@
 
 
   import CheckButton from "../../components/content/checkbutton/CheckButton";
+  import {removeSingleShopCartCookie} from "../../app/index";
+
   export default {
     name: "CartListItem",
     components: { CheckButton},
     inject:['reload'],
+    data(){
+      return{
+        showModelId:'MyModel'+ this.itemInfo.pid,
+      }
+    },
     props:{
       itemInfo:Object,
       default(){
         return {}
-      }
+      },
+
     },
     computed:{
       showImage(){
@@ -77,7 +88,8 @@
       btnRemoveShop(pid){
         console.log('btnRemove' + pid);
         this.$store.dispatch('removeShop',pid).then(res =>{
-          this.$toast.show(res,2000);
+          this.$toast.show(res,1500);
+          removeSingleShopCartCookie(pid);
         })
       }
       // checkChange(){
@@ -93,6 +105,7 @@
       // }
     },
     mounted() {
+
 
       // this.checkChange();
     },
@@ -137,6 +150,7 @@
     position: relative;
     margin-top: 10px;
   }
+
 
   .check-button{
     margin-left: 10px;

@@ -89,14 +89,11 @@
       },
       refresh(){
         this.scroll.finishPullUp();
-        console.log('finishPullUp');
         this.scroll && this.scroll.refresh();
-        console.log('刷新---!!!');
 
       },
       finishPullUp(){
         // 告诉他说做完了 进行下一次上拉加载
-        console.log('finishPullUp');
         this.scroll.finishPullUp();
         // this.scroll.refresh();
       }
