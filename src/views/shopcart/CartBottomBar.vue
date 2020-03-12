@@ -1,5 +1,6 @@
 <template>
   <div class="bottom-menu">
+
     <div class="check-content">
       <check-button class="check-button"
                     :is-checked="isSelectAll"
@@ -53,17 +54,21 @@
             // console.log(this.$store.state.currentMoney);
             let currentMoney = this.$store.state.currentMoney - this.totalPrice;
 
-            // 差值
-            this.$store.dispatch('setCurrentMoney',currentMoney).then(res => {
+           if(currentMoney<0){
+             this.$toast.show('余额不足 支付失败');
+           }else{
+             // 差值
+             this.$store.dispatch('setCurrentMoney',currentMoney).then(res => {
 
-              // 清掉购物车
-              console.log(this.checkGoods);
-              this.checkGoods.forEach(item => {
-                this.$store.dispatch('removeShop',item.pid);
-                removeSingleShopCartCookie(item.pid);
-              })
-              this.$toast.show(res,1500);
-            });
+               // 清掉购物车
+               console.log(this.checkGoods);
+               this.checkGoods.forEach(item => {
+                 this.$store.dispatch('removeShop',item.pid);
+                 removeSingleShopCartCookie(item.pid);
+               })
+               this.$toast.show(res,1500);
+             });
+           }
 
             console.log('余额还剩' + this.$store.state.currentMoney);
           }else{
@@ -73,7 +78,10 @@
         }
 
 
-      }
+      },
+
+
+
     },
     mounted() {
 

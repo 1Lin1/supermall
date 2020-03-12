@@ -117,6 +117,9 @@
       // let date = new Date(1535694719*1000)
       // console.log(formatDate(date, 'yyyy/MM/dd'));
 
+      // 创建刷新滚动栏
+
+
       //将关闭网页的购物车cookie直接返回复制给vuex
       this.$store.state.shopCart = getShopCartList();
 
@@ -139,6 +142,8 @@
       this.$bus.$on('itemImageLoad',() =>{
         refresh()
       })
+
+      this.$refs.ScrollVue.refresh();
 
 
     },

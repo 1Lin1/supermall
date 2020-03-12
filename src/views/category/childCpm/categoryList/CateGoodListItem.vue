@@ -28,9 +28,8 @@
 
 <style scoped>
   .cate-good-list-item img {
-    margin-top: 5px;
-    width: 80px;
-    height: 80px;
+    margin-top: 10px;
+    height: 5.5rem;
   }
   .cate-good-list-item{
     margin:10px 10px;

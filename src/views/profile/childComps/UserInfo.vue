@@ -14,7 +14,7 @@
           </div>
 
           <div v-else>
-            <span >已登录</span>
+            <span >{{UserName}}</span>
             <span class="load-out" @click="loadOut">退出</span>
           </div>
         </slot>
@@ -30,18 +30,21 @@
 
 <script>
 
-  import {removeUserName_Token,removePwd_Token} from "../../../app/index";
+  import {removeUserName_Token,removePwd_Token,getUserName_Token} from "../../../app/index";
   import { mapGetters } from 'vuex';
 
 	export default {
 		name: "UserInfo",
     data(){
 		  return{
-		    isActive:false
+		    isActive:false,
+        UserName:''
       }
     },
     activated() {
       this.isActive =  this.$store.state.isUserLoad;
+      this.UserName = getUserName_Token();
+
     },
     created() {
 		  // this.$bus.$on('userLoadSuccess',isLoad =>{

@@ -31,6 +31,7 @@
   import NavBar from "../../components/common/navbar/NavBar";
   import Scroll from "../../components/common/scroll/Scroll";
   import TabMenu from "./childCpm/TabMenu";
+
   export default {
     name: "Category",
     components:{

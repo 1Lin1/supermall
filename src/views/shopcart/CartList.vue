@@ -29,7 +29,11 @@
       // 激活时刷新 这样购物车才能拿到数据
       console.log('购物车刷新数据');
       this.$refs.scroll.refresh()
-    }
+    },
+    mounted() {
+      this.$refs.scroll.refresh()
+    },
+
   }
 </script>
 
@@ -42,7 +46,7 @@
 .content{
   position: absolute;
   top: 0;
-  bottom: 132px;
+  bottom: 11rem;
   left: 0;
   right: 0;
 
