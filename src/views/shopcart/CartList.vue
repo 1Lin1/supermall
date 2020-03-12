@@ -46,7 +46,7 @@
 .content{
   position: absolute;
   top: 0;
-  bottom: 11rem;
+  bottom: 12rem;
   left: 0;
   right: 0;
 

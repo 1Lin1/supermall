@@ -1,9 +1,13 @@
-import {ADD_CONUTER,ADD_SHOPCART} from "./mutations-type";
+import {ADD_CONUTER,ADD_SHOPCART,PROD_CONUTER} from "./mutations-type";
 import  Vue from 'vue'
 
 export  default {
   [ADD_CONUTER](state,payload){
     payload.count ++;
+  },
+
+  [PROD_CONUTER](state,payload){
+    payload.count --;
   },
 
   [ADD_SHOPCART](state,payload){

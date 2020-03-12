@@ -9,8 +9,6 @@
       <cart-list ></cart-list>
       <cart-bottom-bar ></cart-bottom-bar>
 
-
-
     </div>
 
     <div v-else>
@@ -27,6 +25,7 @@
   import {mapGetters} from "vuex";
   import CartList from "./CartList";
   import CartBottomBar from "./CartBottomBar";
+  import {getShopCartList} from "../../app/index";
   export default {
     name: "Cart",
     components: {
@@ -46,8 +45,10 @@
 
     },
     activated() {
+      //将关闭网页的购物车cookie直接返回复制给vuex
+      this.$store.state.shopCart = getShopCartList();
 
-      if(this.$store.state.shopCart){
+      if(this.CartLength!==0){
         this.isShowCart = true;
       }else{
         this.isShowCart = false;

@@ -1,4 +1,4 @@
-import {ADD_CONUTER,ADD_SHOPCART} from "./mutations-type";
+import {ADD_CONUTER,ADD_SHOPCART,PROD_CONUTER} from "./mutations-type";
 import store from "./index";
 
 export  default {
@@ -6,11 +6,11 @@ export  default {
     return new Promise((resolve,reject) => {
       // 1.第一种查找方法
       //   let oldProduct = null;
-      //   for(let item in state.shopCart){
-      //     if (item.id === payload.id){
+      //   context.state.shopCart.forEach(item =>{
+      //     if(item.pid === payload.pid){
       //       oldProduct = item;
       //     }
-      //   }
+      //   })
       //   2.find加箭头函数 找到对象 注意箭头函数的写法
       let oldProduct = context.state.shopCart.find(item => item.pid === payload.pid);
       //判断oldProduct
@@ -25,6 +25,22 @@ export  default {
         context.commit(ADD_SHOPCART,payload)
         resolve('加入购物车成功~')
 
+      }
+      }
+    )
+
+  },
+  prodCart(context,payload){
+    return new Promise((resolve,reject) => {
+
+      //   2.find加箭头函数 找到对象 注意箭头函数的写法
+      let oldProduct = context.state.shopCart.find(item => item.pid === payload.pid);
+      //判断oldProduct
+
+      if(oldProduct){
+        // oldProduct.count += 1
+        context.commit(PROD_CONUTER,oldProduct)
+        resolve('商品数量加1~')
       }
       }
     )

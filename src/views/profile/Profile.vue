@@ -46,6 +46,7 @@ import UserInfo from './childComps/UserInfo';
 import ListView from './childComps/ListView';
 
 import { mapGetters } from 'vuex';
+import {getMoney_Token} from "../../app/index";
 
 
 export default {
@@ -74,6 +75,13 @@ export default {
   },
   methods:{
 
+  },
+  activated() {
+
+    //若有存粗余额cookie 直接赋值
+    if(getMoney_Token()){
+      this.$store.dispatch('setCurrentMoney',getMoney_Token())
+    }
   },
   computed:{
     ...mapGetters(['getCurrentMoney','isUserLoad']),

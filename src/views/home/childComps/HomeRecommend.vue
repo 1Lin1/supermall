@@ -31,7 +31,8 @@
     width: 100%;
     text-align: center;
     font-size: 15px;
-    border-bottom: 5px solid #eeeeee;
+    border-bottom: 2px solid #eeeeee;
+    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1)
   }
   .recommend-item {
     margin-bottom: 3px;

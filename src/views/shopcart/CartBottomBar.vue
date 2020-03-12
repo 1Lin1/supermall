@@ -13,7 +13,12 @@
       <span class="total-price">合计:{{totalPrice | filterPrice}}</span>
     </div>
     <div class="calculate">
-      <span class="buy-product" @click="toCheckOutMoney">去结算({{checkLength}})</span>
+      <el-button size="small"
+                 class="buy-product-btn"
+                 @click="toCheckOutMoney"
+                 type="danger"
+                 round>去结算</el-button>
+<!--      <span >去结算({{checkLength}})</span>-->
     </div>
 
   </div>
@@ -23,7 +28,7 @@
   import CheckButton from "../../components/content/checkbutton/CheckButton";
   import { mapGetters } from 'vuex';
 
-  import {removeSingleShopCartCookie} from "../../app/index";
+  import {removeSingleShopCartCookie,setMoney_Token} from "../../app/index";
 
   export default {
     name: "CartBottomBar",
@@ -65,12 +70,15 @@
                this.checkGoods.forEach(item => {
                  this.$store.dispatch('removeShop',item.pid);
                  removeSingleShopCartCookie(item.pid);
+
+                 //同时把余额存cookie
+                 setMoney_Token(this.getCurrentMoney)
                })
                this.$toast.show(res,1500);
              });
            }
 
-            console.log('余额还剩' + this.$store.state.currentMoney);
+            console.log('余额还剩' + this.getCurrentMoney);
           }else{
             this.$toast.show('请先进行登录~',1500);
             this.$router.push('/login');
@@ -88,7 +96,7 @@
     },
     computed:{
       // 获取商品信息
-      ...mapGetters(['CartList','CartLength']),
+      ...mapGetters(['CartList','CartLength','getCurrentMoney']),
 
       // 过滤checked为true的满足的商品
       totalPrice(){
@@ -133,7 +141,7 @@
   .bottom-menu{
     width: 100%;
     position: fixed;
-    bottom: 52px;
+    bottom: 5rem;
     background-color: #eee;
     display: flex;
 
@@ -153,18 +161,18 @@
     margin-right: 5px;
   }
   .price {
-    margin-left: 15px;
+    margin-left: 8rem;
     font-size: 16px;
     color: #666;
   }
   .calculate{
     position: absolute;
-    background-color: #ff1e32;
-    color: #eeeeee;
     right: 20px;
 
     /*border-bottom:2px solid #eeeeee;*/
   }
-
+.buy-product-btn{
+  background-color: #eb2f06;
+}
 
 </style>

@@ -45,3 +45,11 @@ export  function getPwd_Token() {
 export  function removePwd_Token() {
   return cookie.remove('PassWord_Token');
 }
+
+export  function setMoney_Token(value) {
+  return cookie.set('Money_Token',value, { expires: 7 });
+}
+
+export  function getMoney_Token() {
+  return cookie.get('Money_Token');
+}

@@ -136,7 +136,22 @@
 
           //添加购物车cookie
           let newShopCartList = getShopCartList();
-          newShopCartList.push(product);
+          console.log(newShopCartList.length);
+          if(newShopCartList.length === 0){
+              newShopCartList.push(product);
+          }else{
+            newShopCartList.forEach(item => {
+              console.log(item);
+              console.log('cookie已添加' + item.pid);
+              if(item.pid === this.goods.pid){
+                item.count ++ ;
+                console.log('一样的商品');
+              }else{
+                newShopCartList.push(product);
+              }
+            })
+          }
+
           setShopCartList(newShopCartList);
         })
 

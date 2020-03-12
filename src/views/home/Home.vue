@@ -140,7 +140,7 @@
       // 监听加载图片 每加载一次 等全部加载完 滚动条再刷新
       const refresh = debounce(this.$refs.ScrollVue.refresh,500);
       this.$bus.$on('itemImageLoad',() =>{
-        refresh()
+        refresh();
       })
 
       this.$refs.ScrollVue.refresh();
@@ -175,8 +175,8 @@
       //判断是否含有cookie
       isHaveShopCartCookie(){
         if(getShopCartList()){
-          console.log('已经有购物车cookie');
           this.$store.state.shopCart = getShopCartList();
+          console.log('已经有购物车cookie');
 
         }else{
           //一创建就设置购物车cookie为空
