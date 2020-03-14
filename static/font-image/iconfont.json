@@ -1,0 +1,72 @@
+{
+  "id": "1634196",
+  "name": "surperMall",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "购物商城",
+  "glyphs": [
+    {
+      "icon_id": "683404",
+      "name": "积分",
+      "font_class": "jifen",
+      "unicode": "e61a",
+      "unicode_decimal": 58906
+    },
+    {
+      "icon_id": "1203686",
+      "name": "VIP",
+      "font_class": "shenqingchengweiVIP",
+      "unicode": "e601",
+      "unicode_decimal": 58881
+    },
+    {
+      "icon_id": "2736937",
+      "name": "消息",
+      "font_class": "xiaoxi",
+      "unicode": "e6a5",
+      "unicode_decimal": 59045
+    },
+    {
+      "icon_id": "3538385",
+      "name": "更多",
+      "font_class": "gengduo",
+      "unicode": "e719",
+      "unicode_decimal": 59161
+    },
+    {
+      "icon_id": "6241505",
+      "name": "设置",
+      "font_class": "shezhi",
+      "unicode": "e627",
+      "unicode_decimal": 58919
+    },
+    {
+      "icon_id": "7708056",
+      "name": "下载",
+      "font_class": "xiazai",
+      "unicode": "e621",
+      "unicode_decimal": 58913
+    },
+    {
+      "icon_id": "8776823",
+      "name": "cart",
+      "font_class": "icon-test",
+      "unicode": "e63b",
+      "unicode_decimal": 58939
+    },
+    {
+      "icon_id": "11507987",
+      "name": "排行",
+      "font_class": "paihang",
+      "unicode": "e60d",
+      "unicode_decimal": 58893
+    },
+    {
+      "icon_id": "11487977",
+      "name": "arrow-right",
+      "font_class": "arrow-right",
+      "unicode": "e743",
+      "unicode_decimal": 59203
+    }
+  ]
+}

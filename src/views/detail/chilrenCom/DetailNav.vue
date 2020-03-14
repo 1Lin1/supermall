@@ -15,12 +15,7 @@
         >
           {{item}}</div>
       </div>
-
-
     </nav-bar>
-
-
-
   </div>
 </template>
 
@@ -63,6 +58,7 @@
   .left-image img{
 
     margin-left: 10px;
+    margin-bottom: 0.5rem;
   }
   .titles{
     display: flex;

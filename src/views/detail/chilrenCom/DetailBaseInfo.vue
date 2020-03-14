@@ -72,8 +72,7 @@
 
 <style scoped>
   .base-info{
-    margin-top: 3rem;
-    padding: 0 8px;
+    padding: 1rem;
     color: #999;
 
     border-bottom: 2px solid #eeeeee;
@@ -81,6 +80,7 @@
 
   .info-title{
     color:black;
+    font-size: 1.5rem;
   }
 
   .info-price {
@@ -95,7 +95,7 @@
 
   .n-price {
     font-size: 24px;
-    color: var(--color-high-text);
+    color: #ff3f34;
   }
 
   .o-price {
@@ -104,9 +104,9 @@
     text-decoration: line-through;
   }
   .desc{
-    margin-left: 20px;
-    color: red;
-    font-size: larger;
+    margin-left:2rem;
+    color: #ff3f34;
+    font-size: 2rem;
   }
 
   .collect{

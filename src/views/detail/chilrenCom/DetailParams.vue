@@ -41,6 +41,7 @@
   .detail-params{
     position: relative;
     width: 100%;
+
   }
   .detail-params img{
     max-width: 100%;

@@ -2,13 +2,13 @@
   <div  class="shop-cart">
     <nav-bar class="nav-bar">
       <div slot="center">购物车</div>
+      <div slot="right"><span class="resolve-shopCart-button" @click="toResolveShop">{{resolveMessage}}</span></div>
     </nav-bar>
 
 
     <div v-if="isShowCart">
       <cart-list ></cart-list>
-      <cart-bottom-bar ></cart-bottom-bar>
-
+      <cart-bottom-bar :is-show-cart-bottom-bar="isShowCartBottomBar" ></cart-bottom-bar>
     </div>
 
     <div v-else>
@@ -35,10 +35,25 @@
     },
     data(){
       return{
-       isShowCart:false,
+        isShowCart:false,
+        isShowCartBottomBar:true,
+        resolveMessage:'管理'
       }
     },
     methods:{
+
+      //管理购物车
+      toResolveShop(){
+        this.isShowCartBottomBar = !this.isShowCartBottomBar;
+        if(this.isShowCartBottomBar){
+          this.resolveMessage = '管理';
+        }else{
+          this.resolveMessage = '完成'
+
+        }
+      },
+
+
     },
     computed:{
       ...mapGetters(['CartLength'],['CartList']),
@@ -54,6 +69,13 @@
         this.isShowCart = false;
       }
       // console.log('购物车' + this.CartLength);
+
+      //设置一激活为结算按钮
+      if(this.resolveMessage === '完成'){
+        this.resolveMessage = '管理';
+        this.isShowCartBottomBar = true;
+
+      }
     }
 
   }
@@ -62,7 +84,9 @@
 <style scoped>
 
 
-
+  .resolve-shopCart-button{
+    font-size: 1.5rem;
+  }
   .nav-bar{
     background-color: var(--color-tint);
     color:#eeeeee;
@@ -71,11 +95,11 @@
   .shop-cart{
     height: 100vh;
   }
-.warn-load{
-  text-align: center;
-  position: relative;
-  top: 20rem;
-}
+  .warn-load{
+    text-align: center;
+    position: relative;
+    top: 20rem;
+  }
   /*.content{*/
   /*  height: calc(100% - 100px);*/
   /*  !*height: 100%;*!*/

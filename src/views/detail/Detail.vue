@@ -97,6 +97,8 @@
       }
     },
     methods:{
+
+
       // 跳转到详情页
 
       detailItemClick(index){
@@ -123,7 +125,6 @@
 
       //加入购物车
       addToCart(){
-        console.log('添加购物车');
         const product = {};
         product.pid = this.goods.pid;
         product.newPrice = this.goods.newPrice;
@@ -136,25 +137,30 @@
 
           //添加购物车cookie
           let newShopCartList = getShopCartList();
-          console.log(newShopCartList.length);
           if(newShopCartList.length === 0){
-              newShopCartList.push(product);
+            newShopCartList.push(product);
+            setShopCartList(newShopCartList);
           }else{
-            newShopCartList.forEach(item => {
-              console.log(item);
-              console.log('cookie已添加' + item.pid);
-              if(item.pid === this.goods.pid){
-                item.count ++ ;
-                console.log('一样的商品');
-              }else{
-                newShopCartList.push(product);
-              }
-            })
+            let oldShopCart = newShopCartList.filter(item => item.pid === this.goods.pid);
+            if(oldShopCart.length!==0){
+              newShopCartList.forEach(item => {
+                if(item.pid === this.goods.pid){
+                  item.count ++;
+                  console.log('我找到相同的商品了');
+                  setShopCartList(newShopCartList);
+                }
+              })
+            }else{
+              console.log('我是不一样的');
+              newShopCartList.push(product);
+              setShopCartList(newShopCartList);
+            }
           }
 
-          setShopCartList(newShopCartList);
-        })
 
+
+
+        });
 
       },
 
@@ -179,7 +185,6 @@
       },
 
       DetailSwiperLoad(){
-        console.log('我监听到轮播图刷完了');
         this.getThemeTopY();
       }
     },
@@ -187,7 +192,7 @@
     created() {
       let pid = this.$route.query.pid
       getDetailData(pid).then(res =>{
-          //尝试封装类思想 面向对象开发
+        //尝试封装类思想 面向对象开发
         let data = res[0];
         this.topImage = data.topImage;
         this.goods = new Goods(data);
@@ -203,7 +208,6 @@
     mounted() {
       // this.$nextTick() 此函数为mounted中上方请求全部执行完再执行
 
-
       // 监听加载图片 加载完刷新
       const refresh = debounce(this.$refs.ScrollVue.refresh,500);
       // 只执行一次 获取每部分的offset值 等到图片加载完才正确
@@ -217,25 +221,12 @@
 
       }, 1000);
 
-      // 图片加载完之后执行
-      // this.$bus.$on('DetailSwiperLoad',() =>{
-      //
-      //
-      // })
-
-
-
       this.$bus.$on('itemImageLoad',() =>{
-        refresh()
+        refresh();
+
       })
-
-
-
-
     },
-    updated() {
 
-    }
   }
 </script>
 

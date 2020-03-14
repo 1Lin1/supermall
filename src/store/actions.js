@@ -40,7 +40,7 @@ export  default {
       if(oldProduct){
         // oldProduct.count += 1
         context.commit(PROD_CONUTER,oldProduct)
-        resolve('商品数量加1~')
+        resolve('商品数量减1~')
       }
       }
     )

@@ -143,7 +143,6 @@
         refresh();
       })
 
-      this.$refs.ScrollVue.refresh();
 
 
     },
@@ -188,7 +187,7 @@
        */
 
       swipperImageLoad(){
-        this.tabControlOffset = 520;
+        this.tabControlOffset = 500;
         // this.tabControlOffset = this.$refs.tabcontrol1.$el.offsetTop;
       },
 
@@ -243,12 +242,12 @@
       },
       getHomeGoods(type){
 
-        getHomeGoods(type).then(res =>{
-          // Es6语法
-          this.goods[type].list.push(...res);
-          // console.log(res);
-          this.$refs.ScrollVue.finishPullUp();
-          // console.log(res);
+       getHomeGoods(type).then(res =>{
+            // Es6语法
+            this.goods[type].list.push(...res);
+            // console.log(res);
+            this.$refs.ScrollVue.finishPullUp();
+            // console.log(res);
           // for (let i = 0; i < res.length; i++) {
           //   this.goods[type].list.push(res[i])
           // }

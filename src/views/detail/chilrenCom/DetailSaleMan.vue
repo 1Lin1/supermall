@@ -37,8 +37,7 @@
     padding:30px 0;
     color: black;
     height: 100%;
-    border: 1px solid #eee;
-    box-shadow: 3px 3px 10px #eee;
+    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1)
   }
 
   .shopInfo{

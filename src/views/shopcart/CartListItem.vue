@@ -15,43 +15,18 @@
     <div class="item-info">
       <span class="title">{{itemInfo.title}}</span>
 
-      <!-- 小对话框 -->
-      <button type="button"
-              class="btn btn-danger remove-shop-cart"
-              data-toggle="modal"
-              :data-target="'#' + showModelId">
-        <span class="remove-span">移除</span>
-      </button>
-
-      <div class="modal fade" :id="showModelId" >
-        <div class="modal-dialog modal-sm">
-          <div class="modal-content">
-            <div class="modal-body" style="text-align: center">
-              <h3>确认将该商品移出购物车吗？</h3>
-            </div>
-            <div class="modal-footer ">
-              <div class="model-btn">
-                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                <button type="button" class="btn btn-danger"  @click="btnRemoveShop(itemInfo.pid)" data-dismiss="modal">确定</button>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
       <div class="item-base">
         <span class="newPrice"> {{itemInfo.newPrice |filterPrice}}</span>
 
-         <span @click="addCount" class="btn-count-group">+</span>
-         <span class="count btn-count-group" type="text" @click="dialogFormVisible = true">{{itemInfo.count}}</span>
-         <span @click="prodCount" class="btn-count-group">-</span>
+        <span @click="addCount" class="btn-count-group">+</span>
+        <span class="count btn-count-group" type="text" @click="dialogFormVisible = true">{{itemInfo.count}}</span>
+        <span @click="prodCount" class="btn-count-group">-</span>
       </div>
 
 
     </div>
 
-    <el-dialog title="商品数量" :visible.sync="dialogFormVisible">
+    <el-dialog title="商品数量" :visible.sync="dialogFormVisible" top="0" width="100%" :modal="false">
 
       <el-input placeholder="输入您需要的数量" v-model.number="currentCount" ></el-input>
 
@@ -60,7 +35,6 @@
         <el-button type="danger" @click="dialogButton" size="small">确 定</el-button>
       </div>
     </el-dialog>
-
 
   </div>
 </template>
@@ -79,9 +53,9 @@
     inject:['reload'],
     data(){
       return{
-        showModelId:'MyModel'+ this.itemInfo.pid,
         dialogFormVisible: false,
         currentCount:this.itemInfo.count,
+
       }
     },
     props:{
@@ -99,6 +73,7 @@
 
     },
     methods:{
+
 
       dialogButton(){
         this.dialogFormVisible = false;
@@ -150,25 +125,8 @@
         this.itemInfo.checked = !this.itemInfo.checked;
       },
 
-      // 移除购物车
-      btnRemoveShop(pid){
-        console.log('btnRemove' + pid);
-        this.$store.dispatch('removeShop',pid).then(res =>{
-          this.$toast.show(res,1500);
-          removeSingleShopCartCookie(pid);
-        })
-      }
-      // checkChange(){
-      //   console.log('checkchange');
-      //   console.log(this.itemInfo.checked);
-      //   this.itemInfo.checked = !this.itemInfo.checked;
-      //   // this.$refs.checkButton.checked =  this.itemInfo.checked
-      //   console.log('点击后' + this.itemInfo.checked);
-      //
-      //   // this.$bus.$emit('on-click',!this.itemInfo.checked )
-      //   // this.$refs.checkButton.checked = !this.$refs.checkButton.checked;
-      //   // this.itemInfo.checked = !this.itemInfo.checked;
-      // }
+
+
     },
     mounted() {
 
@@ -176,7 +134,6 @@
       // this.checkChange();
     },
     updated() {
-      console.log('updated');
       if(this.itemInfo.count>2000){
         this.$toast.show('已达可购买最大数量',1500);
         this.itemInfo.count = 2000;
@@ -198,26 +155,7 @@
 
 <style scoped>
 
-  .model-btn{
-    text-align: center;
-  }
-  .remove-span{
-    font-size: 15px;
-    position: relative;
-    bottom: 5px;
-  }
-  .remove-shop-cart{
-    width: 80px;
-    height: 30px;
-    display: block;
 
-    position: absolute;
-    left: 0;
-    right: 10px;
-    margin:0 auto;
-    bottom:60px;
-
-  }
   .cart-list-item{
     display: flex;
     width: 100%;
@@ -243,7 +181,7 @@
     margin-right: 20px;
   }
   .item-base{
-    margin-top: 110px;
+    margin-top: 7.5rem;
   }
 
 

@@ -43,7 +43,10 @@
     left: 50%;
     transform: translate(-50%,-50%);
 
-    padding: 8px 20px;
+    text-align: center;
+    width: 25rem;
+    height: 4rem;
+    line-height: 4rem;
     z-index: 999;
 
     color: #fff;

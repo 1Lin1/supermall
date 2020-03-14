@@ -4,9 +4,8 @@
       <div>
         <cart-list-item
           v-for="item in CartList"
-          :key="item.pid"
           :item-info="item"
-
+          :key="item.pid"
         ></cart-list-item>
       </div>
 
@@ -45,11 +44,10 @@
 }
 .content{
   position: absolute;
-  top: 0;
-  bottom: 12rem;
+  top:0;
+  bottom:12rem;
   left: 0;
   right: 0;
-
   overflow: hidden;
 }
 </style>
