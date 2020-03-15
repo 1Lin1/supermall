@@ -65,7 +65,6 @@
 
   export default {
     name: "Detail",
-    inject:['reload'],
     components: {
       DetailParams,
       DetailNumber,
@@ -81,6 +80,7 @@
 
 
     },
+    inject:['reload'],
     // 混入其中
     mixins:[backTop],
     data(){
@@ -94,6 +94,7 @@
         saleMan:{},
         modelImage:[],
         showGoods:[],
+        isLoadReload:false,
       }
     },
     methods:{
@@ -186,6 +187,14 @@
 
       DetailSwiperLoad(){
         this.getThemeTopY();
+
+        //接收点击商品的主页发来的主件 并刷新
+        // this.$bus.$on('isReload',() => {
+        //   console.log('true');
+        //   this.reload();
+        //   console.log(this.reload());
+        //   // this.$router.go(0);
+        // })
       }
     },
 
@@ -203,6 +212,9 @@
       })
       //比如这里有一堆请求 请求完渲染才执行下面的添加
       this.getGoods();
+
+
+
 
     },
     mounted() {
@@ -225,6 +237,13 @@
         refresh();
 
       })
+
+
+    },
+
+    //在路由访问前刷新 解决轮播图卡顿问题
+    beforeRouteUpdate (to, from, next) {
+     this.reload();
     },
 
   }

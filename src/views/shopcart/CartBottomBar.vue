@@ -89,38 +89,38 @@
 
       //结账
       toCheckOutMoney(){
-        // if(this.checkLength === 0){
-        //   this.$toast.show('请至少勾选一项商品',1500);
-        // }else{
-        //   if(this.$store.state.isUserLoad){
-        //     // console.log(this.$store.state.currentMoney);
-        //     let currentMoney = this.$store.state.currentMoney - this.totalPrice;
-        //
-        //    if(currentMoney<0){
-        //      this.$toast.show('余额不足 支付失败');
-        //    }else{
-        //      // 差值
-        //      this.$store.dispatch('setCurrentMoney',currentMoney).then(res => {
-        //
-        //        // 清掉购物车
-        //        console.log(this.checkGoods);
-        //        this.checkGoods.forEach(item => {
-        //          this.$store.dispatch('removeShop',item.pid);
-        //          removeSingleShopCartCookie(item.pid);
-        //
-        //          //同时把余额存cookie
-        //          setMoney_Token(this.getCurrentMoney)
-        //        })
-        //        this.$toast.show(res,1500);
-        //      });
-        //    }
-        //
-        //     console.log('余额还剩' + this.getCurrentMoney);
-        //   }else{
-        //     this.$toast.show('请先进行登录~',1500);
-        //     this.$router.push('/login');
-        //   }
-        // }
+        if(this.checkLength === 0){
+          this.$toast.show('请至少勾选一项商品',1500);
+        }else{
+          if(this.$store.state.isUserLoad){
+            // console.log(this.$store.state.currentMoney);
+            let currentMoney = this.$store.state.currentMoney - this.totalPrice;
+
+           if(currentMoney<0){
+             this.$toast.show('余额不足 支付失败');
+           }else{
+             // 差值
+             this.$store.dispatch('setCurrentMoney',currentMoney).then(res => {
+
+               // 清掉购物车
+               console.log(this.checkGoods);
+               this.checkGoods.forEach(item => {
+                 this.$store.dispatch('removeShop',item.pid);
+                 removeSingleShopCartCookie(item.pid);
+
+                 //同时把余额存cookie
+                 setMoney_Token(this.getCurrentMoney)
+               })
+               this.$toast.show(res,1500);
+             });
+           }
+
+            console.log('余额还剩' + this.getCurrentMoney);
+          }else{
+            this.$toast.show('请先进行登录~',1500);
+            this.$router.push('/login');
+          }
+        }
 
 
       },

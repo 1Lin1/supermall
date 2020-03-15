@@ -15,6 +15,11 @@
     components: {
       GoodsListItem
     },
+    data() {
+      return{
+      }
+    },
+
     props: {
       goods: {
         type: Array,
@@ -24,6 +29,7 @@
       }
     },
     methods:{
+
     },
 
   }

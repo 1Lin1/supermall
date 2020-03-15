@@ -17,6 +17,7 @@
 	export default {
 		name: "Swiper",
     props: {
+
       interval: {
 		    type: Number,
         default: 3000
@@ -36,7 +37,7 @@
     },
     data: function () {
 		  return {
-        slideCount: 4, // 元素个数
+        slideCount: 0, // 元素个数
         totalWidth: 0, // swiper的宽度
         swiperStyle: {}, // swiper样式
         currentIndex: 1, // 当前的index
@@ -44,13 +45,13 @@
       }
     },
     mounted: function () {
-      // 1.操作DOM, 在前后添加Slide
-      setTimeout(() => {
-        this.handleDom();
+        // 1.操作DOM, 在前后添加Slide
+        setTimeout(() => {
+          this.handleDom();
 
-        // 2.开启定时器
-        this.startTimer();
-      }, 100)
+          // 2.开启定时器
+          this.startTimer();
+        }, 300)
     },
     methods: {
 		  /**

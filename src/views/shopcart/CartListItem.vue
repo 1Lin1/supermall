@@ -26,7 +26,7 @@
 
     </div>
 
-    <el-dialog title="商品数量" :visible.sync="dialogFormVisible" top="0" width="100%" :modal="false">
+    <el-dialog title="商品数量" :visible.sync="dialogFormVisible" top="1vh" width="100%" :modal="false">
 
       <el-input placeholder="输入您需要的数量" v-model.number="currentCount" ></el-input>
 
@@ -81,8 +81,7 @@
         let newShopCartList = getShopCartList();
         newShopCartList.forEach(item => {
           if (item.pid === this.itemInfo.pid) {
-            item.count = this.itemInfo.count;
-            console.log('增加一堆一样的商品');
+            item.count = this.currentCount;
           }
         })
         setShopCartList(newShopCartList);
@@ -95,7 +94,6 @@
         newShopCartList.forEach(item => {
           if (item.pid === this.itemInfo.pid) {
             item.count++;
-            console.log('增加一样的商品');
           }
         })
         setShopCartList(newShopCartList);
@@ -114,7 +112,6 @@
           newShopCartList.forEach(item => {
             if (item.pid === this.itemInfo.pid) {
               item.count--;
-              console.log('减去一样的商品');
             }
           })
           setShopCartList(newShopCartList);
@@ -134,14 +131,22 @@
       // this.checkChange();
     },
     updated() {
-      if(this.itemInfo.count>2000){
+      if(this.currentCount>2000){
         this.$toast.show('已达可购买最大数量',1500);
-        this.itemInfo.count = 2000;
-      }else if(this.itemInfo.count <1){
+        this.currentCount = 2000;
+      }else if(this.currentCount <1){
         this.$toast.show('数量至少为一件',1500);
-        this.itemInfo.count = 1;
+        this.currentCount = 1;
 
       }
+      // if(this.itemInfo.count>2000){
+      //   this.$toast.show('已达可购买最大数量',1500);
+      //   this.itemInfo.count = 2000;
+      // }else if(this.itemInfo.count <1){
+      //   this.$toast.show('数量至少为一件',1500);
+      //   this.itemInfo.count = 1;
+      //
+      // }
     },
     filters:{
       filterPrice(price){
@@ -179,6 +184,7 @@
 
   .newPrice{
     margin-right: 20px;
+    font-size: 1.5rem;
   }
   .item-base{
     margin-top: 7.5rem;

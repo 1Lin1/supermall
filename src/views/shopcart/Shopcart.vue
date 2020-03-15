@@ -2,7 +2,14 @@
   <div  class="shop-cart">
     <nav-bar class="nav-bar">
       <div slot="center">购物车</div>
-      <div slot="right"><span class="resolve-shopCart-button" @click="toResolveShop">{{resolveMessage}}</span></div>
+      <div slot="right">
+        <span class="resolve-shopCart-button" @click="toResolveShop">
+            <svg class="icon" aria-hidden="true">
+                <use xlink:href="#icon-shezhi"></use>
+            </svg>
+          {{resolveMessage}}
+        </span>
+      </div>
     </nav-bar>
 
 
@@ -85,7 +92,7 @@
 
 
   .resolve-shopCart-button{
-    font-size: 1.5rem;
+    font-size: 1.2rem;
   }
   .nav-bar{
     background-color: var(--color-tint);
