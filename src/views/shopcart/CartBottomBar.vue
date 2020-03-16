@@ -23,7 +23,7 @@
       </div>
     </div>
     <div v-else class="remove-button">
-      <el-button class="cfav-button" size="mini" round>
+      <el-button class="cfav-button" size="mini" round @click="removeToCfav">
         移入收藏夹
       </el-button>
       <el-button class="remove-button"
@@ -152,6 +152,11 @@
 
       },
 
+      //移入收藏夹
+
+      removeToCfav(){
+        this.$toast.show('移入收藏夹成功',1500);
+      }
     },
     mounted() {
 

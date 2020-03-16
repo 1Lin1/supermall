@@ -213,9 +213,6 @@
       //比如这里有一堆请求 请求完渲染才执行下面的添加
       this.getGoods();
 
-
-
-
     },
     mounted() {
       // this.$nextTick() 此函数为mounted中上方请求全部执行完再执行
@@ -231,7 +228,7 @@
         this.detailTopY.push(this.$refs.goodList.$el.offsetTop - 120)
         this.detailTopY.push(Number.MAX_SAFE_INTEGER);
 
-      }, 1000);
+      }, 500);
 
       this.$bus.$on('itemImageLoad',() =>{
         refresh();

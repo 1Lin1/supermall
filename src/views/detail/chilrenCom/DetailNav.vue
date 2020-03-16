@@ -15,6 +15,14 @@
         >
           {{item}}</div>
       </div>
+
+      <div slot="right" class="share-for-internet">
+        <span>
+          <svg class="icon " aria-hidden="true">
+          <use :xlink:href="iconTitle"></use>
+        </svg>
+        </span>
+      </div>
     </nav-bar>
   </div>
 </template>
@@ -31,7 +39,8 @@
     data(){
       return{
         titles:['商品','参数','评论','推荐'],
-        currentIndex:0
+        currentIndex:0,
+        iconTitle:'#icon-gengduo'
       }
     },
     methods:{
@@ -72,6 +81,9 @@
     border-bottom: solid 2px var(--color-high-text);
   }
 
-
+.share-for-internet{
+  font-size: 13px;
+  text-align: center;
+}
 
 </style>

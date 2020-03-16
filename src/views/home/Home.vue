@@ -1,8 +1,6 @@
 <template>
   <div id="home">
     <nav-bar class="home-nav"><div slot="center">首页</div></nav-bar>
-
-
     <tab-control
       class="tab-control"
       :titles="['流行','精选','潮流']"
@@ -135,7 +133,6 @@
 
 
     },
-
     mounted() {
       // 监听加载图片 每加载一次 等全部加载完 滚动条再刷新
       const refresh = debounce(this.$refs.ScrollVue.refresh,500);
@@ -151,7 +148,6 @@
         return this.goods[this.currentType].list;
       }
     },
-
     activated() {
 
       console.log('用户登录状态' + this.$store.state.isUserLoad);
@@ -160,12 +156,6 @@
       this.$refs.ScrollVue.scrollTo(0,this.saveY);
       this.$refs.ScrollVue.refresh();
     },
-
-    // beforeRouteLeave(){
-    //   this.path = this.$route.path;
-    // }
-
-
     deactivated() {
       this.saveY = this.$refs.ScrollVue.scroll.y
     },
@@ -187,8 +177,8 @@
        */
 
       swipperImageLoad(){
-        this.tabControlOffset = 500;
-        // this.tabControlOffset = this.$refs.tabcontrol1.$el.offsetTop;
+        // this.tabControlOffset = 500;
+        this.tabControlOffset = this.$refs.tabcontrol1.$el.offsetTop;
       },
 
       // 多个请求在一定时间内 集合成少个请求发送
@@ -242,12 +232,12 @@
       },
       getHomeGoods(type){
 
-       getHomeGoods(type).then(res =>{
-            // Es6语法
-            this.goods[type].list.push(...res);
-            // console.log(res);
-            this.$refs.ScrollVue.finishPullUp();
-            // console.log(res);
+        getHomeGoods(type).then(res =>{
+          // Es6语法
+          this.goods[type].list.push(...res);
+          // console.log(res);
+          this.$refs.ScrollVue.finishPullUp();
+          // console.log(res);
           // for (let i = 0; i < res.length; i++) {
           //   this.goods[type].list.push(res[i])
           // }
@@ -267,8 +257,6 @@
         // })
       }
     },
-
-
   }
 </script>
 

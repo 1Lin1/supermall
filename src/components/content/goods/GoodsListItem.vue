@@ -37,7 +37,7 @@
     filters:{
       filterPrice(price){
         return '￥' + Number(price).toFixed(2)
-      }
+    }
     },
     methods:{
       imgLoad(){
@@ -66,7 +66,7 @@
 
           // 刷新一下加载详情轮播图 同时保证home停留的地方不变 不会闪屏
           // 去详情页拿到数据后调用reload刷新 是为了在详情页的推荐点击时刷新
-          // this.reload();
+          // this.reload();在详情页路由守卫调用
         })
 
 

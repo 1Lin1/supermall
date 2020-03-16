@@ -15,7 +15,7 @@ Vue.config.productionTip = false
 Vue.use(ElementUI);
 
 //安装toast插件
-Vue.use(toast)
+Vue.use(toast);
 // 解决移动端300ms延迟
 FastClick.attach(document.body);
 
@@ -25,7 +25,7 @@ Vue.use(VueLazyload,{
 })
 
 // 全局组件
-Vue.prototype.$bus = new Vue()
+Vue.prototype.$bus = new Vue();
 
 new Vue({
   render: h => h(App),
