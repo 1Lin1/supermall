@@ -58,6 +58,6 @@
   top: 1rem;
 }
   .detail-model-item img {
-    max-width: 100%;
+   width: 100%;
   }
 </style>

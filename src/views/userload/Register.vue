@@ -3,7 +3,7 @@
     <nav-bar class="user-load-nav"><div slot="center">账户注册</div></nav-bar>
     <div class="load-menu">
 
-        <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="62px" class="demo-ruleForm">
+        <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="8rem" class="demo-ruleForm">
 
 
 
@@ -265,7 +265,7 @@
   }
 
   .load-item{
-    width: 30rem;
+    width:30rem;
   }
 
 

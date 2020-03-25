@@ -28,11 +28,11 @@
 
 <style scoped>
   .cate-good-list-item img {
-    margin-top: 10px;
+    margin-top: 1rem;
     height: 5.5rem;
   }
   .cate-good-list-item{
-    margin:10px 10px;
+    margin:2rem 2rem;
   }
   .item-text{
     text-align: center;

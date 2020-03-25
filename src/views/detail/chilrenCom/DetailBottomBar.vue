@@ -49,7 +49,7 @@
         this.$toast.show('客服暂未上线',2000)
       },
       toCheckCart(){
-        this.$router.push('/shopcart');
+        this.$emit('toCheckCart');
       }
     },
 

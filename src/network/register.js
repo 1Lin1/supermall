@@ -7,6 +7,7 @@ export function registerUser(username,passWord) {
     data:{
       username,
       passWord,
+      loadToken:''
     }
 
   })

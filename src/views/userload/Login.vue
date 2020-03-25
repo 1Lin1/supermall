@@ -4,7 +4,7 @@
 
     <div class="load-menu">
 
-      <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="50px" class="demo-ruleForm">
+      <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="6rem" class="demo-ruleForm">
 
 
 

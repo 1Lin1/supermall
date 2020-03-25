@@ -76,6 +76,10 @@
 
 
       dialogButton(){
+        if(this.currentCount <1){
+          this.currentCount = 1;
+          this.$toast.show('数量至少为一件',1500);
+        }
         this.dialogFormVisible = false;
         this.itemInfo.count = this.currentCount;
         let newShopCartList = getShopCartList();
@@ -87,16 +91,22 @@
         setShopCartList(newShopCartList);
       },
       addCount(){
-        this.$store.dispatch('addCart',this.itemInfo);
 
-        //更新购物车cookie
-        let newShopCartList = getShopCartList();
-        newShopCartList.forEach(item => {
-          if (item.pid === this.itemInfo.pid) {
-            item.count++;
-          }
-        })
-        setShopCartList(newShopCartList);
+        if(this.itemInfo.count >= 2000) {
+          this.$toast.show('无法继续增加', 1500);
+        }else{
+          this.$store.dispatch('addCart',this.itemInfo);
+
+          //更新购物车cookie
+          let newShopCartList = getShopCartList();
+          newShopCartList.forEach(item => {
+            if (item.pid === this.itemInfo.pid) {
+              item.count++;
+            }
+          })
+          setShopCartList(newShopCartList);
+        }
+
       },
       prodCount(){
 
@@ -135,8 +145,7 @@
         this.$toast.show('已达可购买最大数量',1500);
         this.currentCount = 2000;
       }else if(this.currentCount <1){
-        this.$toast.show('数量至少为一件',1500);
-        this.currentCount = 1;
+        // this.currentCount = 1;
 
       }
       // if(this.itemInfo.count>2000){

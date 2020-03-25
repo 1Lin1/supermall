@@ -1,7 +1,7 @@
 <template>
   <div>
     <swiper>
-      <swiper-item v-for="item in topImage">
+      <swiper-item v-for="(item,index) in topImage" :key="index">
         <img :src="item" alt="" @load="ImageLoad">
       </swiper-item>
 
@@ -20,6 +20,7 @@
         isLoad:false,
       }
     },
+    inject: ["reload"],
     props:{
       topImage:{
         type:Array,
@@ -37,6 +38,7 @@
         if(!this.isLoad){
           this.$emit('DetailSwiperLoad')
           console.log('DetailSwiperLoad');
+          //刷新不闪烁
           this.isLoad = true;
         }
       }

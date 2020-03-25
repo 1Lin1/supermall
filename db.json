@@ -248,7 +248,6 @@
       "count": "3",
       "cfav": "2"
     },
-
     {
       "type": "new",
       "title": "MIUCO复古高领露肩打底针织衫女+不规则鱼尾裙半身裙套装2020春装",
@@ -337,7 +336,6 @@
       "count": "3",
       "cfav": "2"
     },
-
     {
       "type": "sell",
       "title": "MIUCO褶皱木耳边喇叭袖口钉珠卫衣+毛呢半裙套装女装2020春新款",
@@ -496,7 +494,7 @@
       "company": "腾讯有限公司",
       "saleManPhone": "13464656262",
       "shopName": "精选女装店铺",
-      "centerImage":   [
+      "centerImage": [
         "https://img.alicdn.com/imgextra/i1/671012022/O1CN01cKNYA21Qo7Qsl2zBL_!!671012022.jpg_430x430.jpg",
         "https://img.alicdn.com/imgextra/i2/671012022/O1CN01Y1oXfi1Qo7QsyEgcv_!!671012022.jpg_430x430.jpg  ",
         "https://img.alicdn.com/imgextra/i3/671012022/O1CN01NrWewH1Qo7QqiQsb5_!!671012022.jpg_430x430.jpg",
@@ -571,7 +569,7 @@
       "company": "腾讯有限公司",
       "saleManPhone": "13464656262",
       "shopName": "精选女装店铺",
-      "centerImage":  [
+      "centerImage": [
         "https://img.alicdn.com/imgextra/i3/671012022/O1CN01knwyKV1Qo7Qq2pv2k_!!671012022.jpg_430x430.jpg",
         "https://img.alicdn.com/imgextra/i3/671012022/O1CN01knwyKV1Qo7Qq2pv2k_!!671012022.jpg_430x430.jpg_.webp",
         "https://img.alicdn.com/imgextra/i2/671012022/O1CN013dNt6u1Qo7QmSc6aD_!!671012022.jpg_430x430.jpg_.webp",
@@ -1458,8 +1456,9 @@
   ],
   "userInfo": [
     {
-      "username": "624965@qq.com",
+      "username": "624@qq.com",
       "passWord": "57fed08148a7305e989fddf52c45527e22b3c60f",
+      "loadToken": "",
       "id": 1
     }
   ],

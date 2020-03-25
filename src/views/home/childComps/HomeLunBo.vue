@@ -1,6 +1,6 @@
 <template>
   <div class="block">
-    <el-carousel height="180px" arrow="always">
+    <el-carousel height="20rem" arrow="always">
       <el-carousel-item v-for="(item,index) in banners" :key="index">
         <a :href="item.link">
           <img class="image" :src="item.image" alt="" @load="imageLoad">
@@ -45,6 +45,6 @@
 }
 
   .block{
-    height:16.3rem ;
+    height:18rem ;
   }
 </style>

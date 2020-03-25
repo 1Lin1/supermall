@@ -15,7 +15,7 @@
   export default {
     name: "GoodsListItem",
     // 注入刷新属性
-    // inject:['reload'],
+    inject:['reload'],
 
     props: {
       product: {
@@ -59,15 +59,20 @@
           query:{
             pid:this.product.pid
           }
-        }).then(() => {
-          // 这种刷新 不好 会闪屏
-          // location.reload();
-          // this.$bus.$emit('isReload');
-
-          // 刷新一下加载详情轮播图 同时保证home停留的地方不变 不会闪屏
-          // 去详情页拿到数据后调用reload刷新 是为了在详情页的推荐点击时刷新
-          // this.reload();在详情页路由守卫调用
         })
+
+          this.reload();//在详情页路由守卫调用
+       
+
+
+        // .then(() => {
+        //   // 这种刷新 不好 会闪屏
+        //   // location.reload();
+        //   // this.$bus.$emit('isReload');
+
+        //   // 刷新一下加载详情轮播图 同时保证home停留的地方不变 不会闪屏
+        //   // 去详情页拿到数据后调用reload刷新 是为了在详情页的推荐点击时刷新
+        // })
 
 
       }

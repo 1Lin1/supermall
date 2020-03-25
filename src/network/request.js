@@ -5,9 +5,8 @@ export function request(config) {
     const instance = axios.create({
 
       // 用于手机访问接口数据的ngrok接口
-      // baseURL: 'http://0fc35bdb.ngrok.io/db.json',
-      // baseURL: 'http://hello.shenzhuo.vip:10194',
-      baseURL: 'http://hello.shenzhuo.vip:10202',
+      // baseURL: 'http://hello.shenzhuo.vip:10202',
+      baseURL: 'http://localhost:3000',
       timeout: 5000
   })
 
