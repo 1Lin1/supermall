@@ -248,7 +248,7 @@
 
   .load-menu{
     width: 100%;
-    position: fixed;
+    position: relative;
     left: 0;
     top: 5rem;
 

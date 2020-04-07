@@ -227,6 +227,9 @@
     activated() {
       console.log('activated');
       this.resetForm();
+
+      //激活发送验证码为不可用
+      this.isDisableGetCode = true;
     },
     watch: {
       'ruleForm.mobilePass': function (newValue, oldVal) {

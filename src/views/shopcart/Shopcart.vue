@@ -66,9 +66,12 @@
       ...mapGetters(['CartLength'],['CartList']),
 
     },
-    activated() {
+
+    created() {
       //将关闭网页的购物车cookie直接返回复制给vuex
       this.$store.state.shopCart = getShopCartList();
+    },
+    activated() {
 
       if(this.CartLength!==0){
         this.isShowCart = true;
@@ -83,7 +86,9 @@
         this.isShowCartBottomBar = true;
 
       }
-    }
+    },
+
+
 
   }
 </script>

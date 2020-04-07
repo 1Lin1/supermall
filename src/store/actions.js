@@ -24,7 +24,6 @@ export  default {
         // context.state.shopCart.push(payload)c
         context.commit(ADD_SHOPCART,payload)
         resolve('加入购物车成功~')
-
       }
       }
     )

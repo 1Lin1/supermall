@@ -931,37 +931,37 @@
         },
         {
           "id": "6003",
-          "name": "华为nova",
+          "name": "nova",
           "image": "https://img.alicdn.com/tps/i4/TB1QQwipeH2gK0jSZJnSuuT1FXa.jpg_250x250Q90.jpg_.webp",
           "link": "https://detail.tmall.com/item.htm?spm=a222t.8063993.4954155005.6.667c7f57EJpum7&acm=lb-zebra-164656-978614.1003.4.2269880&id=609173087188&scm=1003.4.lb-zebra-164656-978614.ITEM_609173087188_2269880&sku_properties=5919063:6536025"
         },
         {
           "id": "6004",
-          "name": "华为nova se",
+          "name": "nova se",
           "image": "https://img.alicdn.com/tps/i4/TB1bzT5rHr1gK0jSZFDSuv9yVXa.jpg_250x250Q90.jpg_.webp",
           "link": "https://detail.tmall.com/item.htm?spm=a222t.8063993.4954155005.8.667c7f57EJpum7&acm=lb-zebra-164656-978614.1003.4.2269880&id=609052049839&scm=1003.4.lb-zebra-164656-978614.ITEM_609052049839_2269880&sku_properties=10004:827902415;5919063:6536025;12304035:1963543205"
         },
         {
           "id": "6005",
-          "name": "vivo 幻彩",
+          "name": "vivo幻彩",
           "image": "https://img.alicdn.com/imgextra/i2/883737303/O1CN01tn0bsi23oowcrBuRI_!!883737303.jpg_250x250Q90.jpg_.webp",
           "link": "https://detail.tmall.com/item.htm?spm=a222t.8063993.4954155005.10.667c7f57EJpum7&acm=lb-zebra-164656-978614.1003.4.2269880&id=582077438465&scm=1003.4.lb-zebra-164656-978614.ITEM_582077438465_2269880"
         },
         {
           "id": "6006",
-          "name": "华为P30 Pro",
+          "name": "华为P30",
           "image": "https://img.alicdn.com/tps/i4/TB1QtfYN3HqK1RjSZJnSuvNLpXa.jpg_250x250Q90.jpg_.webp",
           "link": "https://detail.tmall.com/item.htm?spm=a222t.8063993.4954155005.12.7cc57f57Y1fG7B&acm=lb-zebra-164656-978614.1003.4.2269880&id=589815124915&scm=1003.4.lb-zebra-164656-978614.ITEM_589815124915_2269880&scene=t"
         },
         {
           "id": "6007",
-          "name": "Redmi Note7",
+          "name": "RedmiNote7",
           "image": "https://img.alicdn.com/imgextra/i2/1714128138/O1CN01jgTHX329zFhAdkDUk_!!1714128138.png_250x250Q90.jpg_.webp",
           "link": "https://detail.tmall.com/item.htm?spm=a222t.8063993.4954155005.14.7cc57f57Y1fG7B&acm=lb-zebra-164656-978614.1003.4.2269880&id=588763869289&scm=1003.4.lb-zebra-164656-978614.ITEM_588763869289_2269880"
         },
         {
           "id": "6008",
-          "name": "Redmi K20",
+          "name": "RedmiK20",
           "image": "https://img.alicdn.com/imgextra/i2/1714128138/O1CN0103lbM229zFiQY6knL_!!1714128138.png_250x250Q90.jpg_.webp",
           "link": "https://detail.tmall.com/item.htm?spm=a222t.8063993.4954155005.16.7cc57f57Y1fG7B&acm=lb-zebra-164656-978614.1003.4.2269880&id=593645885047&scm=1003.4.lb-zebra-164656-978614.ITEM_593645885047_2269880"
         }
@@ -1460,6 +1460,18 @@
       "passWord": "57fed08148a7305e989fddf52c45527e22b3c60f",
       "loadToken": "",
       "id": 1
+    },
+    {
+      "username": "4947@qq.com",
+      "passWord": "57fed08148a7305e989fddf52c45527e22b3c60f",
+      "loadToken": "",
+      "id": 2
+    },
+    {
+      "username": "62496@qq.com",
+      "passWord": "57fed08148a7305e989fddf52c45527e22b3c60f",
+      "loadToken": "",
+      "id": 3
     }
   ],
   "shopCart": [

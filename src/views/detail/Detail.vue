@@ -84,7 +84,7 @@ export default {
   methods: {
 
 
-    
+
 
     // 跳转到详情页
 
@@ -96,11 +96,7 @@ export default {
       const positionY = -position.y;
       for (let i = 0; i < this.detailTopY.length - 1; i++) {
         // 第一个判断条件是让她只执行一遍
-        if (
-          this.currentIndex != i &&
-          positionY >= this.detailTopY[i] &&
-          positionY < this.detailTopY[i + 1]
-        ) {
+        if (this.currentIndex != i && positionY >= this.detailTopY[i] && positionY < this.detailTopY[i + 1]) {
           this.currentIndex = i;
           // 取到子组件的index
           this.$refs.detailNav.currentIndex = this.currentIndex;
@@ -252,7 +248,7 @@ export default {
     this.$bus.$on("itemImageLoad", () => {
       refresh();
     });
-  }
+  },
 };
 </script>
 

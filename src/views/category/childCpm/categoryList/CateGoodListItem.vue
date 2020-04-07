@@ -32,7 +32,7 @@
     height: 5.5rem;
   }
   .cate-good-list-item{
-    margin:2rem 2rem;
+    margin:1.5rem 1rem;
   }
   .item-text{
     text-align: center;
