@@ -84,7 +84,11 @@
 
     position: relative;
   }
-
+  .active{
+      font-size:15px ;
+      font-weight: bolder;
+      color: rgba(18, 18, 18, 0.83);
+  }
   .active>span:before{
     content: '';
     position: absolute;

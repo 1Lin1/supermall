@@ -76,7 +76,7 @@
 <script>
   import { stripscript, validatePass, validateEmail, validateVCode } from '@/utils/validate';
   import NavBar from "../../components/common/navbar/NavBar";
-  import {registerUser} from '../../../src/network/register'
+  import {registerUser,getUser} from '../../../src/network/register'
 
   import  sha1 from 'js-sha1'
 
@@ -105,7 +105,6 @@
           callback();
         }
       };
-
       var validatePassAgain = (rule, value, callback) => {
         if (value === '') {
           callback(new Error('请再次输入密码'));
@@ -155,20 +154,25 @@
         },
         isDisableButton:true,
         isDisableGetCode:true,
-
+        registerUserList:[]
       };
     },
     methods: {
       submitRegisterForm(formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
-            console.log(this.ruleForm.username);
+            const isRegister = this.registerUserList.filter(item => item.username === this.ruleForm.username);
+            console.log(isRegister);
+            if(isRegister.length !== 0){
+              this.$toast.show('该账户已被注册过，请重新输入');
+              this.isDisableGetCode = true;
+            }else{
+              registerUser(this.ruleForm.username,sha1(this.ruleForm.checkPass)).then(res => {
+                this.$toast.show('注册成功 去登录吧~');
+                this.$router.push('/login');
 
-            registerUser(this.ruleForm.username,sha1(this.ruleForm.checkPass)).then(res => {
-              this.$toast.show('注册成功 去登录吧~');
-              this.$router.push('/login');
-
-            })
+              })
+            }
           } else {
             console.log('error submit!!');
             this.$toast.show('格式有误 请重新输入');
@@ -230,6 +234,10 @@
 
       //激活发送验证码为不可用
       this.isDisableGetCode = true;
+
+      getUser().then(res => {
+        this.registerUserList = res;
+      })
     },
     watch: {
       'ruleForm.mobilePass': function (newValue, oldVal) {

@@ -5,8 +5,7 @@
 
       <div :style="activeStyle"><slot name = "item-text"></slot></div>
 
-    <!-- <img src = "../../assets/img/tabbar/home.svg" alt="">
-    <div>首页</div> -->
+
   </div>
 </template>
 

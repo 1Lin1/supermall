@@ -4,10 +4,7 @@
     <keep-alive exclude="Detail">
       <router-view  v-if="isRouterAlive"></router-view>
     </keep-alive>
-
-
     <main-tab-bar class="maintab"></main-tab-bar>
-
   </div>
 </template>
 

@@ -37,8 +37,6 @@
           default:0,
         },
 
-
-
       }
     },
 
@@ -48,16 +46,13 @@
       this.scroll = new BScroll(this.$refs.wrapper,{
         // 是否触发bscroll点击事件
         click:true,
-
         // 加载
         pullUpLoad: {
           threshold: this.threshold,
         },
         probeType: this.probeType,
-
         // 下拉加载
         // pullDownRefresh:true
-
 
       })
 
@@ -67,20 +62,12 @@
       }))
 
 
-
-
       if(this.pullUpLoad){
         this.scroll.on('pullingUp',() => {
           this.$emit('pullingUpload')
           this.scroll.finishPullUp();
-
         })
-
-
       }
-
-
-
     },
     methods:{
       // 方法封装  默认time为300 是es6的写法

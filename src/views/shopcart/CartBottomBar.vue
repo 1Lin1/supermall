@@ -41,7 +41,7 @@
       center
       :modal="false"
     >
-      <span class="dialog-span-content">确定要将该商品移出购物车吗？</span>
+      <span class="dialog-span-content">确定要将勾选的商品移出购物车吗？</span>
 
       <span slot="footer" class="dialog-footer">
 

@@ -13,4 +13,10 @@ export function registerUser(username,passWord) {
   })
 }
 
+export function getUser() {
+  return request({
+    url:'/userInfo',
+  })
+}
+
 

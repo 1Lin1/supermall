@@ -45,7 +45,7 @@
 .content{
   position: absolute;
   top:0;
-  bottom:12rem;
+  bottom:13rem;
   left: 0;
   right: 0;
   overflow: hidden;

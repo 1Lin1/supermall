@@ -76,7 +76,6 @@
         this.changeCurrentIndex = index;
       },
       pullingUpload(){
-
        if(this.changeCurrentIndex === 15){
          this.$toast.show('已经到底了',300);
 

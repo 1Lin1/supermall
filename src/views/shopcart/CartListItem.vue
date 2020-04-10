@@ -26,9 +26,9 @@
 
     </div>
 
-    <el-dialog title="商品数量" :visible.sync="dialogFormVisible" top="1vh" width="100%" :modal="false">
+    <el-dialog title="商品数量" :visible.sync="dialogFormVisible" class="dialog-setPosition" width="100%" :modal="false">
 
-      <el-input placeholder="输入您需要的数量" v-model.number="currentCount" ></el-input>
+      <el-input placeholder="输入您需要的数量"  v-model.number="currentCount" ></el-input>
 
       <div slot="footer" class="dialog-footer">
         <el-button @click="dialogFormVisible = false" size="small">取 消</el-button>
@@ -171,6 +171,7 @@
 
 
   .cart-list-item{
+    position: relative;
     display: flex;
     width: 100%;
 
@@ -218,6 +219,17 @@
   }
   .btn-count-group:nth-child(3){
     border-right: none;
+  }
+
+  .dialog-footer{
+   position: relative;
+   bottom: 10px;
+  }
+  .dialog-setPosition{
+    position: absolute;
+    top:-100px;
+    left: 0;
+    right: 0;
   }
 
 </style>

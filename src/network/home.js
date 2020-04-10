@@ -1,11 +1,5 @@
 import {request} from "./request";
 
-//
-// export function getMySqlData() {
-//   return request({
-//     url:'/t1/customer'
-//   })
-// }
 export function getHomeMultidata() {
   return request({
     url:'/data'
@@ -19,9 +13,6 @@ export function getUserData(id) {
     }
   })
 }
-
-
-
 export function getHomeGoods(type) {
   return request({
      url:'/goodsList',

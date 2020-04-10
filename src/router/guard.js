@@ -13,7 +13,6 @@ router.beforeEach((to, from, next) => {
             // 清除cookie的token
             removePwd_Token();
             removeUserName_Token();
-
             //清除vuex 的token
             store.commit('setPwd_Token', '');
             store.commit('setUserName_Token', '');
@@ -25,8 +24,6 @@ router.beforeEach((to, from, next) => {
             next();
         }
     } else {
-
-
         if (whiteRouter.indexOf(to.path) === -1) {
             next(); //不执行before
         } else {
