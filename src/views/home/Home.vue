@@ -18,7 +18,7 @@
       @scrollPosition="scrollPosition"
       :pull-up-load="true"
       @pullingUpload="pullingUpload"
-      ::threshold="10"
+      :threshold="10"
     >
       <!--      <home-swiper :banners="banners" @swipperImageLoad="swipperImageLoad"></home-swiper>-->
       <home-lun-bo :banners="banners" @swipperImageLoad="swipperImageLoad"></home-lun-bo>
@@ -123,6 +123,11 @@
       this.$bus.$on("itemImageLoad", () => {
         refresh();
       });
+
+      //获取tabbar位置
+      this.swipperImageLoad();
+
+
     },
     computed: {
       showGoods() {
@@ -130,7 +135,7 @@
       }
     },
     activated() {
-      console.log("用户登录状态" + this.$store.state.isUserLoad);
+      // console.log("用户登录状态" + this.$store.state.isUserLoad);
 
       // 回到上次停留地方 同时刷新
       this.$refs.ScrollVue.scrollTo(0, this.saveY);
@@ -155,8 +160,8 @@
        */
 
       swipperImageLoad() {
-        this.tabControlOffset = 520;//轮播图加载完后 获取tabbar位置
-        // this.tabControlOffset = this.$refs.tabcontrol1.$el.offsetTop;
+        // this.tabControlOffset = 520;//轮播图加载完后 获取tabbar位置
+        this.tabControlOffset = this.$refs.tabcontrol1.$el.offsetTop + 50;
       },
 
       // 多个请求在一定时间内 集合成少个请求发送

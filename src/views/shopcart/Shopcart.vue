@@ -13,13 +13,16 @@
     </nav-bar>
 
 
-    <div v-if="isShowCart">
+    <div v-if="CartLength">
       <cart-list ></cart-list>
       <cart-bottom-bar :is-show-cart-bottom-bar="isShowCartBottomBar" ></cart-bottom-bar>
     </div>
 
-    <div v-else>
-      <h1 class="warn-load">购物车空空如也 快去添加吧~</h1>
+    <div  v-else >
+      <div class="empty-cart">
+        <h2 class="warn-load">购物车空空如也 快去添加吧~</h2>
+        <img src="~assets/img/cart/emptyCart.jpg" alt="">
+      </div>
     </div>
 
   </div>
@@ -42,9 +45,9 @@
     },
     data(){
       return{
-        isShowCart:false,
         isShowCartBottomBar:true,
-        resolveMessage:'管理'
+        resolveMessage:'管理',
+        // isShowCart:false,
       }
     },
     methods:{
@@ -70,30 +73,19 @@
     created() {
       //将关闭网页的购物车cookie直接返回复制给vuex
       this.$store.state.shopCart = getShopCartList();
+
     },
     activated() {
-
-      if(this.CartLength!==0){
-        this.isShowCart = true;
-      }else{
-        this.isShowCart = false;
-      }
-      // console.log('购物车' + this.CartLength);
-
       //设置一激活为结算按钮
       if(this.resolveMessage === '完成'){
         this.resolveMessage = '管理';
         this.isShowCartBottomBar = true;
-
       }
-    },
-
-
-
+    }
   }
 </script>
 
-<style scoped>
+<style scoped >
 
 
   .resolve-shopCart-button{
@@ -111,6 +103,16 @@
     text-align: center;
     position: relative;
     top: 20rem;
+  }
+
+
+  /*空购物车*/
+  .empty-cart{
+    text-align: center;
+  }
+  .empty-cart img{
+    width: 15rem;
+    height: 15rem;
   }
   /*.content{*/
   /*  height: calc(100% - 100px);*/

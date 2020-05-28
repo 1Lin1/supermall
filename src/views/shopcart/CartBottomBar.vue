@@ -167,11 +167,19 @@
 
       // 过滤checked为true的满足的商品
       totalPrice(){
-        return this.CartList.filter(item => {
-          return item.checked;
-        }).reduce((proValue,item) => {
-          return proValue + item.newPrice * item.count;
-        },0).toFixed(2);
+
+        //高效写法
+        return this.CartList.filter(item => item.checked)
+        .reduce((prv,item) => prv + item.newPrice*item.count,0).toFixed(2)
+
+
+        // return this.CartList.filter(item => {
+        //   return item.checked;
+        // }).reduce((proValue,item) => {
+        //   return proValue + item.newPrice * item.count;
+        // },0).toFixed(2);
+
+        
       },
       checkLength(){
         return this.CartList.filter(item => item.checked).length;

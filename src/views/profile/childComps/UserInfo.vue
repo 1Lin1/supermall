@@ -2,9 +2,12 @@
   <div id="user-info">
     <a href="#" class="clear-fix">
       <slot name="user-icon">
-        <svg class="privateImage-svg left">
-          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#avatar-default"></use>
-        </svg>
+        <div class="privateImage-svg left">
+          <img src="~assets/img/profile/12.jpg" alt="">
+        </div>
+<!--        <svg class="privateImage-svg left">-->
+<!--          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#avatar-default"></use>-->
+<!--        </svg>-->
       </slot>
       <div class="login-info left"  >
         <slot name="user-nickname">
@@ -87,6 +90,9 @@
     width: 60px;
     height: 60px;
     background-color: #fff;
+  }
+
+  .privateImage-svg img {
     border-radius: 30px;
   }
 

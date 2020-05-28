@@ -28,7 +28,10 @@
 
     <el-dialog title="商品数量" :visible.sync="dialogFormVisible" class="dialog-setPosition" width="100%" :modal="false">
 
-      <el-input placeholder="输入您需要的数量"  v-model.number="currentCount" ></el-input>
+      <el-input placeholder="输入您需要的数量"  
+      v-model.number="currentCount"
+       oninput="value=value.replace(/[^\d]/g, '')" 
+       ></el-input>
 
       <div slot="footer" class="dialog-footer">
         <el-button @click="dialogFormVisible = false" size="small">取 消</el-button>
@@ -146,16 +149,8 @@
         this.currentCount = 2000;
       }else if(this.currentCount <1){
         // this.currentCount = 1;
-
       }
-      // if(this.itemInfo.count>2000){
-      //   this.$toast.show('已达可购买最大数量',1500);
-      //   this.itemInfo.count = 2000;
-      // }else if(this.itemInfo.count <1){
-      //   this.$toast.show('数量至少为一件',1500);
-      //   this.itemInfo.count = 1;
-      //
-      // }
+     
     },
     filters:{
       filterPrice(price){

@@ -58,6 +58,7 @@ export default {
   },
   data() {
     return {
+        // a:1,
         orderList: [
           {icon: '#icon-xiaoxi', iconColor: '#ff8198', info: '我的消息'},
           {icon: '#icon-jifen', iconColor: '#fc7b53', info: '积分商城'},
@@ -76,6 +77,9 @@ export default {
   methods:{
 
   },
+  mounted() {
+    // this.a = 2
+  },
   activated() {
 
     //若有存粗余额cookie 直接赋值
@@ -91,7 +95,14 @@ export default {
     filterPrice(price){
       return  Number(price).toFixed(2);
     }
-  }
+  },
+
+  //测试watch
+  // watch: {
+  //    a:(newValue, oldVal) => {
+  //     console.log( newValue, oldVal )
+  //   }
+  // },
  }
 </script>
 

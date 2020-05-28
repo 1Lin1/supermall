@@ -1,4 +1,6 @@
 export function debounce(func, delay) {
+
+
     let timer = null;
     return function(...args) {
         if (timer) clearTimeout(timer);
@@ -8,6 +10,8 @@ export function debounce(func, delay) {
     }
 
 }
+
+
 
 export function formatDate(date, fmt) {
     if (/(y+)/.test(fmt)) {

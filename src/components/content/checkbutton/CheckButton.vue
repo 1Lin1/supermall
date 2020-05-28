@@ -23,6 +23,7 @@
       }
     },
     computed:{
+    //      绑定class不要用data 使用计算属性
       itemChecked(){
         return this.isChecked;
       }

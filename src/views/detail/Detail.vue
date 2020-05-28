@@ -83,13 +83,10 @@ export default {
   },
   methods: {
 
-
-
-
     // 跳转到详情页
 
     detailItemClick(index) {
-      this.$refs.ScrollVue.scrollTo(0, -this.detailTopY[index], 200);
+      this.$refs.ScrollVue.scrollTo(0, -this.detailTopY[index], 400);
     },
     scrollPosition(position) {
       // 进行条件判断
@@ -228,7 +225,9 @@ export default {
       this.saleMan = this.goods;
       this.modelImage = data.centerImage;
     });
-    //比如这里有一堆请求 请求完渲染才执行下面的添加
+
+
+    //推荐商品数据
     this.getGoods();
   },
   mounted() {
@@ -250,6 +249,8 @@ export default {
       refresh();
     });
   },
+
+ 
 };
 </script>
 

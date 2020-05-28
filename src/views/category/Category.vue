@@ -103,7 +103,13 @@
 
     activated() {
       // 一激活把保存的路由加进去
-      this.$router.push(this.path)
+      if(this.$route.path !== this.path){
+
+        this.$router.push(this.path);
+        let currentItem = this.categories.filter(item => item.path === this.$route.path);
+        this.currentIndex = currentItem[0].pathIndex;
+        this.$refs.tabmenu.currentIndex = currentItem[0].pathIndex;
+      }
 
 
     },

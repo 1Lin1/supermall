@@ -57,6 +57,7 @@
         this.$router.push({
           path:'/detail',
           query:{
+            
             pid:this.product.pid
           }
         })

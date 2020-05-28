@@ -46,7 +46,7 @@
 
       },
       servicePeople(){
-        this.$toast.show('客服暂未上线',2000)
+        this.$toast.show('客服暂未上线',1200)
       },
       toCheckCart(){
         this.$emit('toCheckCart');

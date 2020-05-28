@@ -1,3 +1,3 @@
-export const ADD_CONUTER = 'addCounter';
-export const PROD_CONUTER = 'prodCounter';
+export const ADD_COUNTER = 'addCounter';
+export const PROD_COUNTER = 'prodCounter';
 export const ADD_SHOPCART = 'addShopCart';
